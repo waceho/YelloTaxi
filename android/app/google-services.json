@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "983833722602",
+    "firebase_url": "https://benintaxi-8efbe.firebaseio.com",
+    "project_id": "benintaxi-8efbe",
+    "storage_bucket": "benintaxi-8efbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983833722602:android:59ad7e46afd215ad",
+        "android_client_info": {
+          "package_name": "com.amanciodrp.benintaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983833722602-fa4vd3qojmlhnlqk8f0jdj2tfi880kph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqLADrNlNTuDRczaOVDyOJt-1s9-ywtnA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
