@@ -1,9 +1,10 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.uber.CustomerLoginActivity" >
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context="com.amanciodrp.benintaxi.CustomerLoginActivity">
+
 
 
     <fragment
@@ -12,54 +13,108 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttons">
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
+
+            android:layout_marginTop="10dp">
+
+            <com.getbase.floatingactionbutton.FloatingActionsMenu
+                android:id="@+id/right_labels"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/logout"
-                android:text="logout"/>
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/history"
-                android:text="history"/>
-            <Button
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/settings"
-                android:text="Settings"/>
+                fab:fab_addButtonColorNormal="@android:color/holo_orange_dark"
+                fab:fab_addButtonColorPressed="@android:color/white"
+                fab:fab_addButtonPlusIconColor="@android:color/background_dark"
+                fab:fab_expandDirection="down"
+                fab:fab_labelsPosition="right">
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@android:color/white"
+                    fab:fab_title="Label on the right"
+                    fab:fab_size="mini"
+                    fab:fab_icon="@drawable/ic_account_circle_black_24dp"
+                    fab:fab_colorPressed="@android:color/white"
+                    android:id="@+id/logout"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@android:color/white"
+                    fab:fab_size="mini"
+                    fab:fab_title="Another one on the right"
+                    fab:fab_icon="@drawable/ic_history_black_24dp"
+                    android:id="@+id/history"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    fab:fab_colorNormal="@android:color/white"
+                    fab:fab_size="mini"
+                    fab:fab_title="Another one on the right"
+                    fab:fab_icon="@drawable/ic_plus_24"
+                    android:id="@+id/settings"
+                    />
+            </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:layout_below="@+id/buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20sp">
-            <fragment
-                android:id="@+id/place_autocomplete_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                />
-        </android.support.v7.widget.CardView>
-    </RelativeLayout>
-
-
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/common_google_signin_btn_icon_dark_normal_background">
+            <TextView
+                android:id="@+id/start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:text="Addresse de départ"/>
+            <fragment
+                android:id="@+id/place_autocomplete_fragment"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="5dp"
+
+                android:text="Adresse de destination"/>
+            <fragment
+                android:id="@+id/place_autocomplete_fragment2"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,6 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioGroup"
+                android:visibility="gone"
                 android:orientation="horizontal">
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -133,11 +189,12 @@
                     android:id="@+id/UberXl"/>
             </RadioGroup>
 
-            <Button
+            <android.support.design.button.MaterialButton
                 android:layout_gravity="bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="call Uber"
+                android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+                android:text="Demander un Taxi"
                 android:id="@+id/request"/>
         </LinearLayout>
     </LinearLayout>

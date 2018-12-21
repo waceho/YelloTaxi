@@ -53,6 +53,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.amanciodrp.benintaxi.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -105,6 +106,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();
 

@@ -10,7 +10,7 @@ import com.amanciodrp.benintaxi.HistorySingleActivity;
 import com.amanciodrp.benintaxi.R;
 
 /**
- * Created by manel on 10/10/2017.
+ * Created by amancio on 10/10/2017.
  */
 
 public class HistoryViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
