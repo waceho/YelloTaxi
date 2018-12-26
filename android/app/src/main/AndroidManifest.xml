@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <service android:name=".onAppKilled" android:stopWithTask="false"/>
-        <activity android:name=".OnBoardingActivity"
+        <activity android:name=".onboarding.OnBoardingActivity"
             android:theme="@style/AppFullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,8 +30,8 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".DriverLoginActivity" />
-        <activity android:name=".CustomerLoginActivity" />
+        <activity android:name=".driverActivity.DriverLoginActivity" />
+        <activity android:name=".customeractivity.CustomerLoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,12 +45,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".DriverMapActivity"
+            android:name=".driverActivity.DriverMapActivity"
             android:label="@string/title_activity_driver_map" />
-        <activity android:name=".CustomerMapActivity"
+        <activity android:name=".customeractivity.CustomerMapActivity"
             android:theme="@style/Base.Theme.MaterialComponents"/>
-        <activity android:name=".CustomerSettingsActivity" />
-        <activity android:name=".DriverSettingsActivity" />
+        <activity android:name=".customeractivity.CustomerSettingsActivity" />
+        <activity android:name=".driverActivity.DriverSettingsActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".HistorySingleActivity"></activity>
     </application>

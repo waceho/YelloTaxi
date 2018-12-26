@@ -11,10 +11,12 @@
     <dimen name="ob_header_top_margin">50dp</dimen>
 
     <dimen name="ob_desc_padding">30dp</dimen>
-    <dimen name="ob_banner_height">200dp</dimen>
+    <dimen name="ob_banner_height">300dp</dimen>
     <dimen name="items_inbetween">8dp</dimen>
 
     <dimen name="button_text">18sp</dimen>
     <dimen name="ob_header_text_size">22sp</dimen>
     <dimen name="ob_desc_text_size">18sp</dimen>
+    <dimen name="img_height">280dp</dimen>
+    <item name="dimension" type="dimen">@dimen/img_height</item>
 </resources>

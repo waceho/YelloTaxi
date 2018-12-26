@@ -3,9 +3,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/onboard"
-    tools:context="com.amanciodrp.benintaxi.OnBoardingActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/onboarding_background"
+    android:id="@+id/onboarding_back"
+    tools:context="com.amanciodrp.benintaxi.onboarding.OnBoardingActivity">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/onboard_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20pt"
+        android:layout_centerHorizontal="true"
+         />
+
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/onboardCard"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="@dimen/ob_header_text_size"
+                android:layout_marginBottom="10dp"
+                android:text="Configuration"/>
+
+            <LinearLayout
+                android:id="@+id/location_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/card_title"
+                android:layout_marginBottom="20pt"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:text="Localisation"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/location_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/round_border_switch_background"
+                    app:showText="true"
+                    android:textColor="@android:color/black"
+                    android:textOff="OFF"
+                    android:textOn="ON"
+                    android:textSize="20sp"
+                    app:track="@drawable/switch_track"
+                    android:thumb="@drawable/round_switch_on" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/location_layout"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="Veuillez choisir votre mode d'usage"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/mode_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/round_border_switch_background"
+                    app:showText="true"
+                    android:textColor="@android:color/black"
+                    android:textOff="@string/chauffeur"
+                    android:textOn="@string/passager"
+                    android:textSize="20sp"
+                    app:track="@drawable/switch_track"
+                    android:thumb="@drawable/round_switch_on" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.design.card.MaterialCardView>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_introduction"
@@ -18,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/pager_height"
         android:layout_above="@+id/ll_footer"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="12dp"
         android:elevation="15dp"
         android:gravity="center"
@@ -26,25 +132,27 @@
 
     <LinearLayout
         android:id="@+id/ll_footer"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <android.support.design.widget.FloatingActionButton
+        <android.support.design.button.MaterialButton
             android:id="@+id/btn_get_started"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="end"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="150dp"
             android:background="@color/colorPrimary"
             android:text="@string/app_name"
             android:textAllCaps="false"
+            android:elevation="2dp"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text"
             android:visibility="gone" />
-
 
     </LinearLayout>
 

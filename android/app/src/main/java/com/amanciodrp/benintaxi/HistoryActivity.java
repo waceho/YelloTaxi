@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.amanciodrp.benintaxi.historyRecyclerView.HistoryAdapter;
-import com.amanciodrp.benintaxi.historyRecyclerView.HistoryObject;
+import com.amanciodrp.benintaxi.adapter.HistoryAdapter;
+import com.amanciodrp.benintaxi.model.HistoryObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;

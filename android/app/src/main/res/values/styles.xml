@@ -29,4 +29,17 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="OnboardingImageStyle">
+        <item name="android:src">@drawable/circle</item>
+
+    </style>
+
+    <style name="SwitchCompat" >
+        <item name="android:thumb">@drawable/selected_item_dot</item>
+        <item name="track">@drawable/selected_item_dot</item>
+        <item name="showText">true</item>
+        <item name="android:textOn">@string/chauffeur</item>
+        <item name="android:textOff">@string/passager</item>
+    </style>
+
 </resources>
