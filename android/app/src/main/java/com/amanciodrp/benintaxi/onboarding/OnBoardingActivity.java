@@ -1,5 +1,6 @@
 package com.amanciodrp.benintaxi.onboarding;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.amanciodrp.benintaxi.R;
 import com.amanciodrp.benintaxi.adapter.OnBoard_Adapter;
+import com.amanciodrp.benintaxi.customeractivity.CustomerLoginActivity;
 
 import java.util.ArrayList;
 
@@ -120,8 +122,11 @@ public class OnBoardingActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(OnBoardingActivity.this,"Redirect to wherever you want",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
             }
         });
+
+
 
         setUiPageViewController();
         resize();

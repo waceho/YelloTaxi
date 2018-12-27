@@ -35,34 +35,28 @@ import java.util.Map;
 public class CustomerSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField;
-
     private Button mBack, mConfirm;
-
     private ImageView mProfileImage;
-
     private FirebaseAuth mAuth;
     private DatabaseReference mCustomerDatabase;
-
     private String userID;
     private String mName;
     private String mPhone;
     private String mProfileImageUrl;
-
     private Uri resultUri;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_settings);
 
-        mNameField = (EditText) findViewById(R.id.name);
-        mPhoneField = (EditText) findViewById(R.id.phone);
+        mNameField =  findViewById(R.id.name);
+        mPhoneField =  findViewById(R.id.phone);
 
-        mProfileImage = (ImageView) findViewById(R.id.profileImage);
+        mProfileImage =  findViewById(R.id.profileImage);
 
-        mBack = (Button) findViewById(R.id.back);
-        mConfirm = (Button) findViewById(R.id.confirm);
+        mBack =  findViewById(R.id.back);
+        mConfirm =  findViewById(R.id.confirm);
 
         mAuth = FirebaseAuth.getInstance();
         userID = mAuth.getCurrentUser().getUid();

@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.amanciodrp.benintaxi.R;
+import com.facebook.FacebookSdk;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,6 +30,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_login);
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,11 +47,11 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         };
 
-        mEmail = (EditText) findViewById(R.id.email);
-        mPassword = (EditText) findViewById(R.id.password);
+        mEmail = findViewById(R.id.email);
+        mPassword = findViewById(R.id.password);
 
-        mLogin = (Button) findViewById(R.id.login);
-        mRegistration = (Button) findViewById(R.id.registration);
+        mLogin = findViewById(R.id.login);
+        mRegistration = findViewById(R.id.registration);
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +90,6 @@ public class CustomerLoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onStart() {
