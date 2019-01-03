@@ -4,12 +4,14 @@
     <color name="colorPrimaryDark">#303f9f</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffff</color>
 
     <!--OnBoard-->
 
     <color name="selected_dot">#FFFFFF</color>
-    <color name="idle_dot">#db9e2d</color>
+    <color name="idle_dot">#f1a71d</color>
     <color name="ob_header">#4A4A4A</color>
     <color name="ob_desc">#4A4A4A</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

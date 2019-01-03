@@ -24,4 +24,7 @@
     <string name="connexion">Connexion</string>
     <string name="password">saisissez votre mot de passe</string>
     <string name="email">saisissez votre email</string>
+    <string name="no_account_msg">Vous n\'avez pas encore un compte ?</string>
+    <string name="google_login_msg">Connection avec google</string>
+    <string name="facebook_login_msg">Connexion avec facebook</string>
 </resources>

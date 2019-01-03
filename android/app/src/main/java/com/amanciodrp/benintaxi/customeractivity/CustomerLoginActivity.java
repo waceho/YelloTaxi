@@ -70,6 +70,7 @@ public class CustomerLoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+                
             }
         });
 

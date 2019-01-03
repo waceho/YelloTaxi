@@ -126,8 +126,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
         });
 
-
-
         setUiPageViewController();
         resize();
 
@@ -146,8 +144,14 @@ public class OnBoardingActivity extends AppCompatActivity {
         {
             OnBoardItem item=new OnBoardItem();
             item.setImageID(imageId[i]);
-            item.setTitle(getResources().getString(header[i]));
-            item.setDescription(getResources().getString(desc[i]));
+            if (3 != i) {
+                item.setTitle(getResources().getString(header[i]));
+                item.setDescription(getResources().getString(desc[i]));
+            } else {
+                item.setTitle("");
+                item.setDescription("");
+            }
+
 
             onBoardItems.add(item);
         }
