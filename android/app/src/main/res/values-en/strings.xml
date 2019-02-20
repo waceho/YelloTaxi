@@ -27,4 +27,11 @@
     <string name="no_account_msg">Vous n\'avez pas encore un compte ?</string>
     <string name="google_login_msg">Connection avec google</string>
     <string name="facebook_login_msg">Connexion avec facebook</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="signin_error">Erreur de connexion</string>
+    <string name="no_email_password">Veuillez saisir un email et un mot de passe valide</string>
+
 </resources>

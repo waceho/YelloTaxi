@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    tools:context="com.amanciodrp.benintaxi.customeractivity.CustomerLoginActivity">
+    tools:context="com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity">
 
 
 
@@ -190,12 +190,12 @@
             </RadioGroup>
 
             <android.support.design.button.MaterialButton
-                android:layout_gravity="bottom"
+                android:id="@+id/request"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/common_google_signin_btn_text_light_normal_background"
-                android:text="Demander un Taxi"
-                android:id="@+id/request"/>
+                android:layout_gravity="bottom"
+                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                android:text="Demander un Taxi" />
         </LinearLayout>
     </LinearLayout>
 

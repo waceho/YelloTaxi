@@ -38,7 +38,7 @@
                 android:paddingRight="@dimen/ob_desc_padding"
                 android:text="@string/ob_header1"
                 android:textAllCaps="true"
-                android:textColor="@color/ob_header"
+                android:textColor="@color/white"
                 android:textSize="@dimen/ob_header_text_size" />
 
             <TextView
@@ -50,7 +50,7 @@
                 android:paddingLeft="@dimen/ob_desc_padding"
                 android:paddingRight="@dimen/ob_desc_padding"
                 android:text="@string/ob_desc1"
-                android:textColor="@color/ob_desc"
+                android:textColor="@color/white"
                 android:textSize="@dimen/ob_desc_text_size" />
 
         </LinearLayout>

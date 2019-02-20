@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.amanciodrp.benintaxi.MainActivity"
+    tools:context="com.amanciodrp.yellotaxi.MainActivity"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.amanciodrp.benintaxi.onboarding.FullScreenVideoView
+        <com.amanciodrp.yellotaxi.onboarding.FullScreenVideoView
             android:id="@+id/videoView11"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

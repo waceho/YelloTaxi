@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/coordinator">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/onboarding_background"
+    android:background="@color/blue_grey_900"
     android:id="@+id/onboarding_back"
-    tools:context="com.amanciodrp.benintaxi.onboarding.OnBoardingActivity">
+    tools:context="com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/onboard_img"
@@ -26,11 +34,14 @@
         app:cardPreventCornerOverlap="true"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
+        android:background="@color/white"
         android:visibility="gone">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/blue_grey_700"
+            >
 
             <TextView
                 android:id="@+id/card_title"
@@ -39,6 +50,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:textSize="@dimen/ob_header_text_size"
+                android:textColor="@android:color/white"
                 android:layout_marginBottom="10dp"
                 android:text="Configuration"/>
 
@@ -58,6 +70,7 @@
                     android:textSize="20sp"
                     android:textAlignment="center"
                     android:textStyle="bold"
+                    android:textColor="@android:color/white"
                     android:text="Localisation"/>
 
                 <android.support.v7.widget.SwitchCompat
@@ -67,7 +80,7 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/round_border_switch_background"
                     app:showText="true"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textOff="OFF"
                     android:textOn="ON"
                     android:textSize="20sp"
@@ -91,6 +104,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textAlignment="center"
+                    android:textColor="@android:color/white"
                     android:text="Veuillez choisir votre mode d'usage"/>
 
                 <android.support.v7.widget.SwitchCompat
@@ -159,3 +173,4 @@
 
 </RelativeLayout>
 
+</android.support.constraint.ConstraintLayout>
