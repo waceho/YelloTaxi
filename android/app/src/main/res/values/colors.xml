@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#010C0C</color>
+    <color name="colorPrimaryDark">#61DDD9D9</color>
+    <color name="colorAccent">#016358</color>
 
     <color name="white">#ffffff</color>
 
@@ -10,11 +10,12 @@
 
     <color name="selected_dot">#FFFFFF</color>
     <color name="idle_dot">#f1a71d</color>
-    <color name="ob_header">#4A4A4A</color>
+    <color name="ob_header">#D54A4A4A</color>
     <color name="ob_desc">#4A4A4A</color>
     <color name="green">#45682f</color>
     <color name="yellow">#d9973a</color>
     <color name="red">#FF4081</color>
+    <color name="black">#000000</color>
     <color name="black_overlay">#66000000</color>
 
     <color name="blue_grey_500">#607D8B</color>

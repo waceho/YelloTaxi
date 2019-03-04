@@ -9,8 +9,8 @@
 </item>
     <item
         android:bottom="@dimen/dimension"
-        android:left="-100dp"
-        android:right="-100dp"
+        android:left="@dimen/left"
+        android:right="@dimen/left"
         android:top="-350dp">
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="wrap_content"
@@ -23,9 +23,9 @@
     </item>
 <item
 android:bottom="@dimen/dimension"
-android:left="-100dp"
-android:right="-100dp"
-android:top="-480dp">
+android:left="@dimen/left"
+android:right="@dimen/right"
+android:top="@dimen/top">
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <solid android:color="#FFFFFF" />

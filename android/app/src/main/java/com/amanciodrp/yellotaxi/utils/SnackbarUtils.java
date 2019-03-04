@@ -21,7 +21,7 @@ public class SnackbarUtils
 
 		View snackView = pSnackbar.getView();
 		TextView snackTextView = snackView.findViewById(android.support.design.R.id.snackbar_text);
-		snackTextView.setGravity(Gravity.CENTER);
+		snackTextView.setGravity(Gravity.END);
 		snackTextView.setTypeface(FontCache.getFont(snackView.getContext(), "arial.ttf"));
 
 		if (pBackgroundColor != 0)
@@ -31,7 +31,7 @@ public class SnackbarUtils
 			snackTextView.setTextColor(pTextColor);
 
 		if (pGravity != 0)
-			snackTextView.setGravity(pGravity);
+			snackTextView.setGravity(Gravity.CENTER_HORIZONTAL);
 	}
 
 	/**
@@ -44,11 +44,11 @@ public class SnackbarUtils
 		displayInfo(pActivity, pMessage, Snackbar.LENGTH_LONG);
 	}
 
-	public static void displayInfo(final Activity pActivity, final int pMessage, final int pDuration) {
+	private static void displayInfo(final Activity pActivity, final int pMessage, final int pDuration) {
 		displayInfo(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayInfo(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayInfo(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 
@@ -65,7 +65,7 @@ public class SnackbarUtils
 		displayInfo(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayInfo(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayInfo(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 
@@ -87,11 +87,11 @@ public class SnackbarUtils
 		displayWarning(pActivity, pMessage, Snackbar.LENGTH_LONG);
 	}
 
-	public static void displayWarning(final Activity pActivity, final int pMessage, final int pDuration) {
+	private static void displayWarning(final Activity pActivity, final int pMessage, final int pDuration) {
 		displayWarning(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayWarning(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayWarning(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 
@@ -108,7 +108,7 @@ public class SnackbarUtils
 		displayWarning(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayWarning(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayWarning(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 
@@ -131,11 +131,11 @@ public class SnackbarUtils
 		displayError(pActivity, pMessage, Snackbar.LENGTH_LONG);
 	}
 
-	public static void displayError(final Activity pActivity, final int pMessage, final int pDuration) {
+	private static void displayError(final Activity pActivity, final int pMessage, final int pDuration) {
 		displayError(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayError(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayError(final Activity pActivity, final int pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 
@@ -152,7 +152,7 @@ public class SnackbarUtils
 		displayError(pActivity, pMessage, pDuration, 0, null);
 	}
 
-	public static void displayError(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
+	private static void displayError(final Activity pActivity, @NonNull CharSequence pMessage, final int pDuration, final int pActionString, final View.OnClickListener pListener) {
 
 		Snackbar snackbar = Snackbar.make(pActivity.findViewById(R.id.coordinator), pMessage, pDuration);
 

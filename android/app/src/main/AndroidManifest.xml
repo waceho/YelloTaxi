@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:allowClearUserData="true"
         android:description="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme">
         <service
             android:name="com.amanciodrp.yellotaxi.onAppKilled"
             android:stopWithTask="false" />
