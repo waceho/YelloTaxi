@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -15,7 +15,7 @@
             android:id="@+id/onboarding_back"
             tools:context="com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/onboard_img"
                 android:layout_width="wrap_content"
                 android:layout_height="350dp"
@@ -24,7 +24,8 @@
 
                 />
 
-            <android.support.design.card.MaterialCardView
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.MaterialComponents.CardView"
                 android:id="@+id/onboardCard"
                 android:layout_width="300dp"
                 android:layout_height="350dp"
@@ -61,7 +62,7 @@
                         android:layout_centerInParent="true"
                         android:orientation="vertical">
 
-                        <android.support.design.chip.ChipGroup
+                        <com.google.android.material.chip.ChipGroup
                             android:id="@+id/chipgroup"
                             style="@style/Widget.MaterialComponents.ChipGroup"
                             android:layout_width="match_parent"
@@ -69,7 +70,7 @@
                             app:chipSpacingVertical="10dp"
                             android:layout_height="wrap_content">
 
-                            <android.support.design.chip.Chip
+                            <com.google.android.material.chip.Chip
                                 style="@style/Widget.MaterialComponents.Chip.Choice"
                                 android:textAppearance="@style/ChipTextStyle"
                                 app:chipBackgroundColor="@drawable/chips_selection_background"
@@ -85,7 +86,7 @@
                                 app:chipIconEnabled="true"
                                 />
 
-                            <android.support.design.chip.Chip
+                            <com.google.android.material.chip.Chip
                                 style="@style/Widget.MaterialComponents.Chip.Choice"
                                 android:textAppearance="@style/ChipTextStyle"
                                 android:text="@string/passer_text"
@@ -101,7 +102,7 @@
                                 android:layout_marginTop="10dp"
                                 />
 
-                        </android.support.design.chip.ChipGroup>
+                        </com.google.android.material.chip.ChipGroup>
 
                     </LinearLayout>
 
@@ -114,9 +115,9 @@
 
                 </RelativeLayout>
 
-            </android.support.design.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/pager_introduction"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -141,7 +142,7 @@
                 android:layout_alignParentBottom="true"
                 android:orientation="vertical">
 
-                <android.support.design.button.MaterialButton
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_get_started"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="match_parent"
@@ -162,5 +163,5 @@
 
         </RelativeLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
