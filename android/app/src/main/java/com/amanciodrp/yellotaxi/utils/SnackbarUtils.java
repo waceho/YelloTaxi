@@ -2,8 +2,8 @@ package com.amanciodrp.yellotaxi.utils;
 
 import android.app.Activity;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.snackbar.Snackbar;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
@@ -20,7 +20,7 @@ public class SnackbarUtils
 	private static void setupAppearance(Snackbar pSnackbar, final int pBackgroundColor, final int pTextColor, final int pGravity) {
 
 		View snackView = pSnackbar.getView();
-		TextView snackTextView = snackView.findViewById(android.support.design.R.id.snackbar_text);
+		TextView snackTextView = snackView.findViewById(com.google.android.material.R.id.snackbar_text);
 		snackTextView.setGravity(Gravity.END);
 		snackTextView.setTypeface(FontCache.getFont(snackView.getContext(), "arial.ttf"));
 

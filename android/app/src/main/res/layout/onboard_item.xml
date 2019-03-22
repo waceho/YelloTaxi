@@ -1,61 +1,57 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout2">
 
-    <ImageView
-        android:id="@+id/iv_onboard"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ob_banner_height"
-        android:layout_margin="50dp"
-        android:gravity="center"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:scaleType="fitXY"
-        android:elevation="-16dp"
-        android:src="@drawable/onboard_page1"
-        android:visibility="gone"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/onboardText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
+
+        <TextView
+            android:id="@+id/tv_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            >
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/arial"
+            android:gravity="center"
+            android:paddingLeft="@dimen/ob_desc_padding"
+            android:paddingRight="@dimen/ob_desc_padding"
+            android:text="@string/ob_header1"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ob_header_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tv_desc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="@dimen/ob_desc_padding"
-                android:paddingRight="@dimen/ob_desc_padding"
-                android:text="@string/ob_header1"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/ob_header_text_size" />
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="100dp"
+            android:fontFamily="@font/arial"
+            android:gravity="center"
+            android:paddingLeft="@dimen/ob_desc_padding"
+            android:paddingRight="@dimen/ob_desc_padding"
+            android:text="@string/ob_desc1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/ob_desc_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:paddingLeft="@dimen/ob_desc_padding"
-                android:paddingRight="@dimen/ob_desc_padding"
-                android:text="@string/ob_desc1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/ob_desc_text_size" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
 
 
-</LinearLayout>

@@ -1,7 +1,9 @@
 package com.amanciodrp.yellotaxi.adapter;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.onboarding.OnBoardItem;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -23,7 +27,7 @@ import java.util.ArrayList;
 public class OnBoard_Adapter extends PagerAdapter {
 
     private Context mContext;
-    ArrayList<OnBoardItem> onBoardItems=new ArrayList<>();
+    private ArrayList<OnBoardItem> onBoardItems;
 
 
     public OnBoard_Adapter(Context mContext, ArrayList<OnBoardItem> items) {
@@ -37,23 +41,21 @@ public class OnBoard_Adapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
+    public boolean isViewFromObject(@NotNull View view, @NotNull Object object) {
         return view == object;
     }
 
+    @NotNull
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(@NotNull ViewGroup container, int position) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.onboard_item, container, false);
 
         OnBoardItem item=onBoardItems.get(position);
 
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.iv_onboard);
-        imageView.setImageResource(item.getImageID());
-
-        TextView tv_title=(TextView)itemView.findViewById(R.id.tv_header);
+        TextView tv_title= itemView.findViewById(R.id.tv_header);
         tv_title.setText(item.getTitle());
 
-        TextView tv_content=(TextView)itemView.findViewById(R.id.tv_desc);
+        TextView tv_content= itemView.findViewById(R.id.tv_desc);
         tv_content.setText(item.getDescription());
 
         container.addView(itemView);
@@ -62,8 +64,8 @@ public class OnBoard_Adapter extends PagerAdapter {
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
+    public void destroyItem(@NotNull ViewGroup container, int position, @NotNull Object object) {
+        container.removeView((ConstraintLayout) object);
     }
 
 }

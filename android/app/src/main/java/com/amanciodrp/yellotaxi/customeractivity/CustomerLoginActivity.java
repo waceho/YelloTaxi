@@ -1,17 +1,14 @@
 package com.amanciodrp.yellotaxi.customeractivity;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.amanciodrp.yellotaxi.MainActivity;
@@ -19,7 +16,6 @@ import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.databinding.ActivityCustomerLoginBinding;
 import com.amanciodrp.yellotaxi.databinding.PhoneLoginPopupBinding;
 import com.amanciodrp.yellotaxi.utils.SnackbarUtils;
-import com.facebook.FacebookSdk;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -344,8 +340,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     }
 
     private void showDialog(){
-// Get the layout inflater
-
+        // Get the layout inflater
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog);
         LayoutInflater inflater = getLayoutInflater();
         View view =  inflater.inflate(R.layout.phone_login_popup, null);

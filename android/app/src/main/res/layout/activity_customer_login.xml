@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/google_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             android:textColor="@android:color/black"
             tools:layout_editor_absoluteX="16dp" />
 
-        <android.support.v7.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/phone_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             app:layout_constraintTop_toBottomOf="@+id/phone_login"
             tools:layout_editor_absoluteX="0dp" />
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -98,9 +98,9 @@
                 android:textColor="@android:color/black"
                 android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -119,10 +119,10 @@
                 android:inputType="textPassword"
                 android:textColorHint="@android:color/black" />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
@@ -149,7 +149,7 @@
             tools:layout_editor_absoluteX="90dp"
             tools:layout_editor_absoluteY="446dp" />
 
-        <android.support.design.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/registration"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"

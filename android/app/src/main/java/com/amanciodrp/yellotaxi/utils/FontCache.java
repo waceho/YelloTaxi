@@ -2,7 +2,7 @@ package com.amanciodrp.yellotaxi.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.amanciodrp.yellotaxi.R;
 

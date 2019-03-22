@@ -3,10 +3,10 @@ package com.amanciodrp.yellotaxi;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import androidx.cardview.widget.CardView;
 import android.view.View;
 
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;

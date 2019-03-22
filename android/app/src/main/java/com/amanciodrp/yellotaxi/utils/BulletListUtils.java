@@ -7,7 +7,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.BulletSpan;
 
-public class BulletTextUtils {
+public class BulletListUtils {
 
     /**
      * Returns a CharSequence containing a bulleted and properly indented list.
@@ -48,9 +48,9 @@ public class BulletTextUtils {
     public static CharSequence makeBulletList(int leadingMargin, CharSequence... lines) {
         SpannableStringBuilder sb = new SpannableStringBuilder();
         for (int i = 0; i < lines.length; i++) {
-            CharSequence line = lines[i] + (i < lines.length-1 ? "\n" : "");
+            CharSequence line = lines[i] + (i < lines.length-1 ? "\n\n" : " ");
             Spannable spannable = new SpannableString(line);
-            spannable.setSpan(new BulletSpan(leadingMargin), 0, spannable.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            spannable.setSpan(new BulletSpan(leadingMargin), 0, spannable.length(), Spanned.SPAN_POINT_MARK);
             sb.append(spannable);
         }
         return sb;

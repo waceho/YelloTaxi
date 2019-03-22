@@ -1,16 +1,18 @@
 package com.amanciodrp.yellotaxi.onboarding;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+
+import androidx.core.text.HtmlCompat;
+import androidx.databinding.DataBindingUtil;
+
 import android.os.Bundle;
-import android.support.design.chip.Chip;
-import android.support.design.chip.ChipGroup;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.ImageViewCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.CardView;
+
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
+
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,30 +20,26 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.adapter.OnBoard_Adapter;
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
 import com.amanciodrp.yellotaxi.databinding.ActivityOnBoardingBinding;
+import com.amanciodrp.yellotaxi.utils.BulletListUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class OnBoardingActivity extends AppCompatActivity {
 
     private LinearLayout pager_indicator;
     private int dotsCount;
     private ImageView[] dots;
-    private ViewPager onboard_pager;
+    private CustomViewPager onboard_pager;
     private OnBoard_Adapter mAdapter;
     private Button btn_get_started;
     private CardView onbardCard;
-    private ActivityOnBoardingBinding binding;
-    private boolean anim;
+    private ActivityOnBoardingBinding binder;
+    private boolean isShow3;
 
     int previous_pos = 0;
 
@@ -50,8 +48,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_boarding);
-        binding = bind();
+        binder = bind();
         btn_get_started = findViewById(R.id.btn_get_started);
         onboard_pager = findViewById(R.id.pager_introduction);
         pager_indicator = findViewById(R.id.viewPagerCountDots);
@@ -65,8 +62,13 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         onboard_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+                Log.d("position", String.valueOf(arg0 + " " + arg1 + " " + arg2));
 
+                if (arg0 == 2)
+                    onboard_pager.setAllowedSwipeDirection(SwipeDirection.left);
+                else
+                    onboard_pager.setAllowedSwipeDirection(SwipeDirection.all);
             }
 
             @Override
@@ -83,29 +85,35 @@ public class OnBoardingActivity extends AppCompatActivity {
                 int pos = position + 1;
 
                 if (pos == 1)
-                    onboardingImgAnimation1(binding.onboardImg, R.drawable.onboard_page1);
+                    onboardingImgAnimation1(binder.onboardImg, R.drawable.onboard_page1);
 
                 if (pos == 2) {
-                    onboardingImgAnimation1(binding.onboardImg, R.drawable.onboard_page2);
-
+                    // make hide animation if come from position 3
+                    if (previous_pos == 3) {
+                        hide_animation();
+                    }
+                    binder.onboardImg.setVisibility(View.VISIBLE);
+                    onbardCard.setVisibility(View.GONE);
+                    onboardingImgAnimation1(binder.onboardImg, R.drawable.onboard_page2);
+                    isShow3 = false;
                 }
 
                 if (pos == 3) {
-                    binding.onboardImg.setImageResource(R.drawable.onboard_page3);
+                    binder.onboardImg.setVisibility(View.GONE);
+                    show_animation();
+                    onbardCard.setVisibility(View.VISIBLE);
+                    show_card_animation(onbardCard);
+                    binder.onboard3RL.setVisibility(View.VISIBLE);
+                    binder.onboard4RL.setVisibility(View.GONE);
+                    binder.btnGetStarted.setText("Suivant");
+
                 }
 
                 if (pos == 4) {
-                    Animation hide = AnimationUtils.loadAnimation(getBaseContext(), R.anim.fade_out_anim);
-                   // binding.onboardImg.startAnimation(hide);
-                    binding.onboardImg.setVisibility(View.GONE);
-                    show_animation();
-
-                    onbardCard.setVisibility(View.VISIBLE);
-                    show_card_animation(onbardCard);
-
+                    binder.btnGetStarted.setText("C'est compris");
                 } else if (previous_pos == dotsCount) {
-                    hide_animation();
-                    onbardCard.setVisibility(View.GONE);
+                    //  hide_animation();
+                    //  onbardCard.setVisibility(View.GONE);
                 }
 
                 previous_pos = pos;
@@ -113,14 +121,24 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.d("onboarding", String.valueOf(state));
+
             }
         });
 
         btn_get_started.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
+
+                if (previous_pos == 3) {
+                    onboard_pager.setAllowedSwipeDirection(SwipeDirection.all);
+                    onboard_pager.arrowScroll(View.LAYOUT_DIRECTION_LTR);
+                    onboard_pager.setCurrentItem(3);
+                    binder.onboard3RL.setVisibility(View.GONE);
+                    binder.onboard4RL.setVisibility(View.VISIBLE);
+                    CharSequence bulletedList = BulletListUtils.makeBulletList(10,"Activer votre GPS ", "Saisissez l'adresse de destination", "Un taxi à proximité, accepte votre demande", "Votre Taxi est là. HOP , Bonne route");
+                    binder.act1.setText(bulletedList);
+                } else
+                    startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
             }
         });
 
@@ -128,7 +146,7 @@ public class OnBoardingActivity extends AppCompatActivity {
         resize();
     }
 
-    private ActivityOnBoardingBinding bind(){
+    private ActivityOnBoardingBinding bind() {
         return DataBindingUtil.setContentView(this, R.layout.activity_on_boarding);
     }
 
@@ -143,18 +161,18 @@ public class OnBoardingActivity extends AppCompatActivity {
         for (int i = 0; i < imageId.length; i++) {
             OnBoardItem item = new OnBoardItem();
             item.setImageID(imageId[i]);
-            if (3 != i) {
-                item.setTitle(getResources().getString(header[i]));
-                item.setDescription(getResources().getString(desc[i]));
-            } else {
+            if (2 == i || 3 == i) {
                 item.setTitle("");
                 item.setDescription("");
+            } else {
+                item.setTitle(getResources().getString(header[i]));
+                item.setDescription(getResources().getString(desc[i]));
             }
 
             onBoardItems.add(item);
         }
 
-        binding.onboardImg.setImageResource(R.drawable.onboard_page1);
+        binder.onboardImg.setImageResource(R.drawable.onboard_page1);
     }
 
     // Button bottomUp animation
@@ -206,10 +224,7 @@ public class OnBoardingActivity extends AppCompatActivity {
                 cardView.clearAnimation();
 
             }
-
         });
-
-
     }
 
     // Button Topdown animation
@@ -244,6 +259,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     }
 
     private void onboardingImgAnimation1(final AppCompatImageView onboadingImage, final int resImg) {
+        binder.onboardImg.setImageResource(resImg);
         final Animation in = AnimationUtils.makeInAnimation(this, true);
         final Animation out = AnimationUtils.makeOutAnimation(this, true);
 
@@ -253,7 +269,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationStart(Animation animation) {
-                binding.onboardImg.setVisibility(View.VISIBLE);
+                binder.onboardImg.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -262,65 +278,16 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                binding.onboardImg.setImageResource(resImg);
-                binding.onboardImg.clearAnimation();
-
+                binder.onboardImg.clearAnimation();
             }
 
         });
     }
 
-    private void onboardingImgAnimation2(final AppCompatImageView onboadingImage) {
+    private void onboardingImgAnimation2(final AppCompatImageView onboadingImage, final int resImg) {
+        binder.onboardImg.setImageResource(resImg);
         final Animation in = AnimationUtils.makeInAnimation(this, true);
         final Animation out = AnimationUtils.makeOutAnimation(this, true);
-
-        onboadingImage.startAnimation(in);
-
-        out.setAnimationListener(new Animation.AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation animation) {
-                binding.onboardImg.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-
-                binding.onboardImg.clearAnimation();
-                onboadingImage.startAnimation(in);
-
-                in.setAnimationListener(new Animation.AnimationListener() {
-
-                    @Override
-                    public void onAnimationStart(Animation animation) {
-                        binding.onboardImg.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-
-                        binding.onboardImg.clearAnimation();
-
-                    }
-
-                });
-
-
-            }
-
-        });
-    }
-
-    private void onboardingOutImgAnimation(final AppCompatImageView onboadingImage , final int resImg) {
-        Animation out = AnimationUtils.makeOutAnimation(this, true);
 
         onboadingImage.startAnimation(out);
 
@@ -328,7 +295,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationStart(Animation animation) {
-                binding.onboardImg.setVisibility(View.VISIBLE);
+                binder.onboardImg.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -337,11 +304,9 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
-                binding.onboardImg.clearAnimation();
-                binding.onboardImg.setImageResource(resImg);
-
-
+                binder.onboardImg.clearAnimation();
+                onboardingImgAnimation1(binder.onboardImg, R.drawable.onboard_page3);
+                isShow3 = true;
             }
 
         });
@@ -377,26 +342,26 @@ public class OnBoardingActivity extends AppCompatActivity {
         double density = getResources().getDisplayMetrics().density;
         if (density >= 4.0) {
             //"xxxhdpi";
-            binding.onboardImg.getLayoutParams().height = 600;
+            binder.onboardImg.getLayoutParams().height = 600;
             Log.d(OnBoardingActivity.class.getSimpleName(), "xxxhdpi");
         } else if (density >= 3.0 && density < 4.0) {
             //xxhdpi  //
             Log.d(OnBoardingActivity.class.getSimpleName(), "xxhdpi");
-            binding.onboardImg.getLayoutParams().height = 700;
+            binder.onboardImg.getLayoutParams().height = 700;
         } else if (density >= 2.0) {
             //xhdpi  // huawei
             Log.d(OnBoardingActivity.class.getSimpleName(), "xhdpi");
-            binding.onboardImg.getLayoutParams().height = 550;
+            binder.onboardImg.getLayoutParams().height = 550;
             findViewById(R.id.onboardCard).getLayoutParams().height = 900;
 
         } else if (density >= 1.5 && density < 2.0) {
             //hdpi
             Log.d(OnBoardingActivity.class.getSimpleName(), "hdpi");
-            binding.onboardImg.getLayoutParams().height = 550;
+            binder.onboardImg.getLayoutParams().height = 550;
         } else if (density >= 1.0 && density < 1.5) {
             //mdpi
             Log.d(OnBoardingActivity.class.getSimpleName(), "mdpi");
-            binding.onboardImg.getLayoutParams().height = 550;
+            binder.onboardImg.getLayoutParams().height = 550;
         }
 
     }
