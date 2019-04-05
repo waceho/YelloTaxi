@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.simcoder.uber">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.amanciodrp.yellotaxi">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -18,17 +19,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <service android:name=".onAppKilled" android:stopWithTask="false"/>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        android:allowClearUserData="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <service
+            android:name="com.amanciodrp.yellotaxi.onAppKilled"
+            android:stopWithTask="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name="com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppFullScreenTheme">
         </activity>
-        <activity android:name=".DriverLoginActivity" />
-        <activity android:name=".CustomerLoginActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.MainActivity"/>
+        <activity android:name="com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -39,16 +44,33 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyCKmZJkeKYbjSvFrtWE5ng_rTJlWFW-nKA" />
 
         <activity
-            android:name=".DriverMapActivity"
+            android:name="com.amanciodrp.yellotaxi.driverActivity.DriverMapActivity"
             android:label="@string/title_activity_driver_map" />
-        <activity android:name=".CustomerMapActivity" />
-        <activity android:name=".CustomerSettingsActivity" />
-        <activity android:name=".DriverSettingsActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".HistorySingleActivity"></activity>
+        <activity
+            android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerMapActivity"
+            android:theme="@style/Base.Theme.MaterialComponents" />
+        <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerSettingsActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.driverActivity.DriverSettingsActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.HistoryActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.HistorySingleActivity" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.amanciodrp.yellotaxi.splashscreen.FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/AppFullScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

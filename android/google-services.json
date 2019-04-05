@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:887573440989:android:2ac8c7eb10297239",
         "android_client_info": {
-          "package_name": "com.simcoder.uber"
+          "package_name": "com.amanciodrp.yellotaxi"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "887573440989-8f8mu4kck8ogmpnh3nd3915v01fiva70.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.simcoder.uber",
+            "package_name": "com.amanciodrp.yellotaxi",
             "certificate_hash": "fca045f4263dd351c192ff60415ee776dea8d9cd"
           }
         },
