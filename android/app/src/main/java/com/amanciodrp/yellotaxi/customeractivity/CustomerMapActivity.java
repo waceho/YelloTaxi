@@ -174,7 +174,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     GeoFire geoFire = new GeoFire(ref);
                     geoFire.setLocation(userId, new GeoLocation(destinationLatLng.latitude, destinationLatLng.longitude));
 
-                    //pickupLocation = new LatLng(48.3, 2.88);
                     pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Départ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
 
                     binding.request.setText("Recherche d'un conducteur");
@@ -220,11 +219,12 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     private ActivityCostumerMapBinding bind(){
         return DataBindingUtil.setContentView(this, R.layout.activity_costumer_map);
     }
+
     private int radius = 1;
     private Boolean driverFound = false;
     private String driverFoundID;
+    private GeoQuery geoQuery;
 
-    GeoQuery geoQuery;
     private void getClosestDriver(){
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference().child("driversAvailable");
 
@@ -515,7 +515,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             }
         }
 
-        mMap.setMyLocationEnabled(true);
+        mMap.setMyLocationEnabled(false);
 
     }
 
@@ -530,7 +530,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
 
         final View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-        locationButton.setVisibility(View.GONE);
 
         binding.myLocation.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,17 +13,15 @@ import com.amanciodrp.yellotaxi.historyRecyclerView.HistoryViewHolders;
 import java.util.List;
 
 /**
- * Created by manel on 03/04/2017.
+ * Created by Amancio on 03/04/2017.
  */
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolders> {
 
     private List<HistoryObject> itemList;
-    private Context context;
 
     public HistoryAdapter(List<HistoryObject> itemList, Context context) {
         this.itemList = itemList;
-        this.context = context;
     }
 
     @Override
@@ -32,8 +30,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolders> {
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history, null, false);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutView.setLayoutParams(lp);
-        HistoryViewHolders rcv = new HistoryViewHolders(layoutView);
-        return rcv;
+
+        return new HistoryViewHolders(layoutView);
     }
 
     @Override

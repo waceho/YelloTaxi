@@ -10,7 +10,7 @@
 
     <string name="ob_header1">FACILITEZ VOS DEPLACEMENTS</string>
     <string name="ob_header2">MODE DE PAIEMENT</string>
-    <string name="ob_header3">MODE D\'USAGE</string>
+    <string name="ob_header3"><u>MODE D\'USAGE</u></string>
     <string name="empty_ob_header3">MODE D\'USAGE</string>
 
     <string name="ob_get_started">GET STARTED</string>
@@ -18,50 +18,37 @@
     <string name="valider">confirm</string>
 
     <string name="ob_desc1">Y\'elloTaxi vous permet de commander un taxi ou une voiture de course depuis votre position</string>
-    <string name="ob_desc2">Régler les frais de votre trajets une fois à destination par Mobile Money ou Flooz</string>
+    <string name="ob_desc2">Réglez à destination les frais de votre trajet grâce à votre méthode de paiement définie par défault (carte bancaire, Mobile Money, Flooz)</string>
     <string name="ob_desc3">Veuillez choisir un mode d\'usage</string>
+    <string name="lastOnboardingExplanation_1">Activez votre GPS </string>
+    <string name="lastOnboardingExplanation_2">Saisissez l\'adresse de destination </string>
+    <string name="lastOnboardingExplanation_3">Un taxi à proximité, accepte votre demande </string>
+    <string name="lastOnboardingExplanation_4">Votre Taxi est là. HOP , Bonne route</string>
     <string name="ob_desc3_subtitle">Vous pourrez changer de mode dans les paramètres de votre application</string>
     <string name="passager">passager</string>
     <string name="chauffeur">chauffeur</string>
     <string name="get_started">C\'EST PARTIE</string>
+    <string name="onboard3_btn_mcg">C\'EST COMPRIS</string>
     <string name="creer_mon_compte">JE CREE MON COMPTE</string>
     <string name="connexion">Connexion</string>
     <string name="password">saisissez votre mot de passe</string>
     <string name="email">saisissez votre email</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="no_account_msg">Vous n\'avez pas encore un compte ?</string>
     <string name="google_login_msg">Connection avec google</string>
     <string name="facebook_login_msg">Connexion par numéro de mobile</string>
     <string name="signin_error">Erreur de connexion</string>
     <string name="no_email_password">Veuillez saisir un email et un mot de passe valide</string>
-    <string name="passer_text">je suis passager</string>
-    <string name="driver_onboarding_text">Je suis chauffeur</string>
+    <string name="passer_text"><b>JE SUIS PASSAGER</b></string>
+    <string name="driver_onboarding_text"><b>JE SUIS CONDUCTEUR</b></string>
     <string name="option">Veuillez choisir votre mode d\'utilisation</string>
     <string name="ou">OU</string>
     <string name="ask_taxi">Demander un Taxi</string>
 
-    <string name="onboard4_content"><html>
-<body>
-
-<h2>An Unordered HTML List</h2>
-
-<ul>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ul>
-
-<h2>An Ordered HTML List</h2>
-
-<ol>
-  <li>Coffee</li>
-  <li>Tea</li>
-  <li>Milk</li>
-</ol>
-
-</body>
-</html></string>
+    <string name="onboard4_content"></string>
+    <string name="choice_driver_text">NB: Une vérification sera éffectué ultérieurement si vous êtes chauffeur</string>
+    <string name="last_onboarding_subtitle">Une course en taxi ? Facile</string>
+    <string name="next">SUIVANT</string>
+    <string name="ok">C\'EST COMPRIS</string>
 </resources>
