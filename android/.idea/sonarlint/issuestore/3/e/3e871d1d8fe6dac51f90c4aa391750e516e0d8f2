@@ -1,0 +1,34 @@
+
+ squid:S1186Ô"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8‹Šå¼¡-
+ squid:S1186¡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8‹Šå¼¡-
+Zsquid:S1854”"BRemove this useless assignment to local variable "destinationLng".(î‚®Ô
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÆıïÄüÿÿÿÿ
+¥squid:S1186‚"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢İ‰¥ùÿÿÿÿ8‹Šå¼¡-
+Isquid:S00108„")Either remove or fill this block of code.(ÿ®×8‹Šå¼¡-
+tsquid:S1192Ã"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(Üß¸øÿÿÿÿ8‹Šå¼¡-
+Jsquid:S1659`",Declare "mCustomerPhone" on a separate line.(£—ƒ„8‹Šå¼¡-
+bsquid:S1155†">Use isEmpty() to check whether the collection is empty or not.(ğ¡ Óşÿÿÿÿ8‹Šå¼¡-
+ksquid:S1192‹"LDefine a constant instead of duplicating this literal "destination" 3 times.(¼°…š8‹Šå¼¡-
+Hsquid:S1659U"*Declare "pickupLatLng" on a separate line.(ããéŠ8‹Šå¼¡-
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8óä¼¡-
+”squid:S1319…"pThe type of the "route" object should be an interface such as "List" rather than the implementation "ArrayList".(©ˆ—»øÿÿÿÿ8‹Šå¼¡-
+esquid:S2184•"ACast one of the operands of this addition operation to a "float".(ÕÏÒÅùÿÿÿÿ8‹Šå¼¡-
+lsquid:S1192Ã"HDefine a constant instead of duplicating this literal "Drivers" 4 times.(Üß¸øÿÿÿÿ8‹Šå¼¡-
+zsquid:S1450P"]Remove the "mWorkingSwitch" field and declare it as a local variable in the relevant methods.(æô¦8‹Šå¼¡-
+Nsquid:S1068X"0Remove this unused "isLoggingOut" private field.(„á”ì8‹Šå¼¡-
+xsquid:S1450Z"ZRemove the "mapFragment" field and declare it as a local variable in the relevant methods.(Åıùô8‹Šå¼¡-
+ squid:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Şİ¡®8‹Šå¼¡-
+ squid:S1186ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8‹Šå¼¡-
+ squid:S1186¼"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8‹Šå¼¡-
+fsquid:S1192à"HDefine a constant instead of duplicating this literal "history" 3 times.(çÆË8‹Šå¼¡-
+€squid:S1488ö"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Ë‚¶‘8‹Šå¼¡-
+jsquid:S1192Ã"FDefine a constant instead of duplicating this literal "Users" 6 times.(Üß¸øÿÿÿÿ8‹Šå¼¡-
+]"squid:SwitchLastCaseIsDefaultCheckÎ""Add a default case to this switch.(×ö³–úÿÿÿÿ8‹Šå¼¡-
+jsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.( «‰È8‹Šå¼¡-
+Esquid:S1659T")Declare "destination" on a separate line.(‰¸Êûÿÿÿÿ
+Qsquid:S1199Ï"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8‹Šå¼¡-
+osquid:S1301Î"KReplace this "switch" statement by "if" statements to increase readability.(×ö³–úÿÿÿÿ8‹Šå¼¡-
+Psquid:S1659`"2Declare "mCustomerDestination" on a separate line.(£—ƒ„8‹Šå¼¡-
+]"squid:SwitchLastCaseIsDefaultCheckŠ""Add a default case to this switch.(²‹›Øüÿÿÿÿ8‹Šå¼¡-
+osquid:S1301Š"KReplace this "switch" statement by "if" statements to increase readability.(²‹›Øüÿÿÿÿ8‹Šå¼¡-
+jsquid:S1301¦"KReplace this "switch" statement by "if" statements to increase readability.(Ó©¸¤8‹Šå¼¡-

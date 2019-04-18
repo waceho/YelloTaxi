@@ -56,7 +56,6 @@
 
     <style name="ChipTextStyle" parent="@style/TextAppearance.MaterialComponents.Body2">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">italic</item>
         <item name="android:fontFamily">@font/arial</item>
     </style>

@@ -4,11 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.SharedMemory
 import android.view.View
 import com.amanciodrp.yellotaxi.R
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity
+import com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity
+import com.amanciodrp.yellotaxi.model.DefaultUseSettings
 import com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity
+import com.amanciodrp.yellotaxi.utils.SharedPrefsObject
 
 
 /**
@@ -19,7 +24,7 @@ class FullscreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fullscreen)
+        setContentView(R.layout.splash_screen)
     }
 
     override fun onResume() {
@@ -58,9 +63,18 @@ class FullscreenActivity : AppCompatActivity() {
     private fun redirect() {
         Handler().postDelayed({
             /* Create an Intent that will start the Menu-Activity. */
-            val mainIntent = Intent(this, OnBoardingActivity::class.java)
-            startActivity(mainIntent)
+            val defaultValue: DefaultUseSettings? = SharedPrefsObject.getSavedObjectFromPreference(baseContext,
+                    DefaultUseSettings::class.simpleName,
+                    DefaultUseSettings::class.simpleName,
+                    DefaultUseSettings::class.java)
+
+            when {
+                defaultValue?.mode.equals(getString(R.string.passager)) -> startActivity(Intent(this, CustomerLoginActivity::class.java))
+                defaultValue?.mode.equals(getString(R.string.chauffeur)) -> startActivity(Intent(this, DriverLoginActivity::class.java))
+                else -> startActivity(Intent(this, OnBoardingActivity::class.java))
+            }
             finish()
-        }, 3000)
+
+        }, 1000)
     }
 }

@@ -1,0 +1,14 @@
+
+™squid:S1186®"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ğ«Ôƒ
+squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(úƒÚÓûÿÿÿÿ
+squid:S1186€"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(™Î«şÿÿÿÿ
+usquid:S00116*"XRename this field "onboard_pager" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ç€±›ÿÿÿÿÿ
+>squid:S1068%"'Remove this unused "TAG" private field.(½‹õå
+nsquid:S37765"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(¨Œşÿÿÿÿ
+fsquid:S00116%"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½‹õå
+squid:S1186ú"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(úƒÚÓûÿÿÿÿ
+ squid:S1186õ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ğ«Ôƒ8ÉÚÁŸ-
+rsquid:S00116'"ZRename this field "pager_indicator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊÜª…
+esquid:MaximumInheritanceDepth#"<This class has 6 parents which is greater than 5 authorized.(ÇñàÊ
+squid:S1186–"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(úƒÚÓûÿÿÿÿ
+squid:S1186Ô"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(úƒÚÓûÿÿÿÿ

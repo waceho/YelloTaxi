@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -64,7 +65,7 @@ public class HistoryActivity extends AppCompatActivity {
         mPayout = findViewById(R.id.payout);
         mPayoutEmail = findViewById(R.id.payoutEmail);
 
-        mHistoryRecyclerView = (RecyclerView) findViewById(R.id.historyRecyclerView);
+        mHistoryRecyclerView = findViewById(R.id.historyRecyclerView);
         mHistoryRecyclerView.setNestedScrollingEnabled(false);
         mHistoryRecyclerView.setHasFixedSize(true);
         mHistoryLayoutManager = new LinearLayoutManager(HistoryActivity.this);
@@ -72,9 +73,8 @@ public class HistoryActivity extends AppCompatActivity {
         mHistoryAdapter = new HistoryAdapter(getDataSetHistory(), HistoryActivity.this);
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
 
-
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         getUserHistoryIds();
 
         if(customerOrDriver.equals("Drivers")){
@@ -98,7 +98,7 @@ public class HistoryActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot history : dataSnapshot.getChildren()){
-                        FetchRideInformation(history.getKey());
+                        fetchRideInformation(history.getKey());
                     }
                 }
             }
@@ -108,7 +108,7 @@ public class HistoryActivity extends AppCompatActivity {
         });
     }
 
-    private void FetchRideInformation(String rideKey) {
+    private void fetchRideInformation(String rideKey) {
         DatabaseReference historyDatabase = FirebaseDatabase.getInstance().getReference().child("history").child(rideKey);
         historyDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
@@ -147,7 +147,7 @@ public class HistoryActivity extends AppCompatActivity {
     private String getDate(Long time) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         cal.setTimeInMillis(time*1000);
-        String date = DateFormat.format("MM-dd-yyyy hh:mm", cal).toString();
+        String date = DateFormat.format("dd-MMM-yyyy hh:mm", cal).toString();
         return date;
     }
 
@@ -155,9 +155,6 @@ public class HistoryActivity extends AppCompatActivity {
     private ArrayList<HistoryObject> getDataSetHistory() {
         return resultsHistory;
     }
-
-
-
 
     public static final MediaType MEDIA_TYPE = MediaType.parse("application/json");
     ProgressDialog progress;

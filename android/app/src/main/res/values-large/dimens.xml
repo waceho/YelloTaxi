@@ -22,6 +22,6 @@
 
     <dimen name="left">-300dp</dimen>
     <dimen name="right">-300dp</dimen>
-    <dimen name="top">-350dp</dimen>
-    <dimen name="top2">-580dp</dimen>
+    <dimen name="top">-550dp</dimen>
+    <dimen name="top2">-680dp</dimen>
 </resources>

@@ -15,25 +15,27 @@
       },
       "oauth_client": [
         {
-          "client_id": "983833722602-fa4vd3qojmlhnlqk8f0jdj2tfi880kph.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "983833722602-jua7jpim87nvkk68b11q3p7n18jijn3t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amanciodrp.benintaxi",
+            "certificate_hash": "9f5e03ae01a7249e5713134bb04045b6b0c1d10f"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAqLADrNlNTuDRczaOVDyOJt-1s9-ywtnA"
+          "current_key": "AIzaSyCKmZJkeKYbjSvFrtWE5ng_rTJlWFW-nKA"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983833722602-fa4vd3qojmlhnlqk8f0jdj2tfi880kph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

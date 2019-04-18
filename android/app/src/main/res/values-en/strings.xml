@@ -20,11 +20,21 @@
     <string name="ob_desc1">Y\'elloTaxi vous permet de commander un taxi ou une voiture de course depuis votre position</string>
     <string name="ob_desc2">Réglez à destination les frais de votre trajet grâce à votre méthode de paiement définie par défault (carte bancaire, Mobile Money, Flooz)</string>
     <string name="ob_desc3">Veuillez choisir un mode d\'usage</string>
+
+    <!-- onboarding 4 traveler list -->
     <string name="lastOnboardingExplanation_1">Activez votre GPS </string>
     <string name="lastOnboardingExplanation_2">Saisissez l\'adresse de destination </string>
     <string name="lastOnboardingExplanation_3">Un taxi à proximité, accepte votre demande </string>
     <string name="lastOnboardingExplanation_4">Votre Taxi est là. HOP , Bonne route</string>
+
+    <!-- onboarding 4 driver list -->
+    <string name="lastOnboardingDriveExplanation_1">Activez votre GPS </string>
+    <string name="lastOnboardingDriveExplanation_2">Vous recevrez automatiquement les demandes de courses sur votre application</string>
+    <string name="lastOnboardingDriveExplanation_3">Accepter le trajet s\'il vous convient</string>
+    <string name="lastOnboardingDriveExplanation_4">Récupérer votre passager et déposer le à destination</string>
+    <string name="lastOnboardingDriveExplanation_5">Vous êtes automatiquement crédité sur votre compte</string>
     <string name="ob_desc3_subtitle">Vous pourrez changer de mode dans les paramètres de votre application</string>
+
     <string name="passager">passager</string>
     <string name="chauffeur">chauffeur</string>
     <string name="get_started">C\'EST PARTIE</string>
@@ -34,6 +44,7 @@
     <string name="password">saisissez votre mot de passe</string>
     <string name="email">saisissez votre email</string>
 
+    <!-- splash screen -->
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="no_account_msg">Vous n\'avez pas encore un compte ?</string>
     <string name="google_login_msg">Connection avec google</string>
@@ -48,7 +59,17 @@
 
     <string name="onboard4_content"></string>
     <string name="choice_driver_text">NB: Une vérification sera éffectué ultérieurement si vous êtes chauffeur</string>
+    <string name="last_onboarding_title">Une course en taxi ? Facile</string>
     <string name="last_onboarding_subtitle">Une course en taxi ? Facile</string>
     <string name="next">SUIVANT</string>
     <string name="ok">C\'EST COMPRIS</string>
+    <string name="code">Saisissez le code reçu</string>
+    <string name="destination_txt">Adresse de destination</string>
+    <string name="start_adress">Addresse de départ</string>
+
+    <string-array name="DialingCountryCode" >
+        <item>229,BJ</item>
+        <item>221,SN</item>
+        <item>33,FR</item>
+    </string-array>
 </resources>

@@ -74,6 +74,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Log.d(TAG, String.valueOf(user));
                 if (user != null) {
                     openMainActivity();
                 }
@@ -172,6 +173,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
             // Signed in successfully, show authenticated UI.
             // updateUI(account);
+            openMainActivity();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -283,7 +285,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
                             FirebaseUser user = task.getResult().getUser();
 
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
 
                         } else {
                             // Sign in failed, display a message and update the UI
@@ -341,23 +343,27 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
     private void showDialog(){
         // Get the layout inflater
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog);
-        LayoutInflater inflater = getLayoutInflater();
-        View view =  inflater.inflate(R.layout.phone_login_popup, null);
-        PhoneLoginPopupBinding loginPopupBinding = DataBindingUtil.bind(view);
-        alertDialog
-                .setCancelable(true)
-                .setView(view);
-        alertDialog.create();
-        assert loginPopupBinding != null;
-        loginPopupBinding.valider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startPhoneNumberVerification("+33685892223");
-            }
-        });
-        alertDialog.show();
+        try {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog);
+            LayoutInflater inflater = getLayoutInflater();
+            View view =  inflater.inflate(R.layout.phone_login_popup, null);
+            PhoneLoginPopupBinding loginPopupBinding = DataBindingUtil.bind(view);
+            alertDialog
+                    .setCancelable(true)
+                    .setView(view);
+            final AlertDialog builder = alertDialog.create();
+            assert loginPopupBinding != null;
+            loginPopupBinding.valider.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    builder.dismiss();
+                    startPhoneNumberVerification("+33685892223");
+                }
+            });
+            alertDialog.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

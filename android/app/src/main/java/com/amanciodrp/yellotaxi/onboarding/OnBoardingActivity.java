@@ -13,8 +13,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.cardview.widget.CardView;
 
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -22,6 +24,7 @@ import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.adapter.OnBoardAdapter;
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
 import com.amanciodrp.yellotaxi.databinding.ActivityOnBoardingBinding;
+import com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity;
 import com.amanciodrp.yellotaxi.model.DefaultUseSettings;
 import com.amanciodrp.yellotaxi.utils.BulletListUtils;
 import com.amanciodrp.yellotaxi.utils.SharedPrefsObject;
@@ -42,7 +45,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     private ActivityOnBoardingBinding binder;
     private DefaultUseSettings defaultUseSettings = new DefaultUseSettings();
 
-    int previous_pos = 0;
+    int previousPos = 0;
 
     ArrayList<OnBoardItem> onBoardItems = new ArrayList<>();
 
@@ -89,7 +92,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
                 if (pos == 2) {
                     // make hide animation if come from position 3
-                    if (previous_pos == 3) {
+                    if (previousPos == 3) {
                         hide_animation();
                     }
                     binder.onboardImg.setVisibility(View.VISIBLE);
@@ -99,19 +102,26 @@ public class OnBoardingActivity extends AppCompatActivity {
 
                 if (pos == 3) {
                     binder.onboardImg.setVisibility(View.GONE);
-                    show_animation();
+                    btnGetStartedAnimation();
                     onbardCard.setVisibility(View.VISIBLE);
                     show_card_animation(onbardCard);
                     binder.onboard3RL.setVisibility(View.VISIBLE);
                     binder.onboard4RL.setVisibility(View.GONE);
                     binder.btnGetStarted.setText(getString(R.string.next));
-
                 }
 
-                if (pos == 4)
-                    binder.btnGetStarted.setText(getString(R.string.ok));
+                if (pos == 4) {
 
-                previous_pos = pos;
+                    Animation fadeIn = new AlphaAnimation(0, 1);
+                    fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
+                    fadeIn.setDuration(1000);
+
+                    binder.onboardCard.startAnimation(fadeIn);
+                    binder.btnGetStarted.setText(getString(R.string.ok));
+                }
+
+
+                previousPos = pos;
             }
 
             @Override
@@ -120,52 +130,79 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
         });
 
+        // set btnGetStarted and chipgroup onclickListener
+        widgetOnclickListener();
+        // set UiPageViewController
+        setUiPageViewController();
+    }
+
+    private void widgetOnclickListener() {
         binder.btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lockLastOnboardingView() ;
+                lockLastOnboardingView();
             }
         });
 
         binder.chipgroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(ChipGroup chipGroup, int i) {
-                    setMode();
-                }
+                setMode();
+            }
         });
-
-        setUiPageViewController();
     }
 
     private void setMode() {
-        if (binder.conducteur.isChecked() || binder.passager.isChecked())
-            binder.btnGetStarted.setEnabled(true);
+
+        boolean status = binder.conducteur.isChecked() || binder.passager.isChecked();
+        binder.btnGetStarted.setEnabled(status);
         // set mode
-        String mode = !binder.conducteur.isChecked() ? "passager" : "conducteur";
+        String mode = !binder.conducteur.isChecked() ? getString(R.string.passager) : getString(R.string.chauffeur);
         defaultUseSettings.setMode(mode);
     }
 
     private void saveUserDefaullMode() {
         defaultUseSettings.setShowOnboarding(true);
         SharedPrefsObject.saveObjectToSharedPreference(getBaseContext(), DefaultUseSettings.class.getSimpleName(), DefaultUseSettings.class.getSimpleName(), defaultUseSettings);
-
     }
 
     // hide last onboarding page
     private void lockLastOnboardingView() {
-        if (previous_pos == 3) {
+        if (previousPos == 3) {
             onboard_pager.setAllowedSwipeDirection(SwipeDirection.all);
             onboard_pager.arrowScroll(View.LAYOUT_DIRECTION_LTR);
             onboard_pager.setCurrentItem(3);
             binder.onboard3RL.setVisibility(View.GONE);
             binder.onboard4RL.setVisibility(View.VISIBLE);
-            CharSequence bulletedList = BulletListUtils.makeBulletList(20, getString(R.string.lastOnboardingExplanation_1), getString(R.string.lastOnboardingExplanation_2), getString(R.string.lastOnboardingExplanation_3), getString(R.string.lastOnboardingExplanation_4));
+            binder.title.setText(getString(R.string.last_onboarding_title));
+            // hide subtitle if diver mode
+            binder.subtitle.setVisibility(defaultUseSettings.getMode().equals(getString(R.string.passager)) ? View.VISIBLE : View.GONE);
+            binder.subtitle.setText(getString(R.string.last_onboarding_subtitle));
+
+            CharSequence bulletedList = defaultUseSettings.getMode().equals(getString(R.string.passager)) ?
+                    BulletListUtils.makeBulletList(20,
+                            getString(R.string.lastOnboardingExplanation_1),
+                            getString(R.string.lastOnboardingExplanation_2),
+                            getString(R.string.lastOnboardingExplanation_3),
+                            getString(R.string.lastOnboardingExplanation_4)) :
+
+                    BulletListUtils.makeBulletList(20,
+                            getString(R.string.lastOnboardingDriveExplanation_1),
+                            getString(R.string.lastOnboardingDriveExplanation_2),
+                            getString(R.string.lastOnboardingDriveExplanation_3),
+                            getString(R.string.lastOnboardingDriveExplanation_4),
+                            getString(R.string.lastOnboardingDriveExplanation_5));
+
             binder.act1.setText(bulletedList);
         } else {
+            // save user default conf
             saveUserDefaullMode();
-            startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
+            // launch Customer Login
+            if (defaultUseSettings.getMode().equals(getString(R.string.passager)))
+                startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
+            else
+                startActivity(new Intent(OnBoardingActivity.this, DriverLoginActivity.class));
         }
-
     }
 
     private ActivityOnBoardingBinding bind() {
@@ -197,16 +234,16 @@ public class OnBoardingActivity extends AppCompatActivity {
     }
 
     // Button bottomUp animation
-    private void show_animation() {
+    private void btnGetStartedAnimation() {
         Animation show = AnimationUtils.loadAnimation(this, R.anim.slide_up_anim);
-
+        binder.btnGetStarted.setVisibility(View.VISIBLE);
         binder.btnGetStarted.startAnimation(show);
 
         show.setAnimationListener(new Animation.AnimationListener() {
 
             @Override
             public void onAnimationStart(Animation animation) {
-                binder.btnGetStarted.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -250,8 +287,8 @@ public class OnBoardingActivity extends AppCompatActivity {
         });
     }
 
-    // Button Topdown animation
 
+    // hide animation
     public void hide_animation() {
         Animation hide = AnimationUtils.loadAnimation(this, R.anim.slide_down_anim);
         Animation hideCard = AnimationUtils.loadAnimation(this, R.anim.slide_up_end_anim);
@@ -281,6 +318,10 @@ public class OnBoardingActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @param onboadingImage
+     * @param resImg
+     */
     private void onboardingImgAnimation1(final AppCompatImageView onboadingImage, final int resImg) {
         binder.onboardImg.setImageResource(resImg);
         final Animation in = AnimationUtils.makeInAnimation(this, true);

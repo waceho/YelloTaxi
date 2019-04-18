@@ -1,0 +1,29 @@
+
+Rsquid:S1068.";Remove this unused "mVerificationInProgress" private field.(³úŸ³
+Gsquid:S10680"0Remove this unused "mResendToken" private field.(¡ßË¾
+Ysquid:UnusedPrivateMethodè",Remove this unused private "signOut" method.(ìÉÓÌ8ÛÖ´í -
+Msquid:S1481")Remove this unused "user" local variable.(ãÒ¦šùÿÿÿÿ8ÛÖ´í -
+esquid:UselessImportCheck"BRemove this unused import 'com.amanciodrp.yellotaxi.MainActivity'.( ÊÜQ
+lsquid:UnusedPrivateMethod±"?Remove this unused private "validatePhoneNumberAndCode" method.(ùß‡Ğ8ÛÖ´í -
+fsquid:UnusedPrivateMethod½"4Remove this unused private "validateSMSCode" method.(âü¸¢şÿÿÿÿ8ÛÖ´í -
+rsquid:S1192Ä"NDefine a constant instead of duplicating this literal "sign in error" 3 times.(©ö›‡ÿÿÿÿÿ8ÛÖ´í -
+esquid:MaximumInheritanceDepth&"<This class has 6 parents which is greater than 5 authorized.(¤ôé™
+vsquid:S00117Ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÆ”¤ûÿÿÿÿ8ÛÖ´í -
+csquid:CommentedOutCodeLineŸ"<This block of commented-out lines of code should be removed.(˜Î‹Ã
+jsquid:CommentedOutCodeLineµ"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
+jsquid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
+Ssquid:S1854";Remove this useless assignment to local variable "account".(ôÎ×
+\squid:S1854"8Remove this useless assignment to local variable "user".(ãÒ¦šùÿÿÿÿ8ÛÖ´í -
+osquid:CommentedOutCodeLine¿"<This block of commented-out lines of code should be removed.(¼åï›ûÿÿÿÿ8ÛÖ´í -
+Gsquid:S1148í"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¼ı¿Å¡-
+Osquid:S1068/"3Remove this unused "mVerificationId" private field.(ƒ²¿ùÿÿÿÿ
+isquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(¾é‡8ÛÖ´í -
+Isquid:S1481¬",Remove this unused "account" local variable.(»±Åøÿÿÿÿ
+Xsquid:S1854¬";Remove this useless assignment to local variable "account".(»±Åøÿÿÿÿ
+Dsquid:S1481",Remove this unused "account" local variable.(ôÎ×
+jsquid:CommentedOutCodeLineî"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
+hsquid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(„ßÜıÿÿÿÿ
+]"squid:SwitchLastCaseIsDefaultCheckÊ""Add a default case to this switch.(×“¾ñùÿÿÿÿ8ÛÖ´í -
+^squid:UnusedPrivateMethodö"1Remove this unused private "revokeAccess" method.(ß¼Ş¾8ÛÖ´í -
+osquid:S00117İ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á€ıÿÿÿÿ
+jsquid:CommentedOutCodeLine¨"<This block of commented-out lines of code should be removed.(Øş‡”8ÛÖ´í -

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@color/blue_grey_800"
-        android:id="@+id/coordinator">
+        android:background="@color/blue_grey_800">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/onboard_img"
@@ -18,8 +19,8 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="100dp"
             app:layout_constraintBottom_toBottomOf="@+id/pager_introduction"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintDimensionRatio="1.5:1"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/pager_introduction" />
 
@@ -56,7 +57,7 @@
                     android:id="@+id/card_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="30dp"
                     android:fontFamily="@font/arial"
                     android:text="@string/ob_header3"
                     android:textAlignment="center"
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/chips_layout"
                     android:layout_alignTop="@+id/chips_layout"
-                    android:layout_marginTop="-30dp"
+                    android:layout_marginTop="-40dp"
                     android:fontFamily="@font/arial"
                     android:text="@string/ob_desc3"
                     android:textAlignment="center"
@@ -83,9 +84,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="25dp"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="20dp">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chipgroup"
@@ -158,12 +159,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/arial"
-                    android:text=""
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/ob_header_text_size"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/subtitle"
@@ -184,7 +183,7 @@
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="TextView"
+                    android:fontFamily="@font/arial"
                     android:textColor="@color/blue_grey_800"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -239,16 +238,16 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:elevation="3dp"
-                android:textAlignment="center"
-                android:text="@string/get_started"
+                android:enabled="false"
+                android:fontFamily="@font/arial"
                 android:gravity="center_vertical"
+                android:layoutDirection="rtl"
+                android:text="@string/get_started"
+                android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/button_text"
                 android:textStyle="bold"
-                android:fontFamily="@font/arial"
-                android:enabled="false"
-                app:icon="@drawable/ic_navigate_next_white_36dp"
                 android:visibility="gone" />
 
         </LinearLayout>

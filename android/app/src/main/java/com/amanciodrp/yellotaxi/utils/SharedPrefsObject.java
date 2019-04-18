@@ -20,6 +20,10 @@ import com.google.gson.Gson;
 
 public class SharedPrefsObject {
 
+    private SharedPrefsObject() {
+        // for sonar
+    }
+
     public static void saveObjectToSharedPreference(Context context, String preferenceFileName, String serializedObjectKey, Object object) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(preferenceFileName, Context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
