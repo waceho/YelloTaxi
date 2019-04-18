@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                              
+                                                        
+
+    
+                 
+                            
+                                                                           
+
+           
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/login_gray_popup_background"
+        android:padding="20dp"
+        android:theme="@style/AlertDialog.AppCompat.Light" android:tag="layout/phone_login_popup_0" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_code"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:textColorHint="@color/ob_header"
+            app:boxStrokeColor="@color/black_overlay"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/txt_code"
+            app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+            <EditText
+                android:id="@+id/ed_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/code"
+                android:tag="binding_1"                    
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/black"
+                android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/arial"
+            android:padding="5dp"
+            android:text="+229"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/input_layout_code"
+            app:layout_constraintEnd_toStartOf="@+id/input_layout_code"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/input_layout_code" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/login_yellow_button_background"
+            android:elevation="5dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:text="Valider"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_layout_code" />
+
+        <ProgressBar
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@+id/valider"
+            android:layout_alignBottom="@+id/valider"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/valider"
+            app:layout_constraintEnd_toEndOf="@+id/valider"
+            app:layout_constraintStart_toStartOf="@+id/valider"
+            app:layout_constraintTop_toTopOf="@+id/valider" />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="24dp"
+            android:text="Ce numéro sera utilisé pour vos paiements de courses. Veuillez donc saisir un numéro valide"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/input_layout_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+         

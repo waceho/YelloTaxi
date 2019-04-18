@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_on_boarding.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/activity_on_boarding.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/onboard_item.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/onboard_item.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/customer_pickup_details_popup.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/customer_pickup_details_popup.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_costumer_map.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/activity_costumer_map.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_customer_login.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/activity_customer_login.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/default_dialog_popup.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/default_dialog_popup.xml"
+    },
+    {
+        "merged": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/phone_login_popup.xml",
+        "source": "/Users/amanciodossou/Documents/GitHub/YelloTaxi/android/app/src/main/res/layout/phone_login_popup.xml"
+    }
+]

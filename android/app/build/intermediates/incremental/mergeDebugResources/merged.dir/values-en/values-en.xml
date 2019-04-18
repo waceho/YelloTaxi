@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="DialingCountryCode">
+        <item>229,BJ</item>
+        <item>221,SN</item>
+        <item>33,FR</item>
+    </string-array>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Y\'elloTaxi</string>
+    <string name="ask_taxi">Demander un Taxi</string>
+    <string name="chauffeur">chauffeur</string>
+    <string name="choice_driver_text">NB: Une vérification sera éffectué ultérieurement si vous êtes chauffeur</string>
+    <string name="code">Saisissez le code reçu</string>
+    <string name="connexion">Connexion</string>
+    <string name="creer_mon_compte">JE CREE MON COMPTE</string>
+    <string name="destination_txt">Adresse de destination</string>
+    <string name="driver_onboarding_text"><b>JE SUIS CONDUCTEUR</b></string>
+    <string name="email">saisissez votre email</string>
+    <string name="empty_ob_header3">MODE D\'USAGE</string>
+    <string name="facebook_login_msg">Connexion par numéro de mobile</string>
+    <string name="get_started">C\'EST PARTIE</string>
+    <string name="google_login_msg">Connection avec google</string>
+    <string name="google_maps_key" translatable="false">"         \tAIzaSyAqLADrNlNTuDRczaOVDyOJt-1s9-ywtnA     "</string>
+    <string name="lastOnboardingDriveExplanation_1">Activez votre GPS </string>
+    <string name="lastOnboardingDriveExplanation_2">Vous recevrez automatiquement les demandes de courses sur votre application</string>
+    <string name="lastOnboardingDriveExplanation_3">Accepter le trajet s\'il vous convient</string>
+    <string name="lastOnboardingDriveExplanation_4">Récupérer votre passager et déposer le à destination</string>
+    <string name="lastOnboardingDriveExplanation_5">Vous êtes automatiquement crédité sur votre compte</string>
+    <string name="lastOnboardingExplanation_1">Activez votre GPS </string>
+    <string name="lastOnboardingExplanation_2">Saisissez l\'adresse de destination </string>
+    <string name="lastOnboardingExplanation_3">Un taxi à proximité, accepte votre demande </string>
+    <string name="lastOnboardingExplanation_4">Votre Taxi est là. HOP , Bonne route</string>
+    <string name="last_onboarding_subtitle">Une course en taxi ? Facile</string>
+    <string name="last_onboarding_title">Une course en taxi ? Facile</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="next">SUIVANT</string>
+    <string name="no_account_msg">Vous n\'avez pas encore un compte ?</string>
+    <string name="no_email_password">Veuillez saisir un email et un mot de passe valide</string>
+    <string name="ob_desc1">Y\'elloTaxi vous permet de commander un taxi ou une voiture de course depuis votre position</string>
+    <string name="ob_desc2">Réglez à destination les frais de votre trajet grâce à votre méthode de paiement définie par défault (carte bancaire, Mobile Money, Flooz)</string>
+    <string name="ob_desc3">Veuillez choisir un mode d\'usage</string>
+    <string name="ob_desc3_subtitle">Vous pourrez changer de mode dans les paramètres de votre application</string>
+    <string name="ob_get_started">GET STARTED</string>
+    <string name="ob_header1">FACILITEZ VOS DEPLACEMENTS</string>
+    <string name="ob_header2">MODE DE PAIEMENT</string>
+    <string name="ob_header3"><u>MODE D\'USAGE</u></string>
+    <string name="ok">C\'EST COMPRIS</string>
+    <string name="onboard3_btn_mcg">C\'EST COMPRIS</string>
+    <string name="onboard4_content"/>
+    <string name="option">Veuillez choisir votre mode d\'utilisation</string>
+    <string name="ou">OU</string>
+    <string name="passager">passager</string>
+    <string name="passer_text"><b>JE SUIS PASSAGER</b></string>
+    <string name="password">saisissez votre mot de passe</string>
+    <string name="signin_error">Erreur de connexion</string>
+    <string name="start_adress">Addresse de départ</string>
+    <string name="title_activity_driver_map">Map</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="valider">confirm</string>
+</resources>
