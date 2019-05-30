@@ -1,29 +1,35 @@
 package com.amanciodrp.yellotaxi.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.telephony.TelephonyManager;
 
 import com.amanciodrp.yellotaxi.R;
+import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
+import com.amanciodrp.yellotaxi.customeractivity.CustomerMapActivity;
+import com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity;
 import com.amanciodrp.yellotaxi.model.DefaultUseSettings;
+import com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity;
 
 import androidx.lifecycle.MutableLiveData;
 
 public class UtilityKit {
 
-    private UtilityKit(){
+    private UtilityKit() {
         // for sonar
     }
 
-    public static void saveMode(Context context, Class<DefaultUseSettings> object){
+    public static void saveMode(Context context, Class<DefaultUseSettings> object) {
         SharedPrefsObject.saveObjectToSharedPreference(context, object.getSimpleName(), object.getSimpleName(), object);
     }
 
-    public static MutableLiveData<String> getCountryZipCode(Context context){
+    public static MutableLiveData<String> getCountryZipCode(Context context) {
         MutableLiveData<String> countryZipCode = new MutableLiveData<>();
         TelephonyManager manager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         //getNetworkCountryIso
         String countryId = manager.getSimCountryIso().toUpperCase();
-        String[] rl=context.getResources().getStringArray(R.array.DialingCountryCode);
+        String[] rl = context.getResources().getStringArray(R.array.DialingCountryCode);
         for (String aRl : rl) {
             String[] g = aRl.split(",");
             countryZipCode.setValue(g[1].trim().equals(countryId.trim()) ? g[0] : "");
@@ -31,10 +37,25 @@ public class UtilityKit {
         return countryZipCode;
     }
 
-    public static MutableLiveData<String> getPhoneNumber(Context mContext){
+    public static MutableLiveData<String> getPhoneNumber(Context mContext) {
         MutableLiveData<String> phoneNumber = new MutableLiveData<>();
-        TelephonyManager tMgr = (TelephonyManager)mContext.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tMgr = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
         phoneNumber.setValue(tMgr.getLine1Number());
         return phoneNumber;
     }
+
+    public static void launchHome(Activity activity, DefaultUseSettings defaultUseSettings) {
+
+        if (defaultUseSettings.getMode().equals(activity.getString(R.string.passager)))
+            activity.startActivity(new Intent(activity, CustomerLoginActivity.class));
+        else
+            activity.startActivity(new Intent(activity, DriverLoginActivity.class));
+    }
+
+    public static void openActivity(Context context, Class activity){
+        Intent intent = new Intent(context, activity);
+        context.startActivity(intent);
+    }
+
+
 }

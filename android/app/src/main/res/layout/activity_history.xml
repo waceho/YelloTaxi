@@ -1,49 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.simcoder.uber.HistoryActivity"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:id="@+id/layout">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:padding="20sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Balance: 0€"
-            android:id="@+id/balance"
-            android:visibility="gone"/>
-        <EditText
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/payoutEmail"
-            android:hint="paypal email"/>
-        <Button
-            android:visibility="gone"
-            android:text="payout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/payout"/>
-    </LinearLayout>
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/second_part_color"
+        tools:context=".HistoryActivity">
+
+        <TextView
+            android:id="@+id/balance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.recyclerview.widget.RecyclerView
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="20sp"
+            android:text="Revenue total : 0 €"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:fontFamily="@font/arial"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/paypalemailtextInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="@color/ob_header"
+            app:boxStrokeColor="@color/black_overlay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/payoutEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/payout_email_hint"
+                android:inputType="text"
+                android:textColor="@android:color/black"
+                android:textColorLink="@color/common_google_signin_btn_text_dark_focused"
+                android:visibility="gone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/payout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/white_card_corner_background"
+            android:text="@string/payout"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paypalemailtextInputLayout" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_margin="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/payout">
+
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/historyRecyclerView"
-                android:scrollbars="vertical">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
 
         </androidx.core.widget.NestedScrollView>
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

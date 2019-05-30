@@ -2,6 +2,7 @@ package com.amanciodrp.yellotaxi.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.amanciodrp.yellotaxi.viewmodel.CustomerInfoViewModel
 import com.amanciodrp.yellotaxi.viewmodel.PhonePopUpViewModel
 import dagger.Binds
 import dagger.Module
@@ -15,6 +16,11 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(PhonePopUpViewModel::class)
-    abstract fun bindsPhonePopUpViewModel(programsViewModel: PhonePopUpViewModel): ViewModel
+    abstract fun bindsPhonePopUpViewModel(phonePopUpViewModel: PhonePopUpViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CustomerInfoViewModel::class)
+    abstract fun bindscustomerInfoViewModel(customerInfoViewModel: CustomerInfoViewModel): ViewModel
 
    }

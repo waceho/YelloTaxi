@@ -1,21 +1,27 @@
 package com.amanciodrp.yellotaxi.customeractivity;
 
+import android.content.Context;
 import android.content.Intent;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
-import com.amanciodrp.yellotaxi.MainActivity;
 import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.databinding.ActivityCustomerLoginBinding;
 import com.amanciodrp.yellotaxi.databinding.PhoneLoginPopupBinding;
+import com.amanciodrp.yellotaxi.driveractivity.DriverMapActivity;
+import com.amanciodrp.yellotaxi.utils.Reachability;
 import com.amanciodrp.yellotaxi.utils.SnackbarUtils;
+import com.amanciodrp.yellotaxi.utils.UtilityKit;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -24,16 +30,16 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.amanciodrp.yellotaxi.utils.AppConstants.ASK_TYPE_CODE;
+import static com.amanciodrp.yellotaxi.utils.AppConstants.ASK_TYPE_PHONE;
 
 public class CustomerLoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -50,6 +56,8 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     private String email = "";
     private String password = "";
     private String verificationid;
+    private Context mContext;
+    private AlertDialog builder;
 
 
     @Override
@@ -57,6 +65,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_customer_login);
         mAuth = FirebaseAuth.getInstance();
+        mContext = getBaseContext();
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -70,42 +79,15 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END build_client]
 
-        firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Log.d(TAG, String.valueOf(user));
-                if (user != null) {
-                    openMainActivity();
-                }
+        firebaseAuthListener = firebaseAuth -> {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                UtilityKit.openActivity(mContext, DriverMapActivity.class);
+                finish();
             }
         };
-
-        binding.registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registration();
-            }
-        });
-        binding.login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                emailPasswordSignIn();
-            }
-        });
-        binding.phoneLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-            }
-        });
     }
 
-    private void openMainActivity() {
-        Intent intent = new Intent(CustomerLoginActivity.this, CustomerMapActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     protected void onStart() {
@@ -116,16 +98,13 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                Toast.makeText(CustomerLoginActivity.this, "sucess phone", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "sucess phone", Toast.LENGTH_LONG).show();
                 signInWithPhoneAuthCredential(phoneAuthCredential);
-
             }
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-
-                Toast.makeText(CustomerLoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -133,7 +112,9 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                 super.onCodeSent(s, forceResendingToken);
                 Toast.makeText(CustomerLoginActivity.this, s, Toast.LENGTH_LONG).show();
                 verificationid = s;
-                verifyPhoneNumberWithCode(verificationid, "123456");
+
+                // SHOW CODE DIALOG
+                showDialog(ASK_TYPE_CODE);
             }
         };
 
@@ -170,10 +151,11 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
+            Log.d(TAG + "success success with ", String.valueOf(account));
             // Signed in successfully, show authenticated UI.
             // updateUI(account);
-            openMainActivity();
+            UtilityKit.openActivity(mContext, DriverMapActivity.class);
+            finish();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -190,54 +172,13 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     }
     // [END google account signIn]
 
-    private void emailPasswordSignIn() {
-        email = binding.email.getText().toString();
-        password = binding.password.getText().toString();
-        Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
-        if (!email.isEmpty() && !password.isEmpty())
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (!task.isSuccessful()) {
-                        Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
-                        SnackbarUtils.displayWarning(CustomerLoginActivity.this, R.string.signin_error);
-                    }
-                }
-            });
-        else
-            SnackbarUtils.displayWarning(this, "valid email and password is required", 4000);
-    }
-
-    private void registration() {
-        email = binding.email.getText().toString();
-        password = binding.password.getText().toString();
-        if (!email.isEmpty() && !password.isEmpty())
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CustomerLoginActivity.this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (!task.isSuccessful()) {
-                        Toast.makeText(CustomerLoginActivity.this, "sign up error", Toast.LENGTH_SHORT).show();
-                    } else if (mAuth != null && mAuth.getCurrentUser() != null) {
-                        String user_id = mAuth.getCurrentUser().getUid();
-                        DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child("Customers").child(user_id);
-                        current_user_db.setValue(true);
-                    }
-                }
-            });
-        else
-            SnackbarUtils.displayWarning(this, "valid email and password is required", 4000);
-    }
-
     // [START signOut]
     private void signOut() {
         mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        // updateUI(null);
-                        // [END_EXCLUDE]
-                    }
+                .addOnCompleteListener(this, task -> {
+                    // [START_EXCLUDE]
+                    // updateUI(null);
+                    // [END_EXCLUDE]
                 });
     }
     // [END signOut]
@@ -245,16 +186,17 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     // [START revokeAccess]
     private void revokeAccess() {
         mGoogleSignInClient.revokeAccess()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        // updateUI(null);
-                        // [END_EXCLUDE]
-                    }
+                .addOnCompleteListener(this, task -> {
+                    // [START_EXCLUDE]
+                    // updateUI(null);
+                    // [END_EXCLUDE]
                 });
     }
 
+    /**
+     * start phone verification
+     * @param phoneNumber
+     */
     private void startPhoneNumberVerification(String phoneNumber) {
         Toast.makeText(CustomerLoginActivity.this, "start login", Toast.LENGTH_SHORT).show();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -263,12 +205,9 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                 TimeUnit.SECONDS,   // Unit of timeout
                 this,               // Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
-
-
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
-
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithPhoneAuthCredential(credential);
     }
@@ -276,28 +215,25 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
 
-                            FirebaseUser user = task.getResult().getUser();
+                        FirebaseUser user = task.getResult().getUser();
 
-                            startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
+                        startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
 
-                        } else {
-                            // Sign in failed, display a message and update the UI
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                                // The verification code entered was invalid
+                    } else {
+                        // Sign in failed, display a message and update the UI
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                            // The verification code entered was invalid
 
-                             //   smsCodeVerificationField.setError("Invalid code.");
-
-                            }
+                            //   smsCodeVerificationField.setError("Invalid code.");
 
                         }
+
                     }
                 });
     }
@@ -314,7 +250,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
     }
 
-    private boolean validateSMSCode(){
+    private boolean validateSMSCode() {
         /*
         String code = smsCodeVerificationField.getText().toString();
         if (TextUtils.isEmpty(code)) {
@@ -331,6 +267,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
             case R.id.google_login:
                 googleSignIn();
                 break;
+                /*
             case R.id.login:
                 Toast.makeText(CustomerLoginActivity.this, "sign in error", Toast.LENGTH_SHORT).show();
                 emailPasswordSignIn();
@@ -338,32 +275,80 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
             case R.id.registration:
                 registration();
                 break;
+                */
+            case R.id.phone_login:
+                showDialog(ASK_TYPE_PHONE);
+                break;
         }
     }
 
-    private void showDialog(){
+    private void showDialog(String type) {
         // Get the layout inflater
         try {
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.Theme_MaterialComponents_Dialog);
             LayoutInflater inflater = getLayoutInflater();
-            View view =  inflater.inflate(R.layout.phone_login_popup, null);
+            View view = inflater.inflate(R.layout.phone_login_popup, null);
             PhoneLoginPopupBinding loginPopupBinding = DataBindingUtil.bind(view);
+
             alertDialog
                     .setCancelable(true)
                     .setView(view);
-            final AlertDialog builder = alertDialog.create();
-            assert loginPopupBinding != null;
-            loginPopupBinding.valider.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    builder.dismiss();
-                    startPhoneNumberVerification("+33685892223");
-                }
-            });
+            builder = alertDialog.create();
+
+            if (ASK_TYPE_PHONE.equals(type) && null != loginPopupBinding){
+                loginPopupBinding.tvCode.setVisibility(View.VISIBLE);
+                loginPopupBinding.tvCode.setText(getCountryCode());
+                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
+                loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_phone_hint));
+                loginPopupBinding.valider.setText(getString(R.string.valider));
+
+                // set onclick listener
+                loginPopupBinding.valider.setOnClickListener(v -> {
+                    // launch phone verification and code auth callback
+                    if (Reachability.isConnected(mContext))
+                        startPhoneNumberVerification(getInputedPhone(getCountryCode()));
+                    else
+                        SnackbarUtils.displayWarning(this, R.string.network_error);
+                });
+
+            } else if (ASK_TYPE_CODE.equals(type) && null != loginPopupBinding){
+                loginPopupBinding.tvCode.setVisibility(View.GONE);
+                loginPopupBinding.tvCode.setText(getCountryCode());
+                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
+                loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_code_hint));
+                loginPopupBinding.valider.setText(getString(R.string.confirm_code));
+
+                // set onclick listener
+                loginPopupBinding.valider.setOnClickListener(v -> {
+                    // launch phone verification and code auth callback
+                    if (Reachability.isConnected(mContext))
+                        verifyPhoneNumberWithCode(verificationid, loginPopupBinding.edCode.getText().toString());
+                    else
+                        SnackbarUtils.displayWarning(this, R.string.network_error);
+
+                });
+            }
+
+            // show alert dialog
             alertDialog.show();
-        } catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * return the current country code
+     **/
+    private String getCountryCode() {
+        return String.format(getString(R.string.countryCodeFormater), UtilityKit.getCountryZipCode(mContext).getValue());
+    }
+
+    /**
+     * get Phone with Code
+     **/
+    private String getInputedPhone(String phone) {
+        return String.format(getString(R.string.phoneFormater), getCountryCode(), phone);
     }
 
 }

@@ -182,7 +182,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_payment_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_done_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -192,13 +192,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="color" value="8d8d8d" />
-                            <entry key="height" value="48" />
-                            <entry key="outputName" value="ic_customer_location" />
+                            <entry key="color" value="0e901e" />
+                            <entry key="height" value="36" />
+                            <entry key="outputName" value="ic_done_green_24dp" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="$USER_HOME$/Downloads/untitled (4).svg" />
-                            <entry key="width" value="48" />
+                            <entry key="width" value="36" />
                           </map>
                         </option>
                       </PersistentState>

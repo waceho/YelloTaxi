@@ -2,17 +2,18 @@ package com.amanciodrp.yellotaxi;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+
+import com.amanciodrp.yellotaxi.databinding.ActivityHistoryBinding;
 import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.amanciodrp.yellotaxi.adapter.HistoryAdapter;
 import com.amanciodrp.yellotaxi.model.HistoryObject;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,59 +45,56 @@ import okhttp3.Response;
 
 public class HistoryActivity extends AppCompatActivity {
     private String customerOrDriver, userId;
-
-    private RecyclerView mHistoryRecyclerView;
     private RecyclerView.Adapter mHistoryAdapter;
-    private RecyclerView.LayoutManager mHistoryLayoutManager;
-
-    private TextView mBalance;
 
     private Double Balance = 0.0;
 
-    private Button mPayout;
+    private ActivityHistoryBinding binding;
 
-    private EditText mPayoutEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_history);
 
-        mBalance = findViewById(R.id.balance);
-        mPayout = findViewById(R.id.payout);
-        mPayoutEmail = findViewById(R.id.payoutEmail);
 
-        mHistoryRecyclerView = findViewById(R.id.historyRecyclerView);
-        mHistoryRecyclerView.setNestedScrollingEnabled(false);
-        mHistoryRecyclerView.setHasFixedSize(true);
-        mHistoryLayoutManager = new LinearLayoutManager(HistoryActivity.this);
-        mHistoryRecyclerView.setLayoutManager(mHistoryLayoutManager);
+        binding.historyRecyclerView.setNestedScrollingEnabled(false);
+        binding.historyRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager mHistoryLayoutManager = new LinearLayoutManager(HistoryActivity.this);
+        binding.historyRecyclerView.setLayoutManager(mHistoryLayoutManager);
         mHistoryAdapter = new HistoryAdapter(getDataSetHistory(), HistoryActivity.this);
-        mHistoryRecyclerView.setAdapter(mHistoryAdapter);
+        binding.historyRecyclerView.setAdapter(mHistoryAdapter);
 
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         getUserHistoryIds();
 
         if(customerOrDriver.equals("Drivers")){
-            mBalance.setVisibility(View.VISIBLE);
-            mPayout.setVisibility(View.VISIBLE);
-            mPayoutEmail.setVisibility(View.VISIBLE);
+            binding.balance.setVisibility(View.VISIBLE);
+            binding.payout.setVisibility(View.VISIBLE);
+            binding.payoutEmail.setVisibility(View.VISIBLE);
         }
 
-        mPayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                payoutRequest();
-            }
-        });
+        setDivider();
+
+        binding.payout.setOnClickListener(view -> payoutRequest());
     }
 
+    private void setDivider(){
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(binding.historyRecyclerView.getContext(),
+                linearLayoutManager.getOrientation());
+        binding.historyRecyclerView.addItemDecoration(dividerItemDecoration);
+    }
+
+    /**
+     * get user history
+     */
     private void getUserHistoryIds() {
         DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(customerOrDriver).child(userId).child("history");
         userHistoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot history : dataSnapshot.getChildren()){
                         fetchRideInformation(history.getKey());
@@ -103,17 +102,21 @@ public class HistoryActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
     }
 
+    /**
+     * fetch ride Information
+     * @param rideKey ride key
+     */
     private void fetchRideInformation(String rideKey) {
         DatabaseReference historyDatabase = FirebaseDatabase.getInstance().getReference().child("history").child(rideKey);
         historyDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String rideId = dataSnapshot.getKey();
                     Long timestamp = 0L;
@@ -128,10 +131,9 @@ public class HistoryActivity extends AppCompatActivity {
                         if(dataSnapshot.child("distance").getValue() != null){
                             ridePrice = Double.valueOf(dataSnapshot.child("price").getValue().toString());
                             Balance += ridePrice;
-                            mBalance.setText("Balance: " + String.valueOf(Balance) + " $");
+                            binding.balance.setText("Balance: " + String.valueOf(Balance) + " $");
                         }
                     }
-
 
                     HistoryObject obj = new HistoryObject(rideId, getDate(timestamp));
                     resultsHistory.add(obj);
@@ -139,20 +141,25 @@ public class HistoryActivity extends AppCompatActivity {
                 }
             }
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
+                // TODO implement error use case
             }
         });
     }
 
+    /**
+     * get ride date
+     * @param time time in milliseconds
+     * @return
+     */
     private String getDate(Long time) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         cal.setTimeInMillis(time*1000);
-        String date = DateFormat.format("dd-MMM-yyyy hh:mm", cal).toString();
-        return date;
+        return DateFormat.format("dd-MMM-yyyy hh:mm", cal).toString();
     }
 
     private ArrayList resultsHistory = new ArrayList<HistoryObject>();
-    private ArrayList<HistoryObject> getDataSetHistory() {
+    private ArrayList getDataSetHistory() {
         return resultsHistory;
     }
 
@@ -169,7 +176,7 @@ public class HistoryActivity extends AppCompatActivity {
         JSONObject postData = new JSONObject();
         try {
             postData.put("uid", FirebaseAuth.getInstance().getCurrentUser().getUid());
-            postData.put("email", mPayoutEmail.getText());
+            postData.put("email", binding.payoutEmail.getText());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -187,7 +194,7 @@ public class HistoryActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String mMessage = e.getMessage().toString();
+                String mMessage = e.getMessage();
                 Log.w("failure Response", mMessage);
                 progress.dismiss();
             }
@@ -197,7 +204,6 @@ public class HistoryActivity extends AppCompatActivity {
                     throws IOException {
 
                 int responseCode = response.code();
-
 
                 if (response.isSuccessful())
                     switch (responseCode) {

@@ -66,6 +66,15 @@
     <string name="code">Saisissez le code reçu</string>
     <string name="destination_txt">Adresse de destination</string>
     <string name="start_adress">Addresse de départ</string>
+    <string name="driver_status">Indisponible</string>
+    <string name="driver_status_on">Disponible</string>
+    <string name="taxi">TAXI</string>
+    <string name="particulier">PARTICULIER</string>
+    <string name="benin_country_code">+229</string>
+    <string name="ask_auth_phone">Ce numéro sera utilisé pour vos paiements de courses. Veuillez donc saisir un numéro valide</string>
+    <string name="payout_email_hint">payout Email</string>
+    <string name="payout">payout</string>
+    <string name="network_error">veuillez vérifier votre connexion svp</string>
 
     <string-array name="DialingCountryCode" >
         <item>229,BJ</item>

@@ -1,0 +1,13 @@
+
+esquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(Ñ·«©
+ssquid:S1450"URemove the "mEmail" field and declare it as a local variable in the relevant methods.(ÿ¬Ù³8Ü«°¿§-
+usquid:S00117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á€ıÿÿÿÿ8Áö®¿§-
+_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8Ø÷ˆ«§-
+usquid:S00117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰° üÿÿÿÿ8Áö®¿§-
+^squid:UselessImportCheck
+".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8Ü«°¿§-
+vsquid:S1450"XRemove the "mPassword" field and declare it as a local variable in the relevant methods.(ÿ¬Ù³8Ü«°¿§-
+csquid:UselessImportCheck"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8ŒÛ°¿§-
+ssquid:S1450"\Remove the "mRegistration" field and declare it as a local variable in the relevant methods.(ğò¼¿
+lsquid:S1450"URemove the "mLogin" field and declare it as a local variable in the relevant methods.(ğò¼¿
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8áô‰«§-

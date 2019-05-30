@@ -1,7 +1,6 @@
 
-Isquid:S1905"+Remove this unnecessary cast to "CardView".(ï¾º¸8ýâ³Š -
-lsquid:S1450"VRemove the "mDriver" field and declare it as a local variable in the relevant methods.(”Ðõk
-=squid:S1659"'Declare "mCustomer" on a separate line.(”Ðõk
-Isquid:S1905"+Remove this unnecessary cast to "CardView".(«õóû8ýâ³Š -
-nsquid:S1450"XRemove the "mCustomer" field and declare it as a local variable in the relevant methods.(”Ðõk
-esquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž
+Gsquid:S1905"+Remove this unnecessary cast to "CardView".(«õóû8ýâ³Š -
+csquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±Ž
+lsquid:S1450"XRemove the "mCustomer" field and declare it as a local variable in the relevant methods.(”Ðõk
+Gsquid:S1905"+Remove this unnecessary cast to "CardView".(ï¾º¸8ýâ³Š -
+jsquid:S1450"VRemove the "mDriver" field and declare it as a local variable in the relevant methods.(”Ðõk

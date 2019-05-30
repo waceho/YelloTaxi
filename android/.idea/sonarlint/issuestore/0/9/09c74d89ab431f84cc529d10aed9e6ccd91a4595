@@ -1,15 +1,13 @@
 
-™squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
-Ysquid:S1854y"=Remove this useless assignment to local variable "ridePrice".(ÔÉ¹‰üÿÿÿÿ
-˜squid:S1186j"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
-[squid:S1858¾"D"getMessage" returns a string, there's no need to call "toString()".(‘ê
-@squid:S1659-"$Declare "userId" on a separate line.(ŠÑüºûÿÿÿÿ
-ysquid:S1488–"\Immediately return this expression instead of assigning it to the temporary variable "date".(ˆÀ¦Ôüÿÿÿÿ
-Isquid:S1481x"-Remove this unused "distance" local variable.(•Ü¸‚şÿÿÿÿ
-esquid:MaximumInheritanceDepth,"<This class has 6 parents which is greater than 5 authorized.(òÁÃŠ
-squid:S1450/"cRemove the "mHistoryRecyclerView" field and declare it as a local variable in the relevant methods.(÷ìÂ•ÿÿÿÿÿ
-hsquid:S001165"RRename this field "Balance" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ÿ7
-Lsquid:S1066€"/Merge this if statement with the enclosing one.(ıš¿áùÿÿÿÿ
-€squid:S14501"dRemove the "mHistoryLayoutManager" field and declare it as a local variable in the relevant methods.(Äè¨Ëÿÿÿÿÿ
-Isquid:S1153ƒ"1Directly append the argument of String.valueOf().(¿ëã¯
-rsquid:S14507"VRemove the "mPayout" field and declare it as a local variable in the relevant methods.(¼‰‘äüÿÿÿÿ
+hsquid:S001169"RRename this field "Balance" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ÿ7
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8™Ğğ½§-
+˜squid:S1186r"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
+Zsquid:S1854"=Remove this useless assignment to local variable "ridePrice".(ÔÉ¹‰üÿÿÿÿ
+^squid:UselessImportCheck"3Remove this unused import 'android.view.ViewGroup'.(‹îá8Ã±Ìª§-
+Isquid:S1153‹"1Directly append the argument of String.valueOf().(¿ëã¯
+Lsquid:S1066ˆ"/Merge this if statement with the enclosing one.(ıš¿áùÿÿÿÿ
+™squid:S1186•"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
+esquid:MaximumInheritanceDepth0"<This class has 6 parents which is greater than 5 authorized.(òÁÃŠ
+€squid:S14505"dRemove the "mHistoryLayoutManager" field and declare it as a local variable in the relevant methods.(Äè¨Ëÿÿÿÿÿ
+msquid:S1450;"VRemove the "mPayout" field and declare it as a local variable in the relevant methods.(§ÎìÏ
+Jsquid:S1481€"-Remove this unused "distance" local variable.(•Ü¸‚şÿÿÿÿ

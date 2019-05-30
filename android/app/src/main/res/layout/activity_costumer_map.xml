@@ -96,7 +96,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/login_gray_popup_background"
             android:orientation="vertical"
             android:elevation="3dp"
             fab:layout_constraintBottom_toBottomOf="@+id/map">
@@ -110,7 +109,7 @@
                 android:layout_marginBottom="10dp"
                 android:elevation="5dp"
                 android:orientation="vertical"
-                android:background="@drawable/round_switch_on"
+                android:background="@drawable/white_card_corner_background"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp">
 
@@ -245,34 +244,35 @@
                         android:text="UberXl" />
                 </RadioGroup>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/request"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:backgroundTint="@color/idle_dot"
+                    android:background="@drawable/round_white_button_background"
                     android:drawableEnd="@drawable/ic_send_white_24dp"
                     android:elevation="6dp"
                     android:fontFamily="@font/arial"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+
                     android:text="@string/ask_taxi"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <ProgressBar
+                    android:id="@+id/prg_search_driver"
                     style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginBottom="20dp"
+
                     android:elevation="10sp"
-                    android:indeterminateTint="@color/white"
-                    android:progress="@android:integer/config_longAnimTime"
+                    android:indeterminateTint="@color/idle_dot"
+                    android:progress="@android:integer/config_mediumAnimTime"
                     android:visibility="visible" />
 
             </RelativeLayout>

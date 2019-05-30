@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data >
+    <data>
+
         <variable
             name="userPhone"
-            type="com.amanciodrp.yellotaxi.viewmodel.PhonePopUpViewModel"/>
+            type="com.amanciodrp.yellotaxi.viewmodel.PhonePopUpViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/login_gray_popup_background"
+        android:background="@drawable/white_card_corner_background"
         android:padding="20dp"
         android:theme="@style/AlertDialog.AppCompat.Light">
 
@@ -27,29 +28,28 @@
             android:textColorHint="@color/ob_header"
             app:boxStrokeColor="@color/black_overlay"
             app:layout_constraintEnd_toEndOf="@+id/textView4"
-            app:layout_constraintStart_toEndOf="@+id/txt_code"
+            app:layout_constraintStart_toEndOf="@+id/tv_code"
             app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <EditText
                 android:id="@+id/ed_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/code"
-                android:text="@{userPhone.userPhoneNomber}"
                 android:inputType="numberDecimal"
+                android:maxLength="9"
+                android:text="@{userPhone.userPhoneNomber}"
                 android:textColor="@android:color/black"
                 android:textColorLink="@color/common_google_signin_btn_text_dark_focused" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/txt_code"
+            android:id="@+id/tv_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:fontFamily="@font/arial"
             android:padding="5dp"
-            android:text="+229"
+            android:text="@string/benin_country_code"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/input_layout_code"
@@ -69,7 +69,7 @@
             android:elevation="5dp"
             android:paddingStart="40dp"
             android:paddingEnd="40dp"
-            android:text="Valider"
+            android:text="@string/valider"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +89,6 @@
             app:layout_constraintStart_toStartOf="@+id/valider"
             app:layout_constraintTop_toTopOf="@+id/valider" />
 
-
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
@@ -98,13 +97,25 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="24dp"
-            android:text="Ce numéro sera utilisé pour vos paiements de courses. Veuillez donc saisir un numéro valide"
+            android:text="@string/ask_auth_phone"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/input_layout_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/input_layout_code"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toEndOf="@+id/input_layout_code"
+            app:layout_constraintTop_toTopOf="@+id/input_layout_code"
+            app:srcCompat="@drawable/ic_done_green_24dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

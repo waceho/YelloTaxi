@@ -34,7 +34,7 @@
             android:theme="@style/AppFullScreenTheme">
         </activity>
         <activity android:name="com.amanciodrp.yellotaxi.MainActivity"/>
-        <activity android:name="com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity" />
         <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -49,13 +49,13 @@
             android:value="AIzaSyCKmZJkeKYbjSvFrtWE5ng_rTJlWFW-nKA" />
 
         <activity
-            android:name="com.amanciodrp.yellotaxi.driverActivity.DriverMapActivity"
+            android:name="com.amanciodrp.yellotaxi.driveractivity.DriverMapActivity"
             android:label="@string/title_activity_driver_map" />
         <activity
             android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerMapActivity"
             android:theme="@style/Base.Theme.MaterialComponents" />
         <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerSettingsActivity" />
-        <activity android:name="com.amanciodrp.yellotaxi.driverActivity.DriverSettingsActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.driveractivity.DriverSettingsActivity" />
         <activity android:name="com.amanciodrp.yellotaxi.HistoryActivity" />
         <activity android:name="com.amanciodrp.yellotaxi.HistorySingleActivity" />
         <activity

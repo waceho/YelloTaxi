@@ -1,0 +1,18 @@
+
+bsquid:S1192k"FDefine a constant instead of duplicating this literal "phone" 3 times.(×œÂ®ûÿÿÿÿ
+esquid:MaximumInheritanceDepth)"<This class has 6 parents which is greater than 5 authorized.(ÆñŒ¶
+3squid:S3626·"Remove this redundant jump.(ûÁÝ…
+3squid:S3626Ä"Remove this redundant jump.(ûÁÝ…
+@squid:S1604³"(Make this anonymous inner class a lambda(ÎŸÜÜ
+_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8âÕ£«¦-
+ysquid:UselessImportCheck"NRemove this unused import 'com.google.android.material.button.MaterialButton'.(Õ­íÄ8„ˆ•®¦-
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òžýÿÿÿÿ8Ñ‘Õ«¦-
+lsquid:S1192~"PDefine a constant instead of duplicating this literal "profileImageUrl" 3 times.(Ê—–Óùÿÿÿÿ
+hsquid:S3776a"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(¢Ü¹
+ksquid:S1450/"TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’
+P"squid:SwitchLastCaseIsDefaultChecku""Add a default case to this switch.(÷®Ô€
+™squid:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Þ‰
+Esquid:S1604º"(Make this anonymous inner class a lambda(‹äÐçýÿÿÿÿ
+Wsquid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ
+@squid:S1148«"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+_squid:S1192s"HDefine a constant instead of duplicating this literal "service" 3 times.(‡ûéù

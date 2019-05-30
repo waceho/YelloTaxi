@@ -8,7 +8,7 @@ import androidx.cardview.widget.CardView;
 import android.view.View;
 
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
-import com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity;
+import com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     private CardView mDriver, mCustomer;
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         mCustomer = (CardView) findViewById(R.id.customer);
 
         startService(new Intent(MainActivity.this, OnAppKilled.class));
+
         mDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

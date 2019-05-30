@@ -7,7 +7,6 @@
     <color name="white">#FFFFFF</color>
 
     <!--OnBoard-->
-
     <color name="selected_dot">#FFFFFF</color>
     <color name="idle_dot">#f1a71d</color>
     <color name="ob_header">#D54A4A4A</color>
@@ -23,4 +22,6 @@
     <color name="blue_grey_700">#455A64</color>
     <color name="blue_grey_800">#37474F</color>
     <color name="blue_grey_900">#263238</color>
+
+    <color name="second_part_color">#c6bba8</color>
 </resources>

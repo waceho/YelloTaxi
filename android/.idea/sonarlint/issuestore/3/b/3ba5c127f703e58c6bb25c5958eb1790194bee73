@@ -1,29 +1,34 @@
 
-Rsquid:S1068.";Remove this unused "mVerificationInProgress" private field.(³úŸ³
-Gsquid:S10680"0Remove this unused "mResendToken" private field.(¡ßË¾
-Ysquid:UnusedPrivateMethodè",Remove this unused private "signOut" method.(ìÉÓÌ8ÛÖ´í -
-Msquid:S1481")Remove this unused "user" local variable.(ãÒ¦šùÿÿÿÿ8ÛÖ´í -
-esquid:UselessImportCheck"BRemove this unused import 'com.amanciodrp.yellotaxi.MainActivity'.( ÊÜQ
-lsquid:UnusedPrivateMethod±"?Remove this unused private "validatePhoneNumberAndCode" method.(ùß‡Ğ8ÛÖ´í -
-fsquid:UnusedPrivateMethod½"4Remove this unused private "validateSMSCode" method.(âü¸¢şÿÿÿÿ8ÛÖ´í -
-rsquid:S1192Ä"NDefine a constant instead of duplicating this literal "sign in error" 3 times.(©ö›‡ÿÿÿÿÿ8ÛÖ´í -
-esquid:MaximumInheritanceDepth&"<This class has 6 parents which is greater than 5 authorized.(¤ôé™
-vsquid:S00117Ş"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÆ”¤ûÿÿÿÿ8ÛÖ´í -
-csquid:CommentedOutCodeLineŸ"<This block of commented-out lines of code should be removed.(˜Î‹Ã
-jsquid:CommentedOutCodeLineµ"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
-jsquid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
-Ssquid:S1854";Remove this useless assignment to local variable "account".(ôÎ×
-\squid:S1854"8Remove this useless assignment to local variable "user".(ãÒ¦šùÿÿÿÿ8ÛÖ´í -
-osquid:CommentedOutCodeLine¿"<This block of commented-out lines of code should be removed.(¼åï›ûÿÿÿÿ8ÛÖ´í -
-Gsquid:S1148í"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¼ı¿Å¡-
-Osquid:S1068/"3Remove this unused "mVerificationId" private field.(ƒ²¿ùÿÿÿÿ
-isquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(¾é‡8ÛÖ´í -
-Isquid:S1481¬",Remove this unused "account" local variable.(»±Åøÿÿÿÿ
-Xsquid:S1854¬";Remove this useless assignment to local variable "account".(»±Åøÿÿÿÿ
-Dsquid:S1481",Remove this unused "account" local variable.(ôÎ×
-jsquid:CommentedOutCodeLineî"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
-hsquid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(„ßÜıÿÿÿÿ
-]"squid:SwitchLastCaseIsDefaultCheckÊ""Add a default case to this switch.(×“¾ñùÿÿÿÿ8ÛÖ´í -
-^squid:UnusedPrivateMethodö"1Remove this unused private "revokeAccess" method.(ß¼Ş¾8ÛÖ´í -
-osquid:S00117İ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á€ıÿÿÿÿ
-jsquid:CommentedOutCodeLine¨"<This block of commented-out lines of code should be removed.(Øş‡”8ÛÖ´í -
+fsquid:UnusedPrivateMethod°"4Remove this unused private "validateSMSCode" method.(âü¸¢şÿÿÿÿ8ÛÖ´í -
+Osquid:S10684"3Remove this unused "mVerificationId" private field.(ƒ²¿ùÿÿÿÿ
+Nsquid:S1068;"+Remove this unused "builder" private field.(Şš¾Ïúÿÿÿÿ8ÒØ¢¡­-
+isquid:CommentedOutCodeLine¥"<This block of commented-out lines of code should be removed.(¾é‡8‰ª³Ş¬-
+Nsquid:S10682"+Remove this unused "binding" private field.(¨ü‚‘ùÿÿÿÿ8‰ª³Ş¬-
+osquid:CommentedOutCodeLine³"<This block of commented-out lines of code should be removed.(€Íçşÿÿÿÿ8‰ª³Ş¬-
+Msquid:S1481’")Remove this unused "user" local variable.(ãÒ¦šùÿÿÿÿ8ÛÖ´í -
+tsquid:UselessImportCheck"DRemove this unused import 'android.graphics.drawable.ColorDrawable'.(ÖŸÂ«øÿÿÿÿ8ìÀ¼Ù­-
+Jsquid:S10688",Remove this unused "password" private field.(µ£ „8‰ª³Ş¬-
+Lsquid:S10687")Remove this unused "email" private field.(…òÂÆøÿÿÿÿ8‰ª³Ş¬-
+jsquid:CommentedOutCodeLineÇ"<This block of commented-out lines of code should be removed.(ğç„À8‰ª³Ş¬-
+Ssquid:S1854";Remove this useless assignment to local variable "account".(ôÎ×
+Gsquid:S1604ß"(Make this anonymous inner class a lambda(Äëæ¸8Ï Ğïª-
+jsquid:CommentedOutCodeLine¦"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
+jsquid:CommentedOutCodeLineñ"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -
+Dsquid:S1481",Remove this unused "account" local variable.(ôÎ×
+Gsquid:S1148ƒ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¦‡İ¡­-
+osquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(¼åï›ûÿÿÿÿ8ÛÖ´í -
+Gsquid:S1604í"(Make this anonymous inner class a lambda(Äëæ¸8Ï Ğïª-
+jsquid:CommentedOutCodeLineœ"<This block of commented-out lines of code should be removed.(Øş‡”8ÛÖ´í -
+ysquid:S1450;"VRemove the "builder" field and declare it as a local variable in the relevant methods.(Şš¾Ïúÿÿÿÿ8ÒØ¢¡­-
+^squid:UnusedPrivateMethodë"1Remove this unused private "revokeAccess" method.(ß¼Ş¾8ÛÖ´í -
+Gsquid:S10685"0Remove this unused "mResendToken" private field.(¡ßË¾
+]"squid:SwitchLastCaseIsDefaultCheck½""Add a default case to this switch.(×“¾ñùÿÿÿÿ8ÛÖ´í -
+ysquid:S14502"VRemove the "binding" field and declare it as a local variable in the relevant methods.(¨ü‚‘ùÿÿÿÿ8‰ª³Ş¬-
+lsquid:UnusedPrivateMethod¤"?Remove this unused private "validatePhoneNumberAndCode" method.(ùß‡Ğ8ÛÖ´í -
+Ysquid:UnusedPrivateMethodİ",Remove this unused private "signOut" method.(ìÉÓÌ8ÛÖ´í -
+Rsquid:S10683";Remove this unused "mVerificationInProgress" private field.(³úŸ³
+osquid:CommentedOutCodeLineÃ"<This block of commented-out lines of code should be removed.(©ö›‡ÿÿÿÿÿ8‰ª³Ş¬-
+hsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(„ßÜıÿÿÿÿ
+csquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(˜Î‹Ã
+esquid:MaximumInheritanceDepth+"<This class has 6 parents which is greater than 5 authorized.(¤ôé™
+jsquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(á„Õ©8ÛÖ´í -

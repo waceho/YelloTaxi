@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
@@ -184,28 +185,24 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         }else{
             mPay.setEnabled(true);
         }
-        mPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                payPalPayment();
-            }
-        });
+        mPay.setOnClickListener(view -> payPalPayment());
     }
 
     private int PAYPAL_REQUEST_CODE = 1;
-    /*
+
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-            .clientId(PayPalConfig.PAYPAL_CLIENT_ID);
-*/
+            .acceptCreditCards(true)
+            .clientId("AcV1MV_mbJEncBj3DaxWK_oVL4VvNpFuOYMXMP3SJ7lgK_PndwCs1nnUaZ1j7eqX6wcq4lUAWEAvwSRb");
+
     private void payPalPayment() {
-        PayPalPayment payment = new PayPalPayment(new BigDecimal(ridePrice), "USD", "Uber Ride",
+        PayPalPayment payment = new PayPalPayment(new BigDecimal(ridePrice), "USD", "YelloTaxi Ride",
                 PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(this, PaymentActivity.class);
 
-      //  intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        //intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
 
         startActivityForResult(intent, PAYPAL_REQUEST_CODE);
     }
@@ -244,12 +241,11 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         super.onDestroy();
     }
 
-
-
-
-
-
-
+    /**
+     *
+     * @param otherUserDriverOrCustomer
+     * @param otherUserId
+     */
     private void getUserInformation(String otherUserDriverOrCustomer, String otherUserId) {
         DatabaseReference mOtherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(otherUserDriverOrCustomer).child(otherUserId);
         mOtherUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -275,6 +271,11 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         });
     }
 
+    /**
+     *
+     * @param time
+     * @return
+     */
     private String getDate(Long time) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
         cal.setTimeInMillis(time*1000);
@@ -299,6 +300,7 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
     private List<Polyline> polylines;
     private static final int[] COLORS = new int[]{R.color.primary_dark_material_light};
+
     @Override
     public void onRoutingFailure(RouteException e) {
         if(e != null) {
@@ -325,10 +327,10 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
         mMap.animateCamera(cameraUpdate);
 
-        mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
+        mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_customer_location)));
         mMap.addMarker(new MarkerOptions().position(destinationLatLng).title("destination"));
 
-        if(polylines.size()>0) {
+        if(!polylines.isEmpty()) {
             for (Polyline poly : polylines) {
                 poly.remove();
             }
@@ -355,6 +357,7 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
     @Override
     public void onRoutingCancelled() {
     }
+
     private void erasePolylines(){
         for(Polyline line : polylines){
             line.remove();

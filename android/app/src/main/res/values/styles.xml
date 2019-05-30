@@ -34,12 +34,12 @@
 
     </style>
 
-    <style name="SwitchCompat">
+    <style name="SwitchCompat" parent="@style/Widget.AppCompat.CompoundButton.Switch">
         <item name="android:thumb">@drawable/selected_item_dot</item>
         <item name="track">@drawable/selected_item_dot</item>
         <item name="showText">true</item>
+        <item name="android:textOff">test</item>
         <item name="android:textOn">@string/chauffeur</item>
-        <item name="android:textOff">@string/passager</item>
     </style>
 
     <style name="FullscreenTheme" parent="Base.Theme.AppCompat">
@@ -60,4 +60,7 @@
         <item name="android:fontFamily">@font/arial</item>
     </style>
 
+    <style name="CustomDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/white_card_corner_background</item>
+    </style>
 </resources>

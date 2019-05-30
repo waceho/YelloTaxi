@@ -18,7 +18,9 @@
     <dimen name="ob_header_text_size">20sp</dimen>
     <dimen name="ob_desc_text_size">16sp</dimen>
     <dimen name="img_height">280dp</dimen>
+    <dimen name="setting_img_height">450dp</dimen>
     <item name="dimension" type="dimen">@dimen/img_height</item>
+    <item name="settings_dimension" type="dimen">@dimen/setting_img_height</item>
 
     <dimen name="left">-100dp</dimen>
     <dimen name="right">-100dp</dimen>

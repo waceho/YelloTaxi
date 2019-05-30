@@ -4,13 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.SharedMemory
 import android.view.View
 import com.amanciodrp.yellotaxi.R
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity
-import com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity
+import com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity
 import com.amanciodrp.yellotaxi.model.DefaultUseSettings
 import com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity
 import com.amanciodrp.yellotaxi.utils.SharedPrefsObject
@@ -75,6 +74,6 @@ class FullscreenActivity : AppCompatActivity() {
             }
             finish()
 
-        }, 1000)
+        }, 500)
     }
 }

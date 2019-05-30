@@ -1,6 +1,8 @@
 package com.amanciodrp.yellotaxi.adapter;
 
 import android.content.Context;
+
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.model.HistoryObject;
-import com.amanciodrp.yellotaxi.historyRecyclerView.HistoryViewHolders;
+import com.amanciodrp.yellotaxi.historyrecyclerriew.HistoryViewHolders;
 
 import java.util.List;
 

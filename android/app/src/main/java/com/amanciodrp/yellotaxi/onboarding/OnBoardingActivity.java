@@ -24,7 +24,7 @@ import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.adapter.OnBoardAdapter;
 import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
 import com.amanciodrp.yellotaxi.databinding.ActivityOnBoardingBinding;
-import com.amanciodrp.yellotaxi.driverActivity.DriverLoginActivity;
+import com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity;
 import com.amanciodrp.yellotaxi.model.DefaultUseSettings;
 import com.amanciodrp.yellotaxi.utils.BulletListUtils;
 import com.amanciodrp.yellotaxi.utils.SharedPrefsObject;
@@ -52,7 +52,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binder = bind();
+        binder = DataBindingUtil.setContentView(this, R.layout.activity_on_boarding);
 
         onboard_pager = findViewById(R.id.pager_introduction);
         pager_indicator = findViewById(R.id.viewPagerCountDots);
@@ -76,9 +76,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-
                 // Change the current position intimation
-
                 for (int i = 0; i < dotsCount; i++) {
                     dots[i].setImageDrawable(ContextCompat.getDrawable(OnBoardingActivity.this, R.drawable.non_selected_item_dot));
                 }
@@ -111,15 +109,12 @@ public class OnBoardingActivity extends AppCompatActivity {
                 }
 
                 if (pos == 4) {
-
                     Animation fadeIn = new AlphaAnimation(0, 1);
                     fadeIn.setInterpolator(new DecelerateInterpolator()); //add this
                     fadeIn.setDuration(1000);
-
                     binder.onboardCard.startAnimation(fadeIn);
                     binder.btnGetStarted.setText(getString(R.string.ok));
                 }
-
 
                 previousPos = pos;
             }
@@ -131,29 +126,17 @@ public class OnBoardingActivity extends AppCompatActivity {
         });
 
         // set btnGetStarted and chipgroup onclickListener
-        widgetOnclickListener();
+        chipsWidgetOnclickListener();
         // set UiPageViewController
         setUiPageViewController();
     }
 
-    private void widgetOnclickListener() {
-        binder.btnGetStarted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lockLastOnboardingView();
-            }
-        });
-
-        binder.chipgroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(ChipGroup chipGroup, int i) {
-                setMode();
-            }
-        });
+    private void chipsWidgetOnclickListener() {
+        binder.btnGetStarted.setOnClickListener(v -> lockLastOnboardingView());
+        binder.chipgroup.setOnCheckedChangeListener((chipGroup, i) -> setMode());
     }
 
     private void setMode() {
-
         boolean status = binder.conducteur.isChecked() || binder.passager.isChecked();
         binder.btnGetStarted.setEnabled(status);
         // set mode
@@ -169,31 +152,24 @@ public class OnBoardingActivity extends AppCompatActivity {
     // hide last onboarding page
     private void lockLastOnboardingView() {
         if (previousPos == 3) {
+            // set swipe direction
             onboard_pager.setAllowedSwipeDirection(SwipeDirection.all);
+            // set arrow scroll left to right
             onboard_pager.arrowScroll(View.LAYOUT_DIRECTION_LTR);
+            // set current item index
             onboard_pager.setCurrentItem(3);
+            // hide onboarding 3 content
             binder.onboard3RL.setVisibility(View.GONE);
+            // show onboarding 4 content
             binder.onboard4RL.setVisibility(View.VISIBLE);
+            // set Card title text
             binder.title.setText(getString(R.string.last_onboarding_title));
             // hide subtitle if diver mode
             binder.subtitle.setVisibility(defaultUseSettings.getMode().equals(getString(R.string.passager)) ? View.VISIBLE : View.GONE);
             binder.subtitle.setText(getString(R.string.last_onboarding_subtitle));
+            // set bullet list
+            setBulledList();
 
-            CharSequence bulletedList = defaultUseSettings.getMode().equals(getString(R.string.passager)) ?
-                    BulletListUtils.makeBulletList(20,
-                            getString(R.string.lastOnboardingExplanation_1),
-                            getString(R.string.lastOnboardingExplanation_2),
-                            getString(R.string.lastOnboardingExplanation_3),
-                            getString(R.string.lastOnboardingExplanation_4)) :
-
-                    BulletListUtils.makeBulletList(20,
-                            getString(R.string.lastOnboardingDriveExplanation_1),
-                            getString(R.string.lastOnboardingDriveExplanation_2),
-                            getString(R.string.lastOnboardingDriveExplanation_3),
-                            getString(R.string.lastOnboardingDriveExplanation_4),
-                            getString(R.string.lastOnboardingDriveExplanation_5));
-
-            binder.act1.setText(bulletedList);
         } else {
             // save user default conf
             saveUserDefaullMode();
@@ -205,8 +181,23 @@ public class OnBoardingActivity extends AppCompatActivity {
         }
     }
 
-    private ActivityOnBoardingBinding bind() {
-        return DataBindingUtil.setContentView(this, R.layout.activity_on_boarding);
+    private void setBulledList() {
+        CharSequence bulletedList = defaultUseSettings.getMode().equals(getString(R.string.passager)) ?
+                BulletListUtils.makeBulletList(20,
+                        getString(R.string.lastOnboardingExplanation_1),
+                        getString(R.string.lastOnboardingExplanation_2),
+                        getString(R.string.lastOnboardingExplanation_3),
+                        getString(R.string.lastOnboardingExplanation_4)) :
+
+                BulletListUtils.makeBulletList(20,
+                        getString(R.string.lastOnboardingDriveExplanation_1),
+                        getString(R.string.lastOnboardingDriveExplanation_2),
+                        getString(R.string.lastOnboardingDriveExplanation_3),
+                        getString(R.string.lastOnboardingDriveExplanation_4),
+                        getString(R.string.lastOnboardingDriveExplanation_5));
+
+        binder.act1.setText(bulletedList);
+
     }
 
     // Load data into the viewpager
@@ -256,7 +247,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             }
 
         });
-
     }
 
     /**
@@ -289,7 +279,7 @@ public class OnBoardingActivity extends AppCompatActivity {
 
 
     // hide animation
-    public void hide_animation() {
+    private void hide_animation() {
         Animation hide = AnimationUtils.loadAnimation(this, R.anim.slide_down_anim);
         Animation hideCard = AnimationUtils.loadAnimation(this, R.anim.slide_up_end_anim);
 
@@ -364,7 +354,6 @@ public class OnBoardingActivity extends AppCompatActivity {
             );
 
             params.setMargins(10, 0, 10, 0);
-
             pager_indicator.addView(dots[i], params);
             Animation show = AnimationUtils.loadAnimation(this, R.anim.slide_up_anim);
             dots[i].startAnimation(show);
