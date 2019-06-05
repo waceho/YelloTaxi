@@ -81,4 +81,8 @@
         <item>221,SN</item>
         <item>33,FR</item>
     </string-array>
+
+    <string name="web_api_key">219527634194-vk6j1a0c8mgksj2j8g2brh6umjpr1ki1.apps.googleusercontent.com</string>
+    <string name="driver_search">Recherche d\'un conducteur proche</string>
+    <string name="no_adress_popup_msg">Veuillez saisir l\'addresse de destination s\'il vous plaît</string>
 </resources>

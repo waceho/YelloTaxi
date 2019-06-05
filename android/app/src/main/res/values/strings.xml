@@ -28,7 +28,7 @@
     <string name="lastOnboardingExplanation_4">Votre Taxi est là. HOP , Bonne route</string>
 
     <!-- onboarding 4 driver list -->
-    <string name="lastOnboardingDriveExplanation_1">Activez votre GPS </string>
+
     <string name="lastOnboardingDriveExplanation_2">Vous recevrez automatiquement les demandes de courses sur votre application</string>
     <string name="lastOnboardingDriveExplanation_3">Accepter le trajet s\'il vous convient</string>
     <string name="lastOnboardingDriveExplanation_4">Récupérez votre passager et déposer le à destination</string>
@@ -60,7 +60,7 @@
     <string name="onboard4_content"></string>
     <string name="choice_driver_text">NB: Une vérification sera éffectué ultérieurement si vous êtes chauffeur</string>
     <string name="last_onboarding_title">Une course en taxi ? Facile</string>
-    <string name="last_onboarding_subtitle">Une course en taxi ? Facile</string>
+    <string name="last_onboarding_subtitle">Voici les étapes à suivre :</string>
     <string name="next">SUIVANT</string>
     <string name="ok">C\'EST COMPRIS</string>
     <string name="code">Saisissez le code reçu</string>
@@ -89,4 +89,8 @@
     <string name="countryCodeFormater">+%s</string>
     <string name="phoneFormater">%s%s</string>
     <string name="network_error">veuillez vérifier votre connexion svp</string>
+
+    <string name="web_api_key">219527634194-vk6j1a0c8mgksj2j8g2brh6umjpr1ki1.apps.googleusercontent.com</string>
+    <string name="driver_search">Recherche d\'un conducteur proche</string>
+    <string name="no_adress_popup_msg">Veuillez saisir l\'addresse de destination s\'il vous plaît</string>
 </resources>

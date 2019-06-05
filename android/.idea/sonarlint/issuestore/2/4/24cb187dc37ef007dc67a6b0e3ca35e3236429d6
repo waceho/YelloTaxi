@@ -1,38 +1,40 @@
 
-¥squid:S1186¿"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8µƒÕ¢-
-esquid:S1192„"FDefine a constant instead of duplicating this literal "Users" 5 times.(ËØÊ©8µƒÕ¢-
-Qsquid:S1199ú"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8µƒÕ¢-
- squid:S1186­"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁæìÎ8µƒÕ¢-
-qsquid:S3776ğ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(øõ¦°8µƒÕ¢-
-gsquid:S1192„"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(ËØÊ©8µƒÕ¢-
-gsquid:HiddenFieldCheck"=Rename "geoQuery" which hides the field declared at line 241.(­Œ®Ù8µƒÕ¢-
-lsquid:HiddenFieldCheck"BRename "mDriverMarker" which hides the field declared at line 364.(¼óì‹8µƒÕ¢-
-osquid:S1301ù"KReplace this "switch" statement by "if" statements to increase readability.(×ö³–úÿÿÿÿ8µƒÕ¢-
-wsquid:S2293‰"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ËÇo8µƒÕ¢-
-squid:S4165ô"iRemove this useless assignment; "driverFound" already holds the assigned value along all execution paths.(€ïäüÿÿÿÿ8µƒÕ¢-
-Vsquid:S1135Ë"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8µƒÕ¢-
-Ksquid:S1659j"(Declare "mDriverCar" on a separate line.(ÊŒËÑÿÿÿÿÿ8µƒÕ¢-
-Msquid:S1481‰".Remove this unused "driverMap" local variable.(èè©¦8µƒÕ¢-
-xsquid:S1450l"ZRemove the "mRadioGroup" field and declare it as a local variable in the relevant methods.(ÎŞ†î8µƒÕ¢-
-Vsquid:S1135ä"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8µƒÕ¢-
-Msquid:S1659j"*Declare "mDriverPhone" on a separate line.(ÊŒËÑÿÿÿÿÿ8µƒÕ¢-
-jsquid:CommentedOutCodeLine¶"<This block of commented-out lines of code should be removed.(Êåóî8µƒÕ¢-
-]"squid:SwitchLastCaseIsDefaultCheckù""Add a default case to this switch.(×ö³–úÿÿÿÿ8µƒÕ¢-
 nsquid:CommentedOutCodeLiner"<This block of commented-out lines of code should be removed.(¹êÈïùÿÿÿÿ8ÚæŸÕ¢-
- squid:S1186·"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â´ó¾8µƒÕ¢-
-\squid:S1854‰"=Remove this useless assignment to local variable "driverMap".(èè©¦8µƒÕ¢-
-^squid:S3398‹"?Move this method into the anonymous class declared at line 581.(¡Æ¼¾8µƒÕ¢-
 xsquid:S1450`"ZRemove the "mapFragment" field and declare it as a local variable in the relevant methods.(Åıùô8µƒÕ¢-
-nsquid:CommentedOutCodeLine{"<This block of commented-out lines of code should be removed.(¡©§şÿÿÿÿ8°‡ Õ¢-
-osquid:CommentedOutCodeLine¥"<This block of commented-out lines of code should be removed.(É÷ƒÅøÿÿÿÿ8µƒÕ¢-
-[squid:S2589ƒ"7Remove this expression which always evaluates to "true"(‘ÔÁøÿÿÿÿ8µƒÕ¢-
-vsquid:S3776ı"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(â’ş–şÿÿÿÿ8µƒÕ¢-
-qsquid:S3776¨"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ĞÌƒ’8µƒÕ¢-
-Isquid:S00108Ø")Either remove or fill this block of code.(Ë­õ¬8µƒÕ¢-
- squid:S1186Ë"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8µƒÕ¢-
-¥squid:S1186»"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8µƒÕ¢-
- squid:S1186²"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚Èè›8µƒÕ¢-
- squid:S1186š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8µƒÕ¢-
-Nsquid:S1066Ê"/Merge this if statement with the enclosing one.(±ò›­8µƒÕ¢-
- squid:S1186à"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8µƒÕ¢-
-osquid:S1192±"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(ßÕí€8µƒÕ¢-
+xsquid:S1450l"ZRemove the "mRadioGroup" field and declare it as a local variable in the relevant methods.(ÎŞ†î8µƒÕ¢-
+{squid:UselessImportCheck+"QRemove this unused import 'com.google.android.gms.location.LocationAvailability'.(•¨ï8˜‹‹š±-
+lsquid:UselessImportCheck"<Remove this unused import 'android.content.DialogInterface'.(Š­›¨şÿÿÿÿ8åÚ‹š±-
+nsquid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.(¡©§şÿÿÿÿ8°‡ Õ¢-
+vsquid:UselessImportCheck;"KRemove this unused import 'com.google.android.gms.tasks.OnSuccessListener'.(íå¡8˜‹‹š±-
+^squid:S3398ÿ"?Move this method into the anonymous class declared at line 574.(¡Æ¼¾8 ‘š±-
+osquid:S1192­"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(ßÕí€8 ‘š±-
+gsquid:S1192ù"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(ËØÊ©8 ‘š±-
+esquid:S1192ù"FDefine a constant instead of duplicating this literal "Users" 5 times.(ËØÊ©8 ‘š±-
+Nsquid:S1066¿"/Merge this if statement with the enclosing one.(±ò›­8 ‘š±-
+wsquid:S2293ı"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ËÇo8 ‘š±-
+Qsquid:S1199î"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8 ‘š±-
+squid:S4165æ"iRemove this useless assignment; "driverFound" already holds the assigned value along all execution paths.(€ïäüÿÿÿÿ8 ‘š±-
+osquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(É÷ƒÅøÿÿÿÿ8 ‘š±-
+jsquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(Êåóî8 ‘š±-
+gsquid:HiddenFieldCheck„"=Rename "geoQuery" which hides the field declared at line 230.(­Œ®Ù8 ‘š±-
+lsquid:HiddenFieldCheck‘"BRename "mDriverMarker" which hides the field declared at line 350.(¼óì‹8 ‘š±-
+[squid:S2589ø"7Remove this expression which always evaluates to "true"(Ìı·õùÿÿÿÿ8 ‘š±-
+Vsquid:S1135Ù"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8 ‘š±-
+Vsquid:S1135À"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
+Vsquid:S1135¢"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
+Msquid:S1481ş".Remove this unused "driverMap" local variable.(èè©¦8 ‘š±-
+vsquid:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(â’ş–şÿÿÿÿ8 ‘š±-
+qsquid:S3776â"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(øõ¦°8 ‘š±-
+qsquid:S3776š"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ĞÌƒ’8 ‘š±-
+qsquid:CallToDeprecatedMethodÍ"ARemove this use of "PlaceAutocompleteFragment"; it is deprecated.(¹Î°ê8 ‘š±-
+qsquid:CallToDeprecatedMethodÍ"ARemove this use of "PlaceAutocompleteFragment"; it is deprecated.(¹Î°ê8 ‘š±-
+Isquid:S00108Ê")Either remove or fill this block of code.(Ë­õ¬8 ‘š±-
+ squid:S1186¢"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁæìÎ8 ‘š±-
+ squid:S1186§"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚Èè›8 ‘š±-
+¥squid:S1186´"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
+ squid:S1186Œ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8 ‘š±-
+ squid:S1186½"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8 ‘š±-
+ squid:S1186Ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8 ‘š±-
+ squid:S1186«"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â´ó¾8 ‘š±-
+¥squid:S1186¯"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
+\squid:S1854ş"=Remove this useless assignment to local variable "driverMap".(èè©¦8 ‘š±-

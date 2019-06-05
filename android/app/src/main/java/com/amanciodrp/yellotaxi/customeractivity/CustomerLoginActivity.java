@@ -30,9 +30,12 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -70,6 +73,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_api_key))
                 .requestEmail()
                 .build();
         // [END configure_signin]
@@ -82,7 +86,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         firebaseAuthListener = firebaseAuth -> {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
-                UtilityKit.openActivity(mContext, DriverMapActivity.class);
+                UtilityKit.openActivity(mContext, CustomerMapActivity.class);
                 finish();
             }
         };
@@ -109,6 +113,8 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                Log.d(TAG, s);
+                Log.d(TAG, forceResendingToken.toString());
                 super.onCodeSent(s, forceResendingToken);
                 Toast.makeText(CustomerLoginActivity.this, s, Toast.LENGTH_LONG).show();
                 verificationid = s;
@@ -154,7 +160,8 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
             Log.d(TAG + "success success with ", String.valueOf(account));
             // Signed in successfully, show authenticated UI.
             // updateUI(account);
-            UtilityKit.openActivity(mContext, DriverMapActivity.class);
+            UtilityKit.openActivity(mContext, CustomerMapActivity.class);
+            firebaseAuthWithGoogle(account);
             finish();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -208,8 +215,13 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     }
 
     private void verifyPhoneNumberWithCode(String verificationId, String code) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        signInWithPhoneAuthCredential(credential);
+        try {
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+            signInWithPhoneAuthCredential(credential);
+        } catch (Exception e){
+            Log.d(TAG, e.getMessage());
+        }
+
     }
 
 
@@ -221,8 +233,8 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                         Log.d(TAG, "signInWithCredential:success");
 
                         FirebaseUser user = task.getResult().getUser();
-
-                        startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
+                        if (null != user)
+                            startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
 
                     } else {
                         // Sign in failed, display a message and update the UI
@@ -234,6 +246,29 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
                         }
 
+                    }
+                });
+    }
+
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+
+                        }
+
+                        // ...
                     }
                 });
     }
@@ -305,8 +340,11 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                 // set onclick listener
                 loginPopupBinding.valider.setOnClickListener(v -> {
                     // launch phone verification and code auth callback
-                    if (Reachability.isConnected(mContext))
-                        startPhoneNumberVerification(getInputedPhone(getCountryCode()));
+                    if (Reachability.isConnected(mContext)){
+                        startPhoneNumberVerification(getInputedPhone(loginPopupBinding.edCode.getText().toString()));
+                        Log.d(TAG, getInputedPhone(getCountryCode()));
+                        builder.dismiss();
+                    }
                     else
                         SnackbarUtils.displayWarning(this, R.string.network_error);
                 });
@@ -348,6 +386,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
      * get Phone with Code
      **/
     private String getInputedPhone(String phone) {
+        Log.d(TAG,  phone);
         return String.format(getString(R.string.phoneFormater), getCountryCode(), phone);
     }
 

@@ -1,6 +1,7 @@
 package com.amanciodrp.yellotaxi;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 
 import com.amanciodrp.yellotaxi.databinding.ActivityHistoryBinding;
@@ -46,6 +47,7 @@ import okhttp3.Response;
 public class HistoryActivity extends AppCompatActivity {
     private String customerOrDriver, userId;
     private RecyclerView.Adapter mHistoryAdapter;
+    private String  TAG = HistoryActivity.class.getSimpleName();
 
     private Double Balance = 0.0;
 
@@ -67,6 +69,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+        Log.d(TAG, userId);
         getUserHistoryIds();
 
         if(customerOrDriver.equals("Drivers")){
@@ -91,20 +94,28 @@ public class HistoryActivity extends AppCompatActivity {
      * get user history
      */
     private void getUserHistoryIds() {
-        DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(customerOrDriver).child(userId).child("history");
-        userHistoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot history : dataSnapshot.getChildren()){
-                        fetchRideInformation(history.getKey());
+        Log.d(TAG, "ask driver history");
+        try {
+            DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("history");
+            userHistoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+                    Log.d(TAG, "ask driver onDataChange");
+                    if(dataSnapshot.exists()){
+                        for(DataSnapshot history : dataSnapshot.getChildren()){
+                            Log.d(TAG, " driver history" + history);
+                            fetchRideInformation(history.getKey());
+                        }
                     }
                 }
-            }
-            @Override
-            public void onCancelled(@NotNull DatabaseError databaseError) {
-            }
-        });
+                @Override
+                public void onCancelled(@NotNull DatabaseError databaseError) {
+                }
+            });
+        } catch (Exception e){
+            Log.d(TAG, e.getMessage());
+        }
+
     }
 
     /**
@@ -122,7 +133,7 @@ public class HistoryActivity extends AppCompatActivity {
                     Long timestamp = 0L;
                     String distance = "";
                     Double ridePrice = 0.0;
-
+                    Log.d("History", "get history");
                     if(dataSnapshot.child("timestamp").getValue() != null){
                         timestamp = Long.valueOf(dataSnapshot.child("timestamp").getValue().toString());
                     }

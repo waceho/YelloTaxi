@@ -174,10 +174,15 @@ public class OnBoardingActivity extends AppCompatActivity {
             // save user default conf
             saveUserDefaullMode();
             // launch Customer Login
-            if (defaultUseSettings.getMode().equals(getString(R.string.passager)))
+            if (defaultUseSettings.getMode().equals(getString(R.string.passager))){
                 startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
-            else
+                finish();
+            }
+
+            else{
                 startActivity(new Intent(OnBoardingActivity.this, DriverLoginActivity.class));
+                finish();
+            }
         }
     }
 
@@ -190,7 +195,7 @@ public class OnBoardingActivity extends AppCompatActivity {
                         getString(R.string.lastOnboardingExplanation_4)) :
 
                 BulletListUtils.makeBulletList(20,
-                        getString(R.string.lastOnboardingDriveExplanation_1),
+
                         getString(R.string.lastOnboardingDriveExplanation_2),
                         getString(R.string.lastOnboardingDriveExplanation_3),
                         getString(R.string.lastOnboardingDriveExplanation_4),

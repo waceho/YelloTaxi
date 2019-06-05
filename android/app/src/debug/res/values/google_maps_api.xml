@@ -9,7 +9,7 @@
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    FC:A0:45:F4:26:3D:D3:51:C1:92:FF:60:41:5E:E7:76:DE:A8:D9:CD
+    com.amanciodrp.yellotaxi
 
     SHA-1 certificate fingerprint:
     FC:A0:45:F4:26:3D:D3:51:C1:92:FF:60:41:5E:E7:76:DE:A8:D9:CD
@@ -21,6 +21,6 @@
     string in this file.
     -->
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
-        	AIzaSyCKmZJkeKYbjSvFrtWE5ng_rTJlWFW-nKA
+        	AIzaSyDJ-aVcgMDzY2Frosy3dPnpnJgLWNLsO1Y
     </string>
 </resources>

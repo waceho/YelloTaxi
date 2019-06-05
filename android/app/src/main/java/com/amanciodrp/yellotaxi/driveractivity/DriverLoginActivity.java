@@ -31,12 +31,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
@@ -71,8 +76,10 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_api_key))
                 .requestEmail()
                 .build();
+
         // [END configure_signin]
 
         // [START build_client]
@@ -83,13 +90,14 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
         firebaseAuthListener = firebaseAuth -> {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
+                Log.d(TAG, user.toString());
                 startService(new Intent(DriverLoginActivity.this, OnAppKilled.class));
                 Intent intent = new Intent(DriverLoginActivity.this, DriverMapActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 finish();
             }
         };
-
 
     }
 
@@ -99,11 +107,17 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                if (null !=  account)
+                    firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                Log.e(TAG, e.getMessage());
+            }
         }
     }
 
@@ -111,19 +125,43 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Log.d(TAG + "success", String.valueOf(account));
+            Log.d(TAG + " success ", String.valueOf(account.getIdToken()));
             // Signed in successfully, show authenticated UI.
             // updateUI(account);
-            UtilityKit.openActivity(mContext, DriverMapActivity.class);
-            finish();
+            firebaseAuthWithGoogle(account);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
+            Log.w(TAG, "signInResult:failed code = " + e.getStatusCode());
             //  updateUI(null);
         }
     }
     // [END handleSignInResult]
+
+    /**
+     *
+     * @param acct
+     */
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+        Log.d(TAG, "firebaseAuthWithGoogle: " + acct.getIdToken());
+        Log.d(TAG, "firebaseAuthWithGoogle: " + acct.getDisplayName());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Log.d(TAG, user.getDisplayName());
+                        UtilityKit.openActivity(mContext, DriverMapActivity.class);
+                        finish();
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                    }
+                });
+    }
 
     @Override
     public void onClick(View v) {
@@ -133,6 +171,10 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                 break;
 
             case R.id.phone_login:
+                if (getCountryCode().equals("+")){
+                    UtilityKit.showAlert(this, getString(R.string.app_name), "Votre smartphone semble incompatible avec cette fonctionnalité, veuillez utiliser une autre option d'authentification");
+                    return;
+                }
                 showDialog(ASK_TYPE_PHONE);
                 break;
         }
@@ -145,6 +187,10 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
     }
     // [END google account signIn]
 
+    /**
+     *
+     * @param type
+     */
     private void showDialog(String type) {
         // Get the layout inflater
         try {
@@ -168,8 +214,10 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                 // set onclick listener
                 loginPopupBinding.valider.setOnClickListener(v -> {
                     // launch phone verification and code auth callback
-                    if (Reachability.isConnected(mContext))
+                    if (Reachability.isConnected(mContext)){
                         startPhoneNumberVerification(getInputedPhone(getCountryCode()));
+                    }
+
                     else
                         SnackbarUtils.displayWarning(this, R.string.network_error);
                 });
@@ -242,7 +290,9 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
 
                         FirebaseUser user = task.getResult().getUser();
 
-                        startActivity(new Intent(getApplicationContext(), CustomerMapActivity.class));
+                        Log.d(TAG, String.valueOf(user));
+
+                        startActivity(new Intent(getApplicationContext(), DriverMapActivity.class));
 
                     } else {
                         // Sign in failed, display a message and update the UI

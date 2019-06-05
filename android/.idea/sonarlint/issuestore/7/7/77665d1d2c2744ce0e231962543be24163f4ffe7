@@ -1,32 +1,23 @@
 
-esquid:S2184ù"ACast one of the operands of this addition operation to a "float".(ÕÏÒÅùÿÿÿÿ8Ñ øÉ¤-
-esquid:UselessImportCheck"5Remove this unused import 'android.widget.ImageView'.(ú¯ëàüÿÿÿÿ8»×¤¶¤-
-]"squid:SwitchLastCaseIsDefaultCheck¸""Add a default case to this switch.(×ö³–úÿÿÿÿ8Ñ øÉ¤-
-fsquid:S1192Ì"HDefine a constant instead of duplicating this literal "history" 3 times.(çÆË8Ñ øÉ¤-
-Nsquid:S1068["0Remove this unused "isLoggingOut" private field.(„á”ì8»×¤¶¤-
-ysquid:UselessImportCheck;"NRemove this unused import 'com.google.android.material.button.MaterialButton'.(Õ­íÄ8»×¤¶¤-
-lsquid:S1192š"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(¯‚Á»şÿÿÿÿ8Ñ øÉ¤-
-\"squid:SwitchLastCaseIsDefaultCheckx""Add a default case to this switch.(²‹›Øüÿÿÿÿ8ÁŞ÷É¤-
-Qsquid:S1199¹"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8Ñ øÉ¤-
-ysquid:S1450["[Remove the "isLoggingOut" field and declare it as a local variable in the relevant methods.(„á”ì8áøÉ¤-
-€squid:S1488â"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Ë‚¶‘8Ñ øÉ¤-
-rsquid:UselessImportCheck"BRemove this unused import 'androidx.lifecycle.ViewModelProviders'.(ê· ºÿÿÿÿÿ8Òåœº¤-
-]squid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ8»×¤¶¤-
-esquid:UselessImportCheck":Remove this unused import 'android.widget.CompoundButton'.(®½¤Ş8Ş¯÷É¤-
-hsquid:UselessImportCheck"8Remove this unused import 'android.widget.LinearLayout'.(çîšçúÿÿÿÿ8»×¤¶¤-
- squid:S1186…"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8Ñ øÉ¤-
- squid:S1186³"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8Ñ øÉ¤-
-Xsquid:S1068^"5Remove this unused "customerViewModel" private field.(øÆ“øÿÿÿÿ8¿ëšº¤-
-osquid:CommentedOutCodeLineÊ"<This block of commented-out lines of code should be removed.(‘„½şüÿÿÿÿ8Ñ øÉ¤-
-{squid:S1450S"]Remove the "mWorkingSwitch" field and declare it as a local variable in the relevant methods.(¸‘¿€8»×¤¶¤-
-Isquid:S00108ğ")Either remove or fill this block of code.(ÿ®×8Ñ øÉ¤-
-jsquid:S1192£"FDefine a constant instead of duplicating this literal "Users" 6 times.(Üß¸øÿÿÿÿ8Ñ øÉ¤-
-ksquid:S1192ğ"LDefine a constant instead of duplicating this literal "destination" 3 times.(¼°…š8Ñ øÉ¤-
- squid:S1186Ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8Ñ øÉ¤-
- squid:S1186¡"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8Ñ øÉ¤-
-asquid:S1854ø"BRemove this useless assignment to local variable "destinationLng".(î‚®Ô8Ñ øÉ¤-
-dsquid:UselessImportCheck"4Remove this unused import 'android.widget.TextView'.(„Ë‚ˆÿÿÿÿÿ8»×¤¶¤-
-¥squid:S1186å"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢İ‰¥ùÿÿÿÿ8Ñ øÉ¤-
-tsquid:S1192£"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(Üß¸øÿÿÿÿ8Ñ øÉ¤-
- squid:S1186„"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Şİ¡®8Ñ øÉ¤-
-”squid:S1319é"pThe type of the "route" object should be an interface such as "List" rather than the implementation "ArrayList".(©ˆ—»øÿÿÿÿ8Ñ øÉ¤-
+msquid:S00116K"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•„õ‘8Ñé–±-
+ squid:S1186º"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8ú‰Â–±-
+tsquid:S1192©"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(Üß¸øÿÿÿÿ8«ø»–±-
+esquid:S2184İ"ACast one of the operands of this addition operation to a "float".(ÕÏÒÅùÿÿÿÿ8©“’—±-
+jsquid:S1192©"FDefine a constant instead of duplicating this literal "Users" 6 times.(Üß¸øÿÿÿÿ8«ø»–±-
+Nsquid:S1068Z"0Remove this unused "isLoggingOut" private field.(„á”ì8Ñé–±-
+Xsquid:S1068]"5Remove this unused "customerViewModel" private field.(øÆ“øÿÿÿÿ8Ñé–±-
+osquid:CommentedOutCodeLine®"<This block of commented-out lines of code should be removed.(‘„½şüÿÿÿÿ8©“’—±-
+fsquid:S1192Ş"HDefine a constant instead of duplicating this literal "history" 3 times.(çÆË8©“’—±-
+€squid:S1488ô"aImmediately return this expression instead of assigning it to the temporary variable "timestamp".(Ë‚¶‘8©“’—±-
+Qsquid:S1199"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8©“’—±-
+lsquid:S1192—"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(¯‚Á»şÿÿÿÿ8«ø»–±-
+ysquid:S1450Z"[Remove the "isLoggingOut" field and declare it as a local variable in the relevant methods.(„á”ì8Ñé–±-
+ squid:S1186İ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8ú‰Â–±-
+ksquid:S1192ü"LDefine a constant instead of duplicating this literal "destination" 3 times.(¼°…š8ú‰Â–±-
+asquid:S1854„"BRemove this useless assignment to local variable "destinationLng".(î‚®Ô8«ø»–±-
+ squid:S1186­"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8ú‰Â–±-
+Isquid:S00108‚")Either remove or fill this block of code.(ÿ®×8©“’—±-
+ squid:S1186‘"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8ú‰Â–±-
+”squid:S1319Í"pThe type of the "route" object should be an interface such as "List" rather than the implementation "ArrayList".(©ˆ—»øÿÿÿÿ8©“’—±-
+¥squid:S1186É"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢İ‰¥ùÿÿÿÿ8©“’—±-
+ squid:S1186è"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Şİ¡®8©“’—±-

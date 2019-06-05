@@ -1,13 +1,25 @@
 
-esquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(Ñ·«©
-ssquid:S1450"URemove the "mEmail" field and declare it as a local variable in the relevant methods.(ÿ¬Ù³8Ü«°¿§-
-usquid:S00117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Á€ıÿÿÿÿ8Áö®¿§-
-_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8Ø÷ˆ«§-
-usquid:S00117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰° üÿÿÿÿ8Áö®¿§-
-^squid:UselessImportCheck
-".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8Ü«°¿§-
-vsquid:S1450"XRemove the "mPassword" field and declare it as a local variable in the relevant methods.(ÿ¬Ù³8Ü«°¿§-
-csquid:UselessImportCheck"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8ŒÛ°¿§-
-ssquid:S1450"\Remove the "mRegistration" field and declare it as a local variable in the relevant methods.(ğò¼¿
-lsquid:S1450"URemove the "mLogin" field and declare it as a local variable in the relevant methods.(ğò¼¿
-bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8áô‰«§-
+usquid:UselessImportCheck0"JRemove this unused import 'com.google.firebase.database.FirebaseDatabase'.(×Ë—8Š¢¯í°-
+tsquid:S1450<"VRemove the "binding" field and declare it as a local variable in the relevant methods.(È†û8Š¢¯í°-
+hsquid:UnusedPrivateMethod}"7Remove this unused private "handleSignInResult" method.(•ûæÈúÿÿÿÿ8â†õ°-
+|squid:UselessImportCheck""LRemove this unused import 'com.google.android.gms.tasks.OnCompleteListener'.(Çğ¸Òÿÿÿÿÿ8å“³î°-
+usquid:UselessImportCheck/"KRemove this unused import 'com.google.firebase.database.DatabaseReference'.(ÉÓ¹8Š¢¯í°-
+Isquid:S1068<"+Remove this unused "binding" private field.(È†û8Š¢¯í°-
+lsquid:MaximumInheritanceDepth7"<This class has 6 parents which is greater than 5 authorized.(œæÿÅ8Š¢¯í°-
+jsquid:UselessImportCheck("@Remove this unused import 'com.google.firebase.auth.AuthResult'.(âÂ8å“³î°-
+ysquid:S1450@"VRemove the "builder" field and declare it as a local variable in the relevant methods.(Şš¾Ïúÿÿÿÿ8Š¢¯í°-
+jsquid:CommentedOutCodeLineˆ"<This block of commented-out lines of code should be removed.(á„Õ©8¤çÁô°-
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8áô‰«§-
+Nsquid:S1068@"+Remove this unused "builder" private field.(Şš¾Ïúÿÿÿÿ8Š¢¯í°-
+jsquid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(Øş‡”8Ú ‚±-
+msquid:S00116:"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹õ8Š¢¯í°-
+…squid:UselessImportCheck"ZRemove this unused import 'com.amanciodrp.yellotaxi.customeractivity.CustomerMapActivity'.(—á ³8¿é»í°-
+usquid:UselessImportCheck$"JRemove this unused import 'com.google.android.material.snackbar.Snackbar'.(ë„ƒŠ8Æµî°-
+_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8Ø÷ˆ«§-
+isquid:CommentedOutCodeLinem"<This block of commented-out lines of code should be removed.(˜Î‹Ã8¤çÁô°-
+‡squid:UselessImportCheck"\Remove this unused import 'com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity'.(ëÛ§×8Š¢¯í°-
+squid:UselessImportCheck%"TRemove this unused import 'com.google.android.material.textfield.TextInputEditText'.(°Ò8Š¢¯í°-
+vsquid:UselessImportCheck	"FRemove this unused import 'androidx.appcompat.widget.AppCompatButton'.(æã¤¤ûÿÿÿÿ8Š¢¯í°-
+Gsquid:S1148÷"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Ú ‚±-
+osquid:CommentedOutCodeLine‚"<This block of commented-out lines of code should be removed.(„ßÜıÿÿÿÿ8¤çÁô°-
+csquid:UselessImportCheck"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8šÊÀğ°-

@@ -34,8 +34,8 @@
             android:theme="@style/AppFullScreenTheme">
         </activity>
         <activity android:name="com.amanciodrp.yellotaxi.MainActivity"/>
-        <activity android:name="com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity" />
-        <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity" />
+        <activity android:name="com.amanciodrp.yellotaxi.driveractivity.DriverLoginActivity" android:launchMode="singleTop"/>
+        <activity android:name="com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity" android:launchMode="singleTop"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -46,7 +46,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCKmZJkeKYbjSvFrtWE5ng_rTJlWFW-nKA" />
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name="com.amanciodrp.yellotaxi.driveractivity.DriverMapActivity"

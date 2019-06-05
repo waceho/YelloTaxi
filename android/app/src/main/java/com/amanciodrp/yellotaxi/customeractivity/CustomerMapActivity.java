@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -40,14 +41,10 @@ import com.firebase.geofire.GeoQuery;
 import com.firebase.geofire.GeoQueryEventListener;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -56,7 +53,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -70,6 +70,7 @@ import com.amanciodrp.yellotaxi.di.viewmodel.ViewModelFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -113,12 +114,13 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     //private PhonePopUpViewModel phonePopUpViewModel;
 
-    @Inject ViewModelFactory viewModelFactory;
+    @Inject
+    ViewModelFactory viewModelFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = bind();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_costumer_map);
 
         //phonePopUpViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(PhonePopUpViewModel.class);
 
@@ -142,97 +144,93 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mRadioGroup = findViewById(R.id.radioGroup);
         mRadioGroup.check(R.id.UberX);
 
+        // Initialize Places.
+        Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
 
-        binding.logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(CustomerMapActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+
+        binding.logout.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(CustomerMapActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         });
 
 
-        binding.request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.request.setOnClickListener(v -> {
 
-                if (requestBol) {
-                    endRide();
-                } else {
-                    /*
-                    int selectId = mRadioGroup.getCheckedRadioButtonId();
-                    final RadioButton radioButton = findViewById(selectId);
-                    if (radioButton.getText() == null){
-                        return;
-                    }
-                    requestService = radioButton.getText().toString();
-                    */
-                    if (null != destinationLatLng) {
-                        requestBol = true;
-
-                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
-                        GeoFire geoFire = new GeoFire(ref);
-                        geoFire.setLocation(userId, new GeoLocation(destinationLatLng.latitude, destinationLatLng.longitude));
-
-                        /*
-                        if (null != mMap)
-                            pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Départ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_customer_location)));
-                        */
-
-                        binding.request.setText("Recherche d'un conducteur");
-
-                        getClosestDriver();
-
-                    } else {
-                        showdialog("Veuillez saisir l'addresse de destination s'il vous plaît");
-                    }
-
+            if (requestBol) {
+                endRide();
+            } else {
+                /*
+                int selectId = mRadioGroup.getCheckedRadioButtonId();
+                final RadioButton radioButton = findViewById(selectId);
+                if (radioButton.getText() == null){
+                    return;
                 }
+                requestService = radioButton.getText().toString();
+                */
+                if (null != destinationLatLng) {
+                    requestBol = true;
+
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
+                    GeoFire geoFire = new GeoFire(ref);
+                    geoFire.setLocation(userId, new GeoLocation(destinationLatLng.latitude, destinationLatLng.longitude));
+
+                    /*
+                    if (null != mMap)
+                        pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Départ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_customer_location)));
+                    */
+
+                    binding.request.setText(getString(R.string.driver_search));
+                    binding.prgSearchDriver.setVisibility(View.VISIBLE);
+
+                    getClosestDriver();
+
+                } else {
+                    showdialog(getString(R.string.no_adress_popup_msg));
+                }
+
             }
         });
 
-        binding.account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
-                startActivity(intent);
-            }
+        binding.account.setOnClickListener(v -> {
+            Intent intent = new Intent(CustomerMapActivity.this, CustomerSettingsActivity.class);
+            startActivity(intent);
         });
 
-        binding.history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CustomerMapActivity.this, HistoryActivity.class);
-                intent.putExtra("customerOrDriver", "Customers");
-                startActivity(intent);
-            }
+        binding.history.setOnClickListener(v -> {
+            Intent intent = new Intent(CustomerMapActivity.this, HistoryActivity.class);
+            intent.putExtra("customerOrDriver", "Customers");
+            startActivity(intent);
         });
 
+        // Initialize the AutocompleteSupportFragment.
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.place_autocomplete_fragment2);
 
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment2);
+        autocompleteFragment.a.setTextSize(16.0f);
+        autocompleteFragment.a.setPadding(5, 5, 5, 5);
 
+        // Specify the types of place data to return.
+        autocompleteFragment.setPlaceFields(Arrays.asList(com.google.android.libraries.places.api.model.Place.Field.ID, com.google.android.libraries.places.api.model.Place.Field.NAME, Place.Field.LAT_LNG));
+
+        // Set up a PlaceSelectionListener to handle the response.
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
-            public void onPlaceSelected(Place place) {
+            public void onPlaceSelected(@NonNull Place place) {
+                Log.i("CustomerMapActivity", "Place: " + place.getName() + ", " + place.getId() + ", " + place.getLatLng());
                 destination = String.valueOf(place.getAddress());
                 destinationLatLng = place.getLatLng();
             }
 
             @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
+            public void onError(@NonNull Status status) {
+                Log.i("CustomerMapActivity", "An error occurred: " + status);
             }
         });
 
-    }
-
-    private ActivityCostumerMapBinding bind() {
-        return DataBindingUtil.setContentView(this, R.layout.activity_costumer_map);
     }
 
     private int radius = 1;
@@ -256,7 +254,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             public void onKeyEntered(String key, GeoLocation location) {
 
                 if (!driverFound && requestBol) {
-                    Log.d("CustomerMap driverFound : ", String.valueOf(!driverFound && requestBol));
                     DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(key);
                     mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -284,7 +281,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                                 getDriverLocation();
                                 getDriverInfo();
                                 getHasRideEnded();
-                                binding.request.setText("Looking for Driver Location....");
+                                binding.request.setText(getString(R.string.driver_search));
 
                             }
                         }
@@ -338,12 +335,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 return;
             }
         }
-        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (null != location)
-                    pickupLocation = new LatLng(location.getLatitude(), location.getLongitude());
-            }
+        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (null != location)
+                pickupLocation = new LatLng(location.getLatitude(), location.getLongitude());
         });
 
     }
@@ -556,6 +550,16 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mLocationRequest.setFastestInterval(3000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    Activity#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for Activity#requestPermissions for more details.
+            return;
+        }
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
 
         final View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
@@ -567,12 +571,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             }
         });
 
-        mFusedLocationClient.getLocationAvailability().addOnSuccessListener(new OnSuccessListener<LocationAvailability>() {
-            @Override
-            public void onSuccess(LocationAvailability locationAvailability) {
-                if (null != pickupLocation)
-                    pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Départ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_customer_location)));
-            }
+        mFusedLocationClient.getLocationAvailability().addOnSuccessListener(locationAvailability -> {
+            if (null != pickupLocation)
+                pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Départ").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_customer_location)));
         });
 
 
@@ -612,12 +613,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 new android.app.AlertDialog.Builder(this)
                         .setTitle("give permission")
                         .setMessage("give permission message")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                ActivityCompat.requestPermissions(CustomerMapActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                            }
-                        })
+                        .setPositiveButton("OK", (dialogInterface, i) -> ActivityCompat.requestPermissions(CustomerMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1))
                         .create()
                         .show();
             } else {
@@ -713,11 +709,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 .create();
         // show alertDialog
         builder.show();
-        view.findViewById(R.id.valider).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                builder.dismiss();
-            }
-        });
+        view.findViewById(R.id.valider).setOnClickListener(v -> builder.dismiss());
     }
 }
