@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "219527634194-5q70hp7dipnnuj2jbmqk495b943caecn.apps.googleusercontent.com",
+          "client_id": "219527634194-28h475f9rdahncbs4m93d5goc419n3k7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.amanciodrp.yellotaxi",
@@ -38,6 +38,13 @@
             {
               "client_id": "219527634194-vk6j1a0c8mgksj2j8g2brh6umjpr1ki1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "219527634194-2gsqa8inkvd99j3mnj1lkmt1atohvv0i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.amanciodrp.yellotaxi"
+              }
             }
           ]
         }

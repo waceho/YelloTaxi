@@ -1,18 +1,24 @@
 
-bsquid:S1192k"FDefine a constant instead of duplicating this literal "phone" 3 times.(×œÂ®ûÿÿÿÿ
-esquid:MaximumInheritanceDepth)"<This class has 6 parents which is greater than 5 authorized.(ÆñŒ¶
-3squid:S3626·"Remove this redundant jump.(ûÁÝ…
-3squid:S3626Ä"Remove this redundant jump.(ûÁÝ…
-@squid:S1604³"(Make this anonymous inner class a lambda(ÎŸÜÜ
-_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8âÕ£«¦-
-ysquid:UselessImportCheck"NRemove this unused import 'com.google.android.material.button.MaterialButton'.(Õ­íÄ8„ˆ•®¦-
-bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òžýÿÿÿÿ8Ñ‘Õ«¦-
-lsquid:S1192~"PDefine a constant instead of duplicating this literal "profileImageUrl" 3 times.(Ê—–Óùÿÿÿÿ
-hsquid:S3776a"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(¢Ü¹
-ksquid:S1450/"TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’
-P"squid:SwitchLastCaseIsDefaultChecku""Add a default case to this switch.(÷®Ô€
-™squid:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Þ‰
-Esquid:S1604º"(Make this anonymous inner class a lambda(‹äÐçýÿÿÿÿ
-Wsquid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ
-@squid:S1148«"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
-_squid:S1192s"HDefine a constant instead of duplicating this literal "service" 3 times.(‡ûéù
+csquid:UselessImportCheck	"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ8äøÐ‰È-
+esquid:MaximumInheritanceDepth0"<This class has 6 parents which is greater than 5 authorized.(ÆñŒ¶
+Osquid:S1602h",Remove useless curly braces around statement(ý¨›Åþÿÿÿÿ8œ‘‰È-
+ysquid:UselessImportCheck"NRemove this unused import 'com.google.android.material.button.MaterialButton'.(Õ­íÄ8„ˆ•®¦-
+Gsquid:S1148Á"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8•É®¼È-
+[squid:S2589†"7Remove this expression which always evaluates to "true"(’ê¸¨ÿÿÿÿÿ8ÂÖ¸¼È-
+[squid:S2589‚"7Remove this expression which always evaluates to "true"(œÓ¸Àúÿÿÿÿ8ÂÖ¸¼È-
+Ysquid:UselessImportCheck.".Remove this unused import 'java.util.Objects'.(¼¸õ›8˜œ…ŽÈ-
+bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òžýÿÿÿÿ8Ñ‘Õ«¦-
+usquid:UselessImportCheck""JRemove this unused import 'com.google.firebase.database.FirebaseDatabase'.(×Ë—8Ë§¼È-
+dsquid:S1192u"FDefine a constant instead of duplicating this literal "phone" 4 times.(žëÜ8ƒ¤ß¼È-
+vsquid:UselessImportCheck"KRemove this unused import 'com.google.android.gms.tasks.OnSuccessListener'.(íå¡8Ù©Ñ‰È-
+Ksquid:S1602É",Remove useless curly braces around statement(ñùÖÊ8•É®¼È-
+lsquid:S1192†"HDefine a constant instead of duplicating this literal "service" 3 times.(’ê¸¨ÿÿÿÿÿ8•É®¼È-
+rsquid:S14507"TRemove the "mAuth" field and declare it as a local variable in the relevant methods.(ªÐ”’8®ÙÎ§È-
+osquid:S3776m"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(¢Ü¹8Î¿µ‰È-
+rsquid:S001162"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó•£»øÿÿÿÿ8Ä‚Ð‰È-
+tsquid:S1192‘"PDefine a constant instead of duplicating this literal "profileImageUrl" 3 times.(í÷ÕÒüÿÿÿÿ8•É®¼È-
+Ksquid:S10688"(Remove this unused "user" private field.(š·àŽûÿÿÿÿ8ÚöÌ§È-
+[squid:S2589‘"7Remove this expression which always evaluates to "true"(í÷ÕÒüÿÿÿÿ8ÂÖ¸¼È-
+_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8âÕ£«¦-
+Wsquid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äþÿÿÿÿ
+{squid:UselessImportCheck"KRemove this unused import 'com.google.android.gms.tasks.OnFailureListener'.(ï¿ÞÞúÿÿÿÿ8äøÐ‰È-

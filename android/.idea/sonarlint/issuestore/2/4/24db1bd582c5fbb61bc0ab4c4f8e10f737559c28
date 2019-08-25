@@ -1,6 +1,5 @@
 
-Gsquid:S1905"+Remove this unnecessary cast to "CardView".(«õóû8ıâ³Š -
-csquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±
-lsquid:S1450"XRemove the "mCustomer" field and declare it as a local variable in the relevant methods.(”Ğõk
-Gsquid:S1905"+Remove this unnecessary cast to "CardView".(ï¾º¸8ıâ³Š -
-jsquid:S1450"VRemove the "mDriver" field and declare it as a local variable in the relevant methods.(”Ğõk
+^squid:UselessImportCheck".Remove this unused import 'android.view.View'.(Ø½­äşÿÿÿÿ8¤Ë†á³-
+esquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(²Ú±
+lsquid:S1450"VRemove the "mDriver" field and declare it as a local variable in the relevant methods.(”Ğõk
+nsquid:S1450"XRemove the "mCustomer" field and declare it as a local variable in the relevant methods.(”Ğõk

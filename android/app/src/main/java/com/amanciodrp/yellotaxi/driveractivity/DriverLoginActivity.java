@@ -23,7 +23,10 @@ import com.amanciodrp.yellotaxi.customeractivity.CustomerLoginActivity;
 import com.amanciodrp.yellotaxi.customeractivity.CustomerMapActivity;
 import com.amanciodrp.yellotaxi.databinding.ActivityDriverLoginBinding;
 import com.amanciodrp.yellotaxi.databinding.PhoneLoginPopupBinding;
+import com.amanciodrp.yellotaxi.model.User;
+import com.amanciodrp.yellotaxi.utils.GoogleServiceSingleton;
 import com.amanciodrp.yellotaxi.utils.Reachability;
+import com.amanciodrp.yellotaxi.utils.SharedPrefsObject;
 import com.amanciodrp.yellotaxi.utils.SnackbarUtils;
 import com.amanciodrp.yellotaxi.utils.UtilityKit;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -47,6 +50,9 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static com.amanciodrp.yellotaxi.utils.AppConstants.ASK_TYPE_CODE;
@@ -62,8 +68,11 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
     private Context mContext;
     private GoogleSignInClient mGoogleSignInClient;
     private AlertDialog builder;
+    private DatabaseReference mDriverDatabase;
+    private FirebaseUser mUser;
     private String verificationid;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
+    private GoogleServiceSingleton googleServiceSingleton = GoogleServiceSingleton.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,25 +81,15 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
         mContext = getBaseContext();
         mAuth = FirebaseAuth.getInstance();
 
-        // [START configure_signin]
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.web_api_key))
-                .requestEmail()
-                .build();
-
-        // [END configure_signin]
-
         // [START build_client]
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient = googleServiceSingleton.getGoogleSigninClient(mContext);
         // [END build_client]
 
         firebaseAuthListener = firebaseAuth -> {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
-                Log.d(TAG, user.toString());
+                updateDriverProfile(user, Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
                 startService(new Intent(DriverLoginActivity.this, OnAppKilled.class));
                 Intent intent = new Intent(DriverLoginActivity.this, DriverMapActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -98,7 +97,6 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                 finish();
             }
         };
-
     }
 
     // [START onActivityResult]
@@ -146,14 +144,15 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
         Log.d(TAG, "firebaseAuthWithGoogle: " + acct.getIdToken());
         Log.d(TAG, "firebaseAuthWithGoogle: " + acct.getDisplayName());
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        AuthCredential credential = googleServiceSingleton.getAuthCredential(acct);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
-                        FirebaseUser user = mAuth.getCurrentUser();
-                        Log.d(TAG, user.getDisplayName());
+                        User user = new User(acct.getIdToken());
+                        user.setIdToken(acct.getIdToken());
+                        SharedPrefsObject.saveObjectToSharedPreference(mContext, User.class.getSimpleName(), User.class.getSimpleName(), user);
                         UtilityKit.openActivity(mContext, DriverMapActivity.class);
                         finish();
                     } else {
@@ -207,7 +206,7 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
             if (ASK_TYPE_PHONE.equals(type) && null != loginPopupBinding){
                 loginPopupBinding.tvCode.setVisibility(View.VISIBLE);
                 loginPopupBinding.tvCode.setText(getCountryCode());
-                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
+                loginPopupBinding.inputLayoutCode.setHintTextColor(getColorStateList(R.color.red));
                 loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_phone_hint));
                 loginPopupBinding.valider.setText(getString(R.string.valider));
 
@@ -225,7 +224,7 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
             } else if (ASK_TYPE_CODE.equals(type) && null != loginPopupBinding){
                 loginPopupBinding.tvCode.setVisibility(View.GONE);
                 loginPopupBinding.tvCode.setText(getCountryCode());
-                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
+                loginPopupBinding.inputLayoutCode.setHintTextColor(getColorStateList(R.color.red));
                 loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_code_hint));
                 loginPopupBinding.valider.setText(getString(R.string.confirm_code));
 
@@ -233,7 +232,7 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                 loginPopupBinding.valider.setOnClickListener(v -> {
                     // launch phone verification and code auth callback
                     if (Reachability.isConnected(mContext))
-                        verifyPhoneNumberWithCode(verificationid, loginPopupBinding.edCode.getText().toString());
+                        verifyPhoneNumberWithCode(verificationid, loginPopupBinding.inputLayoutCode.getText().toString());
                     else
                         SnackbarUtils.displayWarning(this, R.string.network_error);
 
@@ -288,9 +287,11 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
 
-                        FirebaseUser user = task.getResult().getUser();
+                        FirebaseUser user = Objects.requireNonNull(task.getResult()).getUser();
 
                         Log.d(TAG, String.valueOf(user));
+
+                        updateDriverProfile(user, Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
 
                         startActivity(new Intent(getApplicationContext(), DriverMapActivity.class));
 
@@ -337,6 +338,27 @@ public class DriverLoginActivity extends AppCompatActivity implements View.OnCli
                 showDialog(ASK_TYPE_CODE);
             }
         };
+    }
+
+    /**
+     *
+     * @param user
+     * @param userID
+     */
+    private void updateDriverProfile(FirebaseUser user, String userID){
+        mDriverDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userID);
+
+        Map userInfo = new HashMap();
+        if (null != user && user.getDisplayName() != null)
+            userInfo.put("name", user.getDisplayName());
+        if (null != user && null != user.getPhoneNumber())
+            userInfo.put("phone", user.getPhoneNumber());
+        if (null != user && null != user.getPhotoUrl())
+            userInfo.put("profileImageUrl", user.getPhotoUrl().toString());
+
+        Log.d(TAG, "try to update");
+        mDriverDatabase.updateChildren(userInfo);
+        mDriverDatabase.push();
     }
 
     @Override

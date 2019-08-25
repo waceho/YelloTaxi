@@ -84,23 +84,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="25dp"
-                    android:orientation="vertical"
-                    android:padding="20dp">
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chipgroup"
                         style="@style/Widget.MaterialComponents.ChipGroup"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:chipSpacingVertical="10dp"
+                        android:layout_height="100dp"
+                        app:chipSpacingVertical="8dp"
                         app:singleSelection="true">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/passager"
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="45dp"
                             android:elevation="1dp"
                             android:fontFamily="@font/arial"
                             android:text="@string/passer_text"
@@ -116,7 +115,8 @@
                             android:id="@+id/conducteur"
                             style="@style/Widget.MaterialComponents.Chip.Choice"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="45dp"
+                            android:elevation="1dp"
                             android:fontFamily="@font/arial"
                             android:text="@string/driver_onboarding_text"
                             android:textAlignment="center"
@@ -157,7 +157,7 @@
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="15dp"
                     android:fontFamily="@font/arial"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"

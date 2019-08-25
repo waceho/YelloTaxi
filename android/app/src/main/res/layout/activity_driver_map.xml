@@ -196,7 +196,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@color/white"
-            android:text="Mon statut"
+            android:text="@string/mon_statut"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="17sp"

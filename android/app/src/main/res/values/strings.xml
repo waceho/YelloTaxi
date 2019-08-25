@@ -73,17 +73,17 @@
     <string name="benin_country_code">+229</string>
 
     <!-- phone popup -->
-    <string name="ask_auth_phone">Ce numéro sera utilisé pour vos paiements de courses. Veuillez donc saisir un numéro valide</string>
-    <string name="ask_auth_phone_hint">Veuillez saisir votre numéro</string>
+    <string name="ask_auth_phone">Veuillez saisir un numéro valide</string>
+    <string name="ask_auth_phone_hint">   -- -- -- -- </string>
     <string name="ask_auth_code_hint">Veuillez saisir votre numéro</string>
     <string name="confirm_code">Confirmer ce code</string>
     <string name="payout_email_hint">payout Email</string>
     <string name="payout">payout</string>
 
-    <string-array name="DialingCountryCode" >
-    <item>229,BJ</item>
-    <item>221,SN</item>
-    <item>33,FR</item>
+    <string-array name="DialingCountryCode">
+        <item>229,BJ</item>
+        <item>221,SN</item>
+        <item>33,FR</item>
     </string-array>
 
     <string name="countryCodeFormater">+%s</string>
@@ -93,4 +93,11 @@
     <string name="web_api_key">219527634194-vk6j1a0c8mgksj2j8g2brh6umjpr1ki1.apps.googleusercontent.com</string>
     <string name="driver_search">Recherche d\'un conducteur proche</string>
     <string name="no_adress_popup_msg">Veuillez saisir l\'addresse de destination s\'il vous plaît</string>
+    <string name="vehicle_model_hint">Veuillez saisir votre modele</string>
+    <string name="driver_phone_inputText_hint">Veuillez saisir votre numéro de mobile</string>
+    <string name="driver_name_inputText_hint">Veuillez saisir votre nom</string>
+    <string name="mon_statut">Mon statut</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

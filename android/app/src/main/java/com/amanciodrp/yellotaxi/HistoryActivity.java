@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -64,12 +65,11 @@ public class HistoryActivity extends AppCompatActivity {
         binding.historyRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mHistoryLayoutManager = new LinearLayoutManager(HistoryActivity.this);
         binding.historyRecyclerView.setLayoutManager(mHistoryLayoutManager);
-        mHistoryAdapter = new HistoryAdapter(getDataSetHistory(), HistoryActivity.this);
+        mHistoryAdapter = new HistoryAdapter(getDataSetHistory(), this);
         binding.historyRecyclerView.setAdapter(mHistoryAdapter);
 
         customerOrDriver = getIntent().getExtras().getString("customerOrDriver");
         userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-        Log.d(TAG, userId);
         getUserHistoryIds();
 
         if(customerOrDriver.equals("Drivers")){
@@ -80,7 +80,7 @@ public class HistoryActivity extends AppCompatActivity {
 
         setDivider();
 
-        binding.payout.setOnClickListener(view -> payoutRequest());
+        //binding.payout.setOnClickListener(view -> payoutRequest());
     }
 
     private void setDivider(){
@@ -94,7 +94,6 @@ public class HistoryActivity extends AppCompatActivity {
      * get user history
      */
     private void getUserHistoryIds() {
-        Log.d(TAG, "ask driver history");
         try {
             DatabaseReference userHistoryDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(userId).child("history");
             userHistoryDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -133,16 +132,14 @@ public class HistoryActivity extends AppCompatActivity {
                     Long timestamp = 0L;
                     String distance = "";
                     Double ridePrice = 0.0;
-                    Log.d("History", "get history");
                     if(dataSnapshot.child("timestamp").getValue() != null){
                         timestamp = Long.valueOf(dataSnapshot.child("timestamp").getValue().toString());
                     }
-
                     if(dataSnapshot.child("customerPaid").getValue() != null && dataSnapshot.child("driverPaidOut").getValue() == null){
                         if(dataSnapshot.child("distance").getValue() != null){
                             ridePrice = Double.valueOf(dataSnapshot.child("price").getValue().toString());
                             Balance += ridePrice;
-                            binding.balance.setText("Balance: " + String.valueOf(Balance) + " $");
+                            binding.balance.setText("Balance: " + Balance + " $");
                         }
                     }
 
@@ -161,7 +158,7 @@ public class HistoryActivity extends AppCompatActivity {
     /**
      * get ride date
      * @param time time in milliseconds
-     * @return
+     * @return dat in string date format
      */
     private String getDate(Long time) {
         Calendar cal = Calendar.getInstance(Locale.getDefault());
@@ -170,7 +167,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private ArrayList resultsHistory = new ArrayList<HistoryObject>();
-    private ArrayList getDataSetHistory() {
+    private List getDataSetHistory() {
         return resultsHistory;
     }
 
@@ -199,20 +196,18 @@ public class HistoryActivity extends AppCompatActivity {
                 .url("https://us-central1-uberapp-408c8.cloudfunctions.net/payout")
                 .post(body)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Your Token")
+                .addHeader("Authorization", "AcV1MV_mbJEncBj3DaxWK_oVL4VvNpFuOYMXMP3SJ7lgK_PndwCs1nnUaZ1j7eqX6wcq4lUAWEAvwSRb")
                 .addHeader("cache-control", "no-cache")
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                String mMessage = e.getMessage();
-                Log.w("failure Response", mMessage);
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                Log.w("failure Response", e.getMessage());
                 progress.dismiss();
             }
 
             @Override
-            public void onResponse(Call call, Response response)
-                    throws IOException {
+            public void onResponse(@NotNull Call call, @NotNull Response response) {
 
                 int responseCode = response.code();
 

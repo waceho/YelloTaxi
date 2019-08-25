@@ -16,6 +16,8 @@ import com.amanciodrp.yellotaxi.model.DefaultUseSettings;
 
 import androidx.lifecycle.MutableLiveData;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class UtilityKit {
 
     private static String TAG = UtilityKit.class.getSimpleName();
@@ -57,6 +59,7 @@ public class UtilityKit {
 
     public static void openActivity(Context context, Class activity){
         Intent intent = new Intent(context, activity);
+        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 

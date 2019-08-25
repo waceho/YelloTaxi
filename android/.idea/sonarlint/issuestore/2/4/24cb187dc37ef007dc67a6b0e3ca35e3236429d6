@@ -1,40 +1,35 @@
 
-nsquid:CommentedOutCodeLiner"<This block of commented-out lines of code should be removed.(¹êÈïùÿÿÿÿ8ÚæŸÕ¢-
-xsquid:S1450`"ZRemove the "mapFragment" field and declare it as a local variable in the relevant methods.(Åıùô8µƒÕ¢-
-xsquid:S1450l"ZRemove the "mRadioGroup" field and declare it as a local variable in the relevant methods.(ÎŞ†î8µƒÕ¢-
-{squid:UselessImportCheck+"QRemove this unused import 'com.google.android.gms.location.LocationAvailability'.(•¨ï8˜‹‹š±-
 lsquid:UselessImportCheck"<Remove this unused import 'android.content.DialogInterface'.(Š­›¨şÿÿÿÿ8åÚ‹š±-
-nsquid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.(¡©§şÿÿÿÿ8°‡ Õ¢-
-vsquid:UselessImportCheck;"KRemove this unused import 'com.google.android.gms.tasks.OnSuccessListener'.(íå¡8˜‹‹š±-
-^squid:S3398ÿ"?Move this method into the anonymous class declared at line 574.(¡Æ¼¾8 ‘š±-
+esquid:S1192ı"FDefine a constant instead of duplicating this literal "Users" 5 times.(ËØÊ©8 ‘š±-
+wsquid:S2293ş"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ËÇo8 ‘š±-
+ squid:S1186Ö"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8 ‘š±-
+xsquid:S1450b"ZRemove the "mapFragment" field and declare it as a local variable in the relevant methods.(Åıùô8µƒÕ¢-
+lsquid:UselessImportCheck""BRemove this unused import 'com.amanciodrp.yellotaxi.MainActivity'.( ÊÜQ8¦Ë†á³-
+_squid:UselessImportCheck"4Remove this unused import 'android.widget.EditText'.(†Å›Ú8¦Ë†á³-
+ squid:S1186¦"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁæìÎ8 ‘š±-
 osquid:S1192­"PDefine a constant instead of duplicating this literal "customerRequest" 5 times.(ßÕí€8 ‘š±-
-gsquid:S1192ù"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(ËØÊ©8 ‘š±-
-esquid:S1192ù"FDefine a constant instead of duplicating this literal "Users" 5 times.(ËØÊ©8 ‘š±-
-Nsquid:S1066¿"/Merge this if statement with the enclosing one.(±ò›­8 ‘š±-
-wsquid:S2293ı"YReplace the type specification in this constructor call with the diamond operator ("<>").(¯ËÇo8 ‘š±-
-Qsquid:S1199î"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8 ‘š±-
-squid:S4165æ"iRemove this useless assignment; "driverFound" already holds the assigned value along all execution paths.(€ïäüÿÿÿÿ8 ‘š±-
+gsquid:S1192ı"HDefine a constant instead of duplicating this literal "Drivers" 5 times.(ËØÊ©8 ‘š±-
+Msquid:S1481‚".Remove this unused "driverMap" local variable.(èè©¦8 ‘š±-
+ squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8 ‘š±-
+gsquid:HiddenFieldCheck…"=Rename "geoQuery" which hides the field declared at line 235.(­Œ®Ù8 ‘š±-
+^squid:S3398€"?Move this method into the anonymous class declared at line 575.(¡Æ¼¾8 ‘š±-
+squid:S4165ì"iRemove this useless assignment; "driverFound" already holds the assigned value along all execution paths.(€ïäüÿÿÿÿ8 ‘š±-
+lsquid:HiddenFieldCheck’"BRename "mDriverMarker" which hides the field declared at line 354.(¼óì‹8 ‘š±-
+¥squid:S1186¸"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
 osquid:CommentedOutCodeLine¡"<This block of commented-out lines of code should be removed.(É÷ƒÅøÿÿÿÿ8 ‘š±-
+¥squid:S1186°"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
+ƒsquid:UselessImportCheck%"SRemove this unused import 'com.amanciodrp.yellotaxi.viewmodel.PhonePopUpViewModel'.(·ÿÔ¹ùÿÿÿÿ8ºĞñµÀ-
+Nsquid:S1066Ã"/Merge this if statement with the enclosing one.(±ò›­8 ‘š±-
+Vsquid:S1135¨"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
+ squid:S1186«"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚Èè›8 ‘š±-
+Qsquid:S1199ï"-Extract this nested code block into a method.(·ÿ½äûÿÿÿÿ8 ‘š±-
+qsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ĞÌƒ’8 ‘š±-
+ squid:S1186¬"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â´ó¾8 ‘š±-
+Vsquid:S1135Ä"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
+ squid:S1186Á"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8 ‘š±-
+\squid:S1854‚"=Remove this useless assignment to local variable "driverMap".(èè©¦8 ‘š±-
+qsquid:S3776æ"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(øõ¦°8 ‘š±-
 jsquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(Êåóî8 ‘š±-
-gsquid:HiddenFieldCheck„"=Rename "geoQuery" which hides the field declared at line 230.(­Œ®Ù8 ‘š±-
-lsquid:HiddenFieldCheck‘"BRename "mDriverMarker" which hides the field declared at line 350.(¼óì‹8 ‘š±-
-[squid:S2589ø"7Remove this expression which always evaluates to "true"(Ìı·õùÿÿÿÿ8 ‘š±-
-Vsquid:S1135Ù"2Complete the task associated to this TODO comment.(³‚‹ışÿÿÿÿ8 ‘š±-
-Vsquid:S1135À"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
-Vsquid:S1135¢"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8 ‘š±-
-Msquid:S1481ş".Remove this unused "driverMap" local variable.(èè©¦8 ‘š±-
-vsquid:S3776ò"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(â’ş–şÿÿÿÿ8 ‘š±-
-qsquid:S3776â"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(øõ¦°8 ‘š±-
-qsquid:S3776š"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(ĞÌƒ’8 ‘š±-
-qsquid:CallToDeprecatedMethodÍ"ARemove this use of "PlaceAutocompleteFragment"; it is deprecated.(¹Î°ê8 ‘š±-
-qsquid:CallToDeprecatedMethodÍ"ARemove this use of "PlaceAutocompleteFragment"; it is deprecated.(¹Î°ê8 ‘š±-
-Isquid:S00108Ê")Either remove or fill this block of code.(Ë­õ¬8 ‘š±-
- squid:S1186¢"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÁæìÎ8 ‘š±-
- squid:S1186§"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‚Èè›8 ‘š±-
-¥squid:S1186´"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
- squid:S1186Œ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8 ‘š±-
- squid:S1186½"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8 ‘š±-
- squid:S1186Ò"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰8 ‘š±-
- squid:S1186«"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â´ó¾8 ‘š±-
-¥squid:S1186¯"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ä›§¥ùÿÿÿÿ8 ‘š±-
-\squid:S1854ş"=Remove this useless assignment to local variable "driverMap".(èè©¦8 ‘š±-
+rsquid:UselessImportCheck"BRemove this unused import 'androidx.lifecycle.ViewModelProviders'.(ê· ºÿÿÿÿÿ8üŸñµÀ-
+xsquid:S1450n"ZRemove the "mRadioGroup" field and declare it as a local variable in the relevant methods.(ÎŞ†î8µƒÕ¢-
+jsquid:CommentedOutCodeLineÏ"<This block of commented-out lines of code should be removed.(ÂÙüË8Š¬¶šË-

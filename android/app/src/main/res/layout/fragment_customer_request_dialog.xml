@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/tv_customerProfileImage_MBS"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="20sp"
+        android:src="@mipmap/ic_default_user"
+        fab:layout_constraintBottom_toBottomOf="@+id/rideStatus_MBS"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toTopOf="@+id/tv_customerDestination_MBS" />
+
+    <TextView
+        android:id="@+id/tv_customerDestination_MBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingBottom="10sp"
+        android:text="Destination: --"
+        android:textColor="@color/black"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toEndOf="@+id/tv_customerProfileImage_MBS"
+        fab:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_customerName_MBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:paddingTop="20sp"
+        android:paddingBottom="10sp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toEndOf="@+id/tv_customerProfileImage_MBS"
+        fab:layout_constraintTop_toBottomOf="@+id/tv_customerDestination_MBS" />
+
+    <TextView
+        android:id="@+id/tv_customerPhone_MBS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:paddingTop="20sp"
+        android:paddingBottom="10sp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toEndOf="@+id/tv_customerProfileImage_MBS"
+        fab:layout_constraintTop_toBottomOf="@+id/tv_customerName_MBS" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/rideStatus_MBS"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/yellow"
+        android:text="picked customer"
+        fab:layout_constraintEnd_toEndOf="parent"
+        fab:layout_constraintStart_toStartOf="parent"
+        fab:layout_constraintTop_toBottomOf="@+id/tv_customerPhone_MBS" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

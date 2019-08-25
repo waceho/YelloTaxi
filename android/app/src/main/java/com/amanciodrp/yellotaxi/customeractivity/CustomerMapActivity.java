@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.amanciodrp.yellotaxi.HistoryActivity;
 import com.amanciodrp.yellotaxi.MainActivity;
 import com.amanciodrp.yellotaxi.databinding.ActivityCostumerMapBinding;
+import com.amanciodrp.yellotaxi.onboarding.OnBoardingActivity;
 import com.amanciodrp.yellotaxi.viewmodel.PhonePopUpViewModel;
 import com.bumptech.glide.Glide;
 import com.firebase.geofire.GeoFire;
@@ -79,11 +80,10 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 public class CustomerMapActivity extends FragmentActivity implements OnMapReadyCallback {
-
+    private String TAG = CustomerMapActivity.class.getSimpleName();
     private GoogleMap mMap;
-    Location mLastLocation;
-    LocationRequest mLocationRequest;
-
+    private Location mLastLocation;
+    private LocationRequest mLocationRequest;
     private FusedLocationProviderClient mFusedLocationClient;
 
     private LatLng pickupLocation;
@@ -112,8 +112,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private ActivityCostumerMapBinding binding;
 
-    //private PhonePopUpViewModel phonePopUpViewModel;
-
     @Inject
     ViewModelFactory viewModelFactory;
 
@@ -121,8 +119,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_costumer_map);
-
-        //phonePopUpViewModel = ViewModelProviders.of(this, this.viewModelFactory).get(PhonePopUpViewModel.class);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -147,10 +143,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         // Initialize Places.
         Places.initialize(getApplicationContext(), getString(R.string.google_maps_key));
 
-
         binding.logout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(CustomerMapActivity.this, MainActivity.class);
+            Intent intent = new Intent(CustomerMapActivity.this, OnBoardingActivity.class);
             startActivity(intent);
             finish();
         });
@@ -220,8 +215,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
-                Log.i("CustomerMapActivity", "Place: " + place.getName() + ", " + place.getId() + ", " + place.getLatLng());
-                destination = String.valueOf(place.getAddress());
+                Log.i("CustomerMapActivity", "Place: " + place.getName() + "Adresse : " + place.getAddress() + " " + place.getId() + ", " + place.getLatLng());
+                destination = String.valueOf(place.getName());
                 destinationLatLng = place.getLatLng();
             }
 
@@ -421,36 +416,43 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mCustomerDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
-                    if (null != dataSnapshot.child("name")) {
-                        mDriverName.setText(dataSnapshot.child("name").getValue().toString());
-                    }
-                    if (dataSnapshot.child("phone") != null) {
-                        mDriverPhone.setText(dataSnapshot.child("phone").getValue().toString());
-                    }
-                    if (dataSnapshot.child("car") != null) {
-                        mDriverCar.setText(dataSnapshot.child("car").getValue().toString());
-                    }
-                    if (dataSnapshot.child("profileImageUrl").getValue() != null) {
-                        Glide.with(getApplication()).load(dataSnapshot.child("profileImageUrl").getValue().toString()).into(mDriverProfileImage);
-                    }
+                try {
+                    Log.e(TAG, dataSnapshot.toString());
+                    if (dataSnapshot.exists() && dataSnapshot.getChildrenCount() > 0) {
+                        if (null != dataSnapshot.child("name")) {
+                            mDriverName.setText(dataSnapshot.child("name").getValue().toString());
+                        }
+                        if (dataSnapshot.child("phone") != null) {
+                            mDriverPhone.setText(dataSnapshot.child("phone").getValue().toString());
+                        }
+                        if (dataSnapshot.child("car") != null) {
+                            mDriverCar.setText(dataSnapshot.child("car").getValue().toString());
+                        }
+                        if (dataSnapshot.child("profileImageUrl").getValue() != null) {
+                            Glide.with(getApplication()).load(dataSnapshot.child("profileImageUrl").getValue().toString()).into(mDriverProfileImage);
+                        }
 
-                    int ratingSum = 0;
-                    float ratingsTotal = 0;
-                    float ratingsAvg = 0;
-                    for (DataSnapshot child : dataSnapshot.child("rating").getChildren()) {
-                        ratingSum = ratingSum + Integer.valueOf(child.getValue().toString());
-                        ratingsTotal++;
+                        int ratingSum = 0;
+                        float ratingsTotal = 0;
+                        float ratingsAvg = 0;
+                        for (DataSnapshot child : dataSnapshot.child("rating").getChildren()) {
+                            ratingSum = ratingSum + Integer.valueOf(child.getValue().toString());
+                            ratingsTotal++;
+                        }
+                        if (ratingsTotal != 0) {
+                            ratingsAvg = ratingSum / ratingsTotal;
+                            mRatingBar.setRating(ratingsAvg);
+                        }
                     }
-                    if (ratingsTotal != 0) {
-                        ratingsAvg = ratingSum / ratingsTotal;
-                        mRatingBar.setRating(ratingsAvg);
-                    }
+                } catch (Exception e){
+                    Log.e(TAG, e.getMessage());
                 }
+
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
+                Log.e(TAG, databaseError.getDetails());
             }
         });
     }
@@ -462,16 +464,16 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         driveHasEndedRef = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID).child("customerRequest").child("customerRideId");
         driveHasEndedRefListener = driveHasEndedRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-
+                    //endRide();
                 } else {
                     endRide();
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NotNull DatabaseError databaseError) {
             }
         });
     }
@@ -480,6 +482,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         requestBol = false;
         driverFound = false;
         geoQuery.removeAllListeners();
+
+        Log.d(CustomerMapActivity.class.getSimpleName(), "ask end ride");
         if (null != driverLocationRef) {
             driverLocationRef.removeEventListener(driverLocationRefListener);
             driveHasEndedRef.removeEventListener(driveHasEndedRefListener);
@@ -491,7 +495,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             driverFoundID = null;
 
         }
-        driverFound = false;
         radius = 1;
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -564,12 +567,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
         final View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
 
-        binding.myLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                locationButton.callOnClick();
-            }
-        });
+        binding.myLocation.setOnClickListener(v -> locationButton.callOnClick());
 
         mFusedLocationClient.getLocationAvailability().addOnSuccessListener(locationAvailability -> {
             if (null != pickupLocation)
@@ -698,6 +696,10 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
     }
 
+    /**
+     * create this stuff
+     * @param msg
+     */
     private void showdialog(String msg) {
         LayoutInflater inflater = this.getLayoutInflater();
         View view = inflater.inflate(R.layout.default_dialog_popup, null);

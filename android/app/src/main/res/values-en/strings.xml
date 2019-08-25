@@ -15,7 +15,7 @@
 
     <string name="ob_get_started">GET STARTED</string>
 
-    <string name="valider">confirm</string>
+    <string name="valider">Valider</string>
 
     <string name="ob_desc1">Y\'elloTaxi vous permet de commander un taxi ou une voiture de course depuis votre position</string>
     <string name="ob_desc2">Réglez à destination les frais de votre trajet grâce à votre méthode de paiement définie par défault (carte bancaire, Mobile Money, Flooz)</string>
@@ -28,11 +28,11 @@
     <string name="lastOnboardingExplanation_4">Votre Taxi est là. HOP , Bonne route</string>
 
     <!-- onboarding 4 driver list -->
-    <string name="lastOnboardingDriveExplanation_1">Activez votre GPS </string>
+
     <string name="lastOnboardingDriveExplanation_2">Vous recevrez automatiquement les demandes de courses sur votre application</string>
     <string name="lastOnboardingDriveExplanation_3">Accepter le trajet s\'il vous convient</string>
-    <string name="lastOnboardingDriveExplanation_4">Récupérer votre passager et déposer le à destination</string>
-    <string name="lastOnboardingDriveExplanation_5">Vous êtes automatiquement crédité sur votre compte</string>
+    <string name="lastOnboardingDriveExplanation_4">Récupérez votre passager et déposer le à destination</string>
+    <string name="lastOnboardingDriveExplanation_5">Vous êtes automatiquement payé sur votre compte</string>
     <string name="ob_desc3_subtitle">Vous pourrez changer de mode dans les paramètres de votre application</string>
 
     <string name="passager">passager</string>
@@ -60,7 +60,7 @@
     <string name="onboard4_content"></string>
     <string name="choice_driver_text">NB: Une vérification sera éffectué ultérieurement si vous êtes chauffeur</string>
     <string name="last_onboarding_title">Une course en taxi ? Facile</string>
-    <string name="last_onboarding_subtitle">Une course en taxi ? Facile</string>
+    <string name="last_onboarding_subtitle">Voici les étapes à suivre :</string>
     <string name="next">SUIVANT</string>
     <string name="ok">C\'EST COMPRIS</string>
     <string name="code">Saisissez le code reçu</string>
@@ -71,10 +71,14 @@
     <string name="taxi">TAXI</string>
     <string name="particulier">PARTICULIER</string>
     <string name="benin_country_code">+229</string>
-    <string name="ask_auth_phone">Ce numéro sera utilisé pour vos paiements de courses. Veuillez donc saisir un numéro valide</string>
+
+    <!-- phone popup -->
+    <string name="ask_auth_phone">Veuillez saisir un numéro valide</string>
+    <string name="ask_auth_phone_hint">   -- -- -- -- </string>
+    <string name="ask_auth_code_hint">Veuillez saisir votre numéro</string>
+    <string name="confirm_code">Confirmer ce code</string>
     <string name="payout_email_hint">payout Email</string>
     <string name="payout">payout</string>
-    <string name="network_error">veuillez vérifier votre connexion svp</string>
 
     <string-array name="DialingCountryCode" >
         <item>229,BJ</item>
@@ -82,7 +86,15 @@
         <item>33,FR</item>
     </string-array>
 
+    <string name="countryCodeFormater">+%s</string>
+    <string name="phoneFormater">%s%s</string>
+    <string name="network_error">veuillez vérifier votre connexion svp</string>
+
     <string name="web_api_key">219527634194-vk6j1a0c8mgksj2j8g2brh6umjpr1ki1.apps.googleusercontent.com</string>
     <string name="driver_search">Recherche d\'un conducteur proche</string>
     <string name="no_adress_popup_msg">Veuillez saisir l\'addresse de destination s\'il vous plaît</string>
+    <string name="vehicle_model_hint">Veuillez saisir votre modele</string>
+    <string name="driver_phone_inputText_hint">Veuillez saisir votre numéro de mobile</string>
+    <string name="driver_name_inputText_hint">Veuillez saisir votre nom</string>
+    <string name="mon_statut">Mon statut</string>
 </resources>

@@ -17,27 +17,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDriver = (CardView) findViewById(R.id.driver);
-        mCustomer = (CardView) findViewById(R.id.customer);
+        mDriver = findViewById(R.id.driver);
+        mCustomer = findViewById(R.id.customer);
 
         startService(new Intent(MainActivity.this, OnAppKilled.class));
 
-        mDriver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DriverLoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        mDriver.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DriverLoginActivity.class);
+            startActivity(intent);
+            finish();
         });
 
-        mCustomer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CustomerLoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        mCustomer.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, CustomerLoginActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

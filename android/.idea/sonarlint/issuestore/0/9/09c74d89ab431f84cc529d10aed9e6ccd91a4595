@@ -1,13 +1,12 @@
 
-hsquid:S001169"RRename this field "Balance" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ÿ7
-bsquid:UselessImportCheck"2Remove this unused import 'android.widget.Button'.(²òıÿÿÿÿ8™Ğğ½§-
-˜squid:S1186r"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
-Zsquid:S1854"=Remove this useless assignment to local variable "ridePrice".(ÔÉ¹‰üÿÿÿÿ
-^squid:UselessImportCheck"3Remove this unused import 'android.view.ViewGroup'.(‹îá8Ã±Ìª§-
-Isquid:S1153‹"1Directly append the argument of String.valueOf().(¿ëã¯
-Lsquid:S1066ˆ"/Merge this if statement with the enclosing one.(ıš¿áùÿÿÿÿ
-™squid:S1186•"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¹Ş‰
-esquid:MaximumInheritanceDepth0"<This class has 6 parents which is greater than 5 authorized.(òÁÃŠ
-€squid:S14505"dRemove the "mHistoryLayoutManager" field and declare it as a local variable in the relevant methods.(Äè¨Ëÿÿÿÿÿ
-msquid:S1450;"VRemove the "mPayout" field and declare it as a local variable in the relevant methods.(§ÎìÏ
-Jsquid:S1481€"-Remove this unused "distance" local variable.(•Ü¸‚şÿÿÿÿ
+Vsquid:S1135œ"2Complete the task associated to this TODO comment.(ğÓœøÿÿÿÿ8£Ë†á³-
+hsquid:S001164"RRename this field "Balance" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚Ÿ7
+‚squid:S14500"_Remove the "customerOrDriver" field and declare it as a local variable in the relevant methods.(ŠÑüºûÿÿÿÿ8£Ë†á³-
+Osquid:S1153‘"1Directly append the argument of String.valueOf().(¨Í.8£Ë†á³-
+Lsquid:S1066"/Merge this if statement with the enclosing one.(ıš¿áùÿÿÿÿ
+Zsquid:S1854‡"=Remove this useless assignment to local variable "ridePrice".(ÔÉ¹‰üÿÿÿÿ
+rsquid:S001162"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹ùçŒşÿÿÿÿ8£Ë†á³-
+esquid:MaximumInheritanceDepth/"<This class has 6 parents which is greater than 5 authorized.(òÁÃŠ
+Jsquid:S1481†"-Remove this unused "distance" local variable.(•Ü¸‚şÿÿÿÿ
+Ÿsquid:S1186p"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÿ…ßñ8£Ë†á³-
+dsquid:UselessImportCheck"9Remove this unused import 'android.annotation.TargetApi'.(¥Îì‘8£Ë†á³-

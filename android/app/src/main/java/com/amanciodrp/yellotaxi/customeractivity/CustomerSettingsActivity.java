@@ -7,6 +7,8 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +37,8 @@ import java.util.Map;
 public class CustomerSettingsActivity extends AppCompatActivity {
 
     private EditText mNameField, mPhoneField;
-    private Button mBack, mConfirm;
+    private ImageView mBack;
+    private AppCompatButton mConfirm;
     private ImageView mProfileImage;
     private FirebaseAuth mAuth;
     private DatabaseReference mCustomerDatabase;
@@ -64,28 +67,16 @@ public class CustomerSettingsActivity extends AppCompatActivity {
 
         getUserInfo();
 
-        mProfileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, 1);
-            }
+        mProfileImage.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, 1);
         });
 
-        mConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveUserInformation();
-            }
-        });
+        mConfirm.setOnClickListener(v -> saveUserInformation());
 
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                return;
-            }
+        mBack.setOnClickListener(v -> {
+            finish();
         });
     }
     private void getUserInfo(){

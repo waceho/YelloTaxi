@@ -1,5 +1,5 @@
 
+Jsquid:S1602H",Remove useless curly braces around statement(°ˆ«‰8¹ñ®‚±-
 esquid:UselessImportCheck":Remove this unused import 'android.content.res.Resources'.(ÿÃÜó8œŽ¬‚±-
-Jsquid:S1602E",Remove useless curly braces around statement(°ˆ«‰8¹ñ®‚±-
-qsquid:S3008"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠñÀŠþÿÿÿÿ8”Ú³‚±-
 lsquid:UselessImportCheck"<Remove this unused import 'android.content.DialogInterface'.(Š­›¨þÿÿÿÿ8ÜÀÕ±-
+qsquid:S3008"NRename this field "TAG" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠñÀŠþÿÿÿÿ8”Ú³‚±-

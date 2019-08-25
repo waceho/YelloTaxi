@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.amanciodrp.yellotaxi.R;
 import com.amanciodrp.yellotaxi.databinding.ActivityCustomerLoginBinding;
 import com.amanciodrp.yellotaxi.databinding.PhoneLoginPopupBinding;
 import com.amanciodrp.yellotaxi.driveractivity.DriverMapActivity;
+import com.amanciodrp.yellotaxi.utils.PhoneInputMask;
 import com.amanciodrp.yellotaxi.utils.Reachability;
 import com.amanciodrp.yellotaxi.utils.SnackbarUtils;
 import com.amanciodrp.yellotaxi.utils.UtilityKit;
@@ -113,8 +115,6 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                Log.d(TAG, s);
-                Log.d(TAG, forceResendingToken.toString());
                 super.onCodeSent(s, forceResendingToken);
                 Toast.makeText(CustomerLoginActivity.this, s, Toast.LENGTH_LONG).show();
                 verificationid = s;
@@ -202,9 +202,11 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
 
     /**
      * start phone verification
+     *
      * @param phoneNumber
      */
     private void startPhoneNumberVerification(String phoneNumber) {
+
         Toast.makeText(CustomerLoginActivity.this, "start login", Toast.LENGTH_SHORT).show();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
@@ -218,7 +220,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
         try {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
             signInWithPhoneAuthCredential(credential);
-        } catch (Exception e){
+        } catch (Exception e) {
             Log.d(TAG, e.getMessage());
         }
 
@@ -330,29 +332,46 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                     .setView(view);
             builder = alertDialog.create();
 
-            if (ASK_TYPE_PHONE.equals(type) && null != loginPopupBinding){
+            if (ASK_TYPE_PHONE.equals(type) && null != loginPopupBinding) {
                 loginPopupBinding.tvCode.setVisibility(View.VISIBLE);
                 loginPopupBinding.tvCode.setText(getCountryCode());
-                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
-                loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_phone_hint));
+                loginPopupBinding.inputLayoutCode.setHintTextColor(getColorStateList(R.color.red));
                 loginPopupBinding.valider.setText(getString(R.string.valider));
-
+                loginPopupBinding.inputLayoutCode.addTextChangedListener(new PhoneInputMask());
                 // set onclick listener
                 loginPopupBinding.valider.setOnClickListener(v -> {
+                    String phoneNumber = loginPopupBinding.inputLayoutCode.getText().toString();
                     // launch phone verification and code auth callback
-                    if (Reachability.isConnected(mContext)){
-                        startPhoneNumberVerification(getInputedPhone(loginPopupBinding.edCode.getText().toString()));
-                        Log.d(TAG, getInputedPhone(getCountryCode()));
+                    if (Reachability.isConnected(mContext)) {
+                        switch (Integer.valueOf(getCountryCode())) {
+                            case 229:
+                                if (TextUtils.isEmpty(phoneNumber) || phoneNumber.length() < 8)
+                                    loginPopupBinding.inputLayoutCode.setError("Numéro local invalide");
+                                else
+                                    startPhoneNumberVerification(getInputedPhone(loginPopupBinding.inputLayoutCode.getText().toString()));
+                                break;
+                            case 221:
+                                if (TextUtils.isEmpty(phoneNumber) || phoneNumber.length() < 9)
+                                    loginPopupBinding.inputLayoutCode.setError("Numéro local invalide");
+                                else
+                                    startPhoneNumberVerification(getInputedPhone(loginPopupBinding.inputLayoutCode.getText().toString()));
+                                break;
+                            case 33:
+                                if (TextUtils.isEmpty(phoneNumber) || phoneNumber.length() < 9)
+                                    loginPopupBinding.inputLayoutCode.setError("Numéro local invalide");
+                                else
+                                    startPhoneNumberVerification(getInputedPhone(loginPopupBinding.inputLayoutCode.getText().toString()));
+                                break;
+                        }
                         builder.dismiss();
-                    }
-                    else
+                    } else
                         SnackbarUtils.displayWarning(this, R.string.network_error);
                 });
 
-            } else if (ASK_TYPE_CODE.equals(type) && null != loginPopupBinding){
+            } else if (ASK_TYPE_CODE.equals(type) && null != loginPopupBinding) {
                 loginPopupBinding.tvCode.setVisibility(View.GONE);
                 loginPopupBinding.tvCode.setText(getCountryCode());
-                loginPopupBinding.inputLayoutCode.setDefaultHintTextColor(getColorStateList(R.color.red));
+                loginPopupBinding.inputLayoutCode.setHintTextColor(getColorStateList(R.color.red));
                 loginPopupBinding.inputLayoutCode.setHint(getString(R.string.ask_auth_code_hint));
                 loginPopupBinding.valider.setText(getString(R.string.confirm_code));
 
@@ -360,7 +379,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                 loginPopupBinding.valider.setOnClickListener(v -> {
                     // launch phone verification and code auth callback
                     if (Reachability.isConnected(mContext))
-                        verifyPhoneNumberWithCode(verificationid, loginPopupBinding.edCode.getText().toString());
+                        verifyPhoneNumberWithCode(verificationid, loginPopupBinding.inputLayoutCode.getText().toString());
                     else
                         SnackbarUtils.displayWarning(this, R.string.network_error);
 
@@ -386,8 +405,8 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
      * get Phone with Code
      **/
     private String getInputedPhone(String phone) {
-        Log.d(TAG,  phone);
-        return String.format(getString(R.string.phoneFormater), getCountryCode(), phone);
+        Log.d(TAG, phone);
+        return String.format(getString(R.string.phoneFormater), getCountryCode(), "" + phone);
     }
 
 }

@@ -91,7 +91,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.30"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
 
+    // paypal
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
-

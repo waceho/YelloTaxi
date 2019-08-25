@@ -1,0 +1,15 @@
+
+Jsquid:S1068$"'Remove this unused "TAG" private field.(¨Ò‚íûÿÿÿÿ8­ÑÜµÀ-
+Isquid:S1135v"2Complete the task associated to this TODO comment.(åµÈ¶
+\squid:S10684"?Remove this unused "REQUEST_CODE_FUTURE_PAYMENT" private field.(û‡¤8­ÑÜµÀ-
+Nsquid:S1135A"2Complete the task associated to this TODO comment.(ğï¢öúÿÿÿÿ
+[squid:S10683"8Remove this unused "REQUEST_CODE_PAYMENT" private field.(ıãËîıÿÿÿÿ8­ÑÜµÀ-
+Nsquid:S1135"2Complete the task associated to this TODO comment.(ÜûŠ—øÿÿÿÿ
+Jsquid:S1135š"2Complete the task associated to this TODO comment.(‡‚ùˆ
+^squid:S10685"@Remove this unused "REQUEST_CODE_PROFILE_SHARING" private field.(†´Ó…8­ÑÜµÀ-
+Nsquid:S1135S"2Complete the task associated to this TODO comment.(ßíŠÿÿÿÿÿ
+msquid:S1450B"VRemove the "mParam1" field and declare it as a local variable in the relevant methods.(•Íï‘
+Bsquid:S1068B"+Remove this unused "mParam1" private field.(•Íï‘
+Bsquid:S1068C"+Remove this unused "mParam2" private field.(¡ˆ€ 
+msquid:S1450C"VRemove the "mParam2" field and declare it as a local variable in the relevant methods.(¡ˆ€ 
+_squid:S00112„"FDefine and throw a dedicated exception instead of using a generic one.(İŒÜ±

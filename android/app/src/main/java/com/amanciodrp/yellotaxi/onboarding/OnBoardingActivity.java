@@ -174,12 +174,10 @@ public class OnBoardingActivity extends AppCompatActivity {
             // save user default conf
             saveUserDefaullMode();
             // launch Customer Login
-            if (defaultUseSettings.getMode().equals(getString(R.string.passager))){
+            if (defaultUseSettings.getMode().equals(getString(R.string.passager))) {
                 startActivity(new Intent(OnBoardingActivity.this, CustomerLoginActivity.class));
                 finish();
-            }
-
-            else{
+            } else {
                 startActivity(new Intent(OnBoardingActivity.this, DriverLoginActivity.class));
                 finish();
             }
@@ -275,13 +273,10 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
                 cardView.clearAnimation();
-
             }
         });
     }
-
 
     // hide animation
     private void hide_animation() {

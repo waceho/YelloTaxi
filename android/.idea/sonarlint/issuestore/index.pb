@@ -79,3 +79,15 @@ r
 Bapp/src/main/java/com/amanciodrp/yellotaxi/utils/AppConstants.java,a/4/a4eaf881796b7660b9a6afcafe0c62c9a725213e
 ~
 Napp/src/main/java/com/amanciodrp/yellotaxi/driveractivity/RideBottomSheet.java,9/b/9b818b065718c4a04ef099b77a4385a89e7b0244
+p
+@app/src/main/java/com/amanciodrp/yellotaxi/ShutDownReceiver.java,d/3/d3032bbb8a402fb83e806a3b3c56b7082dde1e20
+|
+Lapp/src/main/java/com/amanciodrp/yellotaxi/paypal/PayPalPaymentFragment.java,7/6/76d2952c38f23adba542bf62a9872e3170e17502
+t
+Dapp/src/main/java/com/amanciodrp/yellotaxi/utils/PhoneInputMask.java,7/5/756f457fff760ceca4fe399b908600609bfa4dd9
+j
+:app/src/main/java/com/amanciodrp/yellotaxi/model/User.java,7/6/76c4df370211b3c11288e3b1887262ee136e64b3
+x
+Happ/src/main/java/com/amanciodrp/yellotaxi/model/DefaultUseSettings.java,4/4/44924a8a1118888f1d526df575506438df58f980
+|
+Lapp/src/main/java/com/amanciodrp/yellotaxi/utils/GoogleServiceSingleton.java,8/3/83ba3dfc8a479c7fb851cbfb6e46bf0f0f2b2df4

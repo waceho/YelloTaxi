@@ -66,7 +66,6 @@ class FullscreenActivity : AppCompatActivity() {
                     DefaultUseSettings::class.simpleName,
                     DefaultUseSettings::class.simpleName,
                     DefaultUseSettings::class.java)
-
             when {
                 defaultValue?.mode.equals(getString(R.string.passager)) -> startActivity(Intent(this, CustomerLoginActivity::class.java))
                 defaultValue?.mode.equals(getString(R.string.chauffeur)) -> startActivity(Intent(this, DriverLoginActivity::class.java))

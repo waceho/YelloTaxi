@@ -82,7 +82,7 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         setContentView(R.layout.activity_history_single);
 
         Intent intent = new Intent(this, PayPalService.class);
-  //      intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
         startService(intent);
 
         polylines = new ArrayList<>();
